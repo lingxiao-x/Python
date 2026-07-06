@@ -1,9 +1,10 @@
-# Python 交互式学习平台
+# Python 二级交互式教学
 
-一个纯前端、开箱即用的 Python 二级考试学习网站，包含知识点讲解、章节测验、模拟考试和进度追踪功能。
+一个纯前端、开箱即用的 Python 二级考试学习网站。
+AI发展太快，编程能力大幅提升，视频平台教学也完善，可是提升不大，所以我用AI设计了这个项目，为了方便教学，资料查询不易，有许多缺陷望理解。
 
 
-直接访问：[Python二级教学](https://lingxiao-x.github.io/Python/)
+网站链接：[Python二级教学](https://lingxiao-x.github.io/Python/)
 
 ## 功能特点
 
