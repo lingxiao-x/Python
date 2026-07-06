@@ -3,7 +3,7 @@
 一个纯前端、开箱即用的 Python 二级考试学习网站，包含知识点讲解、章节测验、模拟考试和进度追踪功能。
 
 
-直接访问：[GitHub Pages 链接](https://lingxiao-x.github.io/Python/)
+直接访问：[Python二级教学](https://lingxiao-x.github.io/Python/)
 
 ## 功能特点
 
