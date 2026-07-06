@@ -26,14 +26,7 @@
 ### 本地使用
 
 1. 下载 `index.html` 文件
-2. 双击用浏览器打开即可
-
-### 部署到 GitHub Pages
-
-1. Fork 本仓库或创建新仓库
-2. 进入仓库 **Settings** → **Pages**
-3. Source 选择 **Deploy from a branch**，Branch 选择 `main` / `master`，文件夹选择 `/ (root)`
-4. 点击 Save，等待几分钟即可访问
+2. 双击用浏览器打开
 
 ## 学习路线建议
 
