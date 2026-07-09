@@ -162,6 +162,28 @@
   .case-study h4{color:#92400e;font-size:15px;margin-bottom:10px}
   .case-study p,.case-study li{color:#78350f;font-size:14px}
 
+  /* Knowledge base styles */
+  .kb-section{margin-bottom:16px}
+  .kb-section details{background:var(--card);border-radius:var(--radius-sm);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border)}
+  .kb-section summary{padding:14px 18px;font-weight:600;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s;user-select:none}
+  .kb-section summary:hover{background:#f1f5f9}
+  .kb-section summary::before{content:'\25B6';font-size:10px;color:var(--accent);transition:transform .2s;display:inline-block}
+  .kb-section details[open] summary::before{transform:rotate(90deg)}
+  .kb-section .kb-body{padding:0 18px 16px;font-size:13.5px;line-height:1.8;color:var(--text)}
+  .kb-section .kb-body ul{padding-left:18px;margin:6px 0}
+  .kb-section .kb-body li{margin:4px 0}
+  .kb-section .kb-body code{background:#f1f5f9;padding:1px 6px;border-radius:4px;font-size:12.5px;color:#e11d48}
+  .kb-section .kb-body table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+  .kb-section .kb-body th{background:var(--primary);color:#fff;padding:8px 12px;text-align:left;font-weight:500}
+  .kb-section .kb-body td{padding:6px 12px;border-bottom:1px solid var(--border)}
+  .kb-section .kb-body tr:nth-child(even){background:#f8fafc}
+  .kb-section .kb-body h4{margin:12px 0 6px;font-size:13.5px;color:var(--primary)}
+  .kb-section .kb-body pre{background:#1e293b;color:#e2e8f0;padding:14px 16px;border-radius:var(--radius-sm);overflow-x:auto;font-size:12.5px;line-height:1.6;margin:8px 0}
+  .kb-section .kb-body pre code{background:none;color:inherit;padding:0;font-size:inherit}
+  .kb-formula{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:10px 0;font-size:14px}
+  .kb-formula .formula{font-size:15px;font-weight:600;color:var(--primary);margin:6px 0}
+  .kb-formula .note{font-size:12.5px;color:var(--text-light);margin-top:4px}
+
   /* Mobile */
   .menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--primary);color:#fff;border:none;width:40px;height:40px;border-radius:8px;font-size:20px;cursor:pointer}
   @media(max-width:900px){
@@ -384,6 +406,21 @@
   <a class="nav-item" onclick="showPage('pt7')" data-page="pt7"><span class="icon">&#128247;</span>计算机视觉实战</a>
   <a class="nav-item" onclick="showPage('pt8')" data-page="pt8"><span class="icon">&#128172;</span>自然语言处理NLP</a>
   </div>
+<div class="nav-section">
+  <div class="nav-title">&#128218; 知识百科</div>
+  <a class="nav-item" onclick="showPage('kb1')" data-page="kb1"><span class="icon">&#128214;</span>Python 语法速查</a>
+  <a class="nav-item" onclick="showPage('kb2')" data-page="kb2"><span class="icon">&#127891;</span>公共基础知识速查</a>
+  <a class="nav-item" onclick="showPage('kb3')" data-page="kb3"><span class="icon">&#128290;</span>常用代码模板</a>
+  <a class="nav-item" onclick="showPage('kb4')" data-page="kb4"><span class="icon">&#128202;</span>考试公式与计算</a>
+  <a class="nav-item" onclick="showPage('kb5')" data-page="kb5"><span class="icon">&#129520;</span>面向对象与异常</a>
+  <a class="nav-item" onclick="showPage('kb6')" data-page="kb6"><span class="icon">&#128196;</span>文件与正则表达式</a>
+  <a class="nav-item" onclick="showPage('kb7')" data-page="kb7"><span class="icon">&#128640;</span>进阶拓展</a>
+</div>
+<div class="nav-section">
+  <div class="nav-title">&#127891; 备考指南</div>
+  <a class="nav-item" onclick="showPage('syllabus')" data-page="syllabus"><span class="icon">&#128196;</span>官方考试大纲</a>
+  <a class="nav-item" onclick="showPage('practice')" data-page="practice"><span class="icon">&#9997;</span>操作题特训</a>
+</div>
 </nav>
 
 <!-- Main -->
@@ -4776,6 +4813,2586 @@ print(f"输出形状: {output.shape}")</code></pre>
     <div class="progress-grid" id="progressGrid"></div>
   </div>
 
+  <!-- ===================== KB1: Python 语法速查 ===================== -->
+  <div class="page" id="page-kb1">
+    <div class="chapter-hero">
+      <h2>&#128214; Python 语法速查</h2>
+      <p>全面覆盖 Python 核心语法知识，可折叠快速查阅</p>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>变量与命名规则</summary>
+        <div class="kb-body">
+          <ul>
+            <li>首字符必须是 <code>字母</code> 或 <code>下划线 _</code>，不能以数字开头</li>
+            <li>大小写敏感：<code>Name</code> 与 <code>name</code> 是不同变量</li>
+            <li>不能与 Python 保留字重名，共 <strong>33个保留字</strong></li>
+            <li>保留字列表：<code>False None True and as assert async await break class continue def del elif else except finally for from global if import in is lambda nonlocal not or pass raise return try while with yield</code></li>
+            <li>建议使用 snake_case 命名法：<code>my_name</code>, <code>user_age</code></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>数据类型</summary>
+        <div class="kb-body">
+          <h4>六大基本类型</h4>
+          <table>
+            <tr><th>类型</th><th>说明</th><th>示例</th><th>是否可变</th></tr>
+            <tr><td><code>int</code></td><td>整数</td><td><code>42, -7, 0b101</code></td><td>不可变</td></tr>
+            <tr><td><code>float</code></td><td>浮点数</td><td><code>3.14, 2e5</code></td><td>不可变</td></tr>
+            <tr><td><code>bool</code></td><td>布尔值</td><td><code>True, False</code></td><td>不可变</td></tr>
+            <tr><td><code>complex</code></td><td>复数</td><td><code>3+4j</code></td><td>不可变</td></tr>
+            <tr><td><code>str</code></td><td>字符串</td><td><code>"hello"</code></td><td>不可变</td></tr>
+            <tr><td><code>list</code></td><td>列表</td><td><code>[1,2,3]</code></td><td>可变</td></tr>
+            <tr><td><code>tuple</code></td><td>元组</td><td><code>(1,2,3)</code></td><td>不可变</td></tr>
+            <tr><td><code>dict</code></td><td>字典</td><td><code>{"a":1}</code></td><td>可变</td></tr>
+            <tr><td><code>set</code></td><td>集合</td><td><code>{1,2,3}</code></td><td>可变</td></tr>
+          </table>
+          <ul>
+            <li><strong>不可变类型</strong>：int, float, bool, complex, str, tuple -- 值修改即创建新对象</li>
+            <li><strong>可变类型</strong>：list, dict, set -- 原地修改，id不变</li>
+            <li>类型转换：<code>int()</code>, <code>float()</code>, <code>str()</code>, <code>list()</code>, <code>tuple()</code>, <code>set()</code>, <code>dict()</code></li>
+            <li>类型判断：<code>type(x)</code> 返回类型, <code>isinstance(x, int)</code> 判断是否为某类型</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>运算符优先级</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>优先级（高到低）</th><th>运算符</th><th>说明</th></tr>
+            <tr><td>1</td><td><code>**</code></td><td>幂运算</td></tr>
+            <tr><td>2</td><td><code>+x, -x, ~x</code></td><td>一元运算符</td></tr>
+            <tr><td>3</td><td><code>*, /, //, %</code></td><td>乘除、整除、取模</td></tr>
+            <tr><td>4</td><td><code>+, -</code></td><td>加减</td></tr>
+            <tr><td>5</td><td><code>&lt;&lt;, &gt;&gt;</code></td><td>位左移、位右移</td></tr>
+            <tr><td>6</td><td><code>&amp;</code></td><td>位与</td></tr>
+            <tr><td>7</td><td><code>^</code></td><td>位异或</td></tr>
+            <tr><td>8</td><td><code>|</code></td><td>位或</td></tr>
+            <tr><td>9</td><td><code>==, !=, &gt;, &lt;, &gt;=, &lt;=, in, is</code></td><td>关系/比较运算符</td></tr>
+            <tr><td>10</td><td><code>not</code></td><td>逻辑非</td></tr>
+            <tr><td>11</td><td><code>and</code></td><td>逻辑与</td></tr>
+            <tr><td>12</td><td><code>or</code></td><td>逻辑或</td></tr>
+            <tr><td>13</td><td><code>=, +=, -=, *=, /=, //=, %=, **=</code></td><td>赋值运算符</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>字符串操作</summary>
+        <div class="kb-body">
+          <ul>
+            <li><strong>索引</strong>：<code>s[0]</code> 首字符, <code>s[-1]</code> 末字符</li>
+            <li><strong>切片</strong>：<code>s[N:M:K]</code> 从N到M（不含M），步长K</li>
+            <li><strong>连接</strong>：<code>s1 + s2</code> 或 <code>".join(list)</code></li>
+            <li><strong>重复</strong>：<code>s * n</code> 重复n次</li>
+            <li><strong>判断</strong>：<code>x in s</code> 子串判断</li>
+            <li><strong>常用方法</strong>：<code>len(), upper(), lower(), strip(), split(), replace(), find(), count(), startswith(), endswith()</code></li>
+          </ul>
+          <h4>格式化</h4>
+          <pre><code># % 格式化
+"Hello %s, age %d" % ("Tom", 18)
+
+# format 格式化
+"Hello {}, age {}".format("Tom", 18)
+"Hello {name}, age {age}".format(name="Tom", age=18)
+
+# f-string（Python 3.6+）
+name = "Tom"
+f"Hello {name}, age {18}"</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>分支结构</summary>
+        <div class="kb-body">
+          <h4>if / elif / else</h4>
+          <pre><code>if condition1:
+    block1
+elif condition2:
+    block2
+else:
+    block3</code></pre>
+          <h4>三元表达式</h4>
+          <pre><code>result = value1 if condition else value2
+# 例：max_val = a if a > b else b</code></pre>
+          <ul>
+            <li><code>elif</code> 可以有多个，<code>else</code> 最多一个</li>
+            <li>条件表达式不需要括号，以冒号 <code>:</code> 结尾</li>
+            <li>支持嵌套，但建议不超过3层</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>循环结构</summary>
+        <div class="kb-body">
+          <h4>for 循环</h4>
+          <pre><code>for i in range(10):
+    print(i)
+
+for item in [1, 2, 3]:
+    print(item)
+
+# range(start, stop, step)
+range(0, 10, 2)  # 0, 2, 4, 6, 8</code></pre>
+          <h4>while 循环</h4>
+          <pre><code>while condition:
+    block</code></pre>
+          <ul>
+            <li><code>break</code>：立即退出整个循环</li>
+            <li><code>continue</code>：跳过本次迭代，进入下一次</li>
+            <li><strong>循环else</strong>：循环正常结束（未被break）时执行else块</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>函数定义</summary>
+        <div class="kb-body">
+          <h4>基本定义</h4>
+          <pre><code>def func_name(params):
+    """docstring"""
+    body
+    return value</code></pre>
+          <h4>参数种类</h4>
+          <table>
+            <tr><th>类型</th><th>语法</th><th>说明</th></tr>
+            <tr><td>位置参数</td><td><code>def f(a, b)</code></td><td>按顺序传入</td></tr>
+            <tr><td>关键字参数</td><td><code>f(b=2, a=1)</code></td><td>指定参数名</td></tr>
+            <tr><td>默认参数</td><td><code>def f(a, b=10)</code></td><td>不传则用默认值</td></tr>
+            <tr><td>可变位置参数</td><td><code>def f(*args)</code></td><td>接收任意多个位置参数，元组</td></tr>
+            <tr><td>可变关键字参数</td><td><code>def f(**kwargs)</code></td><td>接收任意多个关键字参数，字典</td></tr>
+          </table>
+          <h4>作用域</h4>
+          <ul>
+            <li><code>local</code>：函数内部定义的变量</li>
+            <li><code>global</code>：使用 <code>global x</code> 声明可修改全局变量</li>
+            <li>LEGB规则：Local &gt; Enclosing &gt; Global &gt; Built-in</li>
+          </ul>
+          <h4>lambda 表达式</h4>
+          <pre><code>f = lambda x, y: x + y
+result = f(3, 4)  # 7</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>列表操作</summary>
+        <div class="kb-body">
+          <h4>创建</h4>
+          <pre><code>lst = [1, 2, 3]
+lst = list(range(10))
+lst = [0] * 5        # [0, 0, 0, 0, 0]
+lst = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]</code></pre>
+          <h4>增删改</h4>
+          <ul>
+            <li><code>append(x)</code> -- 末尾追加一个元素</li>
+            <li><code>extend(iterable)</code> -- 末尾追加多个元素</li>
+            <li><code>insert(i, x)</code> -- 在索引i处插入</li>
+            <li><code>remove(x)</code> -- 删除第一个值为x的元素</li>
+            <li><code>pop([i])</code> -- 弹出索引i处元素，默认末尾</li>
+            <li><code>del lst[i]</code> -- 删除索引i处元素</li>
+            <li><code>lst[i] = new_val</code> -- 修改索引i处元素</li>
+          </ul>
+          <h4>排序与反转</h4>
+          <pre><code>lst.sort()              # 原地升序
+lst.sort(reverse=True)  # 原地降序
+lst.reverse()          # 原地反转
+sorted(lst)            # 返回新列表，不改变原列表</code></pre>
+          <h4>列表推导式</h4>
+          <pre><code>[x for x in range(10) if x % 2 == 0]  # 偶数
+[(x, x**2) for x in range(5)]</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>元组特点</summary>
+        <div class="kb-body">
+          <ul>
+            <li><strong>不可变</strong>：创建后不能修改元素，可作字典的键</li>
+            <li><strong>单元素</strong>：必须加逗号 <code>t = (1,)</code>，否则 <code>(1)</code> 只是整数</li>
+            <li><strong>转换</strong>：<code>tuple([1,2,3])</code> 列表转元组, <code>list((1,2,3))</code> 元组转列表</li>
+            <li><strong>操作</strong>：支持索引、切片、<code>len()</code>、<code>in</code>、连接 <code>+</code>、重复 <code>*</code></li>
+            <li><strong>解包</strong>：<code>a, b, c = (1, 2, 3)</code></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>集合运算</summary>
+        <div class="kb-body">
+          <ul>
+            <li><strong>去重</strong>：<code>set([1,2,2,3])</code> 结果 <code>{1, 2, 3}</code></li>
+            <li><strong>交集</strong>：<code>A &amp; B</code> 或 <code>A.intersection(B)</code></li>
+            <li><strong>并集</strong>：<code>A | B</code> 或 <code>A.union(B)</code></li>
+            <li><strong>差集</strong>：<code>A - B</code> 或 <code>A.difference(B)</code></li>
+            <li><strong>对称差</strong>：<code>A ^ B</code> 或 <code>A.symmetric_difference(B)</code></li>
+            <li><strong>添加</strong>：<code>A.add(x)</code></li>
+            <li><strong>删除</strong>：<code>A.remove(x)</code> 不存在报错, <code>A.discard(x)</code> 不存在不报错</li>
+            <li><strong>子集</strong>：<code>A.issubset(B)</code> 或 <code>A &lt;= B</code></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>字典操作</summary>
+        <div class="kb-body">
+          <h4>创建</h4>
+          <pre><code>d = {"name": "Tom", "age": 18}
+d = dict(name="Tom", age=18)
+d = dict([(k, v) for k, v in zip(keys, values)])</code></pre>
+          <h4>常用操作</h4>
+          <ul>
+            <li><code>d.get(key, default)</code> -- 取值，不存在返回default，不报错</li>
+            <li><code>d[key] = value</code> -- 设值/修改</li>
+            <li><code>d.keys()</code> -- 所有键</li>
+            <li><code>d.values()</code> -- 所有值</li>
+            <li><code>d.items()</code> -- 所有键值对</li>
+            <li><code>key in d</code> -- 判断键是否存在</li>
+            <li><code>d.update(other)</code> -- 合并字典</li>
+            <li><code>d.pop(key)</code> -- 删除并返回值</li>
+            <li><code>del d[key]</code> -- 删除键值对</li>
+          </ul>
+          <h4>遍历</h4>
+          <pre><code>for key in d:            # 遍历键
+for key, val in d.items():  # 遍历键值对</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>文件操作</summary>
+        <div class="kb-body">
+          <h4>打开与关闭</h4>
+          <pre><code>f = open("file.txt", "r", encoding="utf-8")
+content = f.read()
+f.close()
+
+# 推荐使用 with 语句自动关闭
+with open("file.txt", "r", encoding="utf-8") as f:
+    content = f.read()</code></pre>
+          <h4>读取方法</h4>
+          <ul>
+            <li><code>f.read()</code> -- 读取全部内容为字符串</li>
+            <li><code>f.readline()</code> -- 读取一行</li>
+            <li><code>f.readlines()</code> -- 读取所有行到列表</li>
+            <li><code>f.read().splitlines()</code> -- 读取并按行分割（更常用）</li>
+          </ul>
+          <h4>写入方法</h4>
+          <ul>
+            <li><code>f.write(string)</code> -- 写入字符串</li>
+            <li><code>f.writelines(list_of_strings)</code> -- 写入字符串列表</li>
+            <li>模式：<code>"w"</code> 覆盖写, <code>"a"</code> 追加写, <code>"r"</code> 只读</li>
+          </ul>
+          <h4>文件指针</h4>
+          <ul>
+            <li><code>f.seek(offset)</code> -- 移动指针位置</li>
+            <li><code>f.tell()</code> -- 返回当前指针位置</li>
+          </ul>
+          <h4>CSV 文件</h4>
+          <pre><code>import csv
+# 读取
+with open("data.csv", "r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(row)
+
+# 写入
+with open("data.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Name", "Age"])
+    writer.writerow(["Tom", 18])</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>模块导入</summary>
+        <div class="kb-body">
+          <pre><code>import module               # 导入整个模块
+import module as alias      # 导入并取别名
+from module import func     # 导入指定函数/类
+from module import *       # 导入所有（不推荐）</code></pre>
+          <ul>
+            <li><code>import math</code> 后使用 <code>math.sqrt()</code></li>
+            <li><code>from math import sqrt</code> 后直接使用 <code>sqrt()</code></li>
+            <li><code>import numpy as np</code> 常见缩写别名</li>
+            <li>每个 import 语句独占一行（PEP8）</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>turtle 库</summary>
+        <div class="kb-body">
+          <h4>画布设置</h4>
+          <pre><code>turtle.setup(width, height, startx, starty)
+turtle.title("标题")
+turtle.colormode(255)   # RGB模式</code></pre>
+          <h4>运动命令</h4>
+          <ul>
+            <li><code>turtle.forward(distance)</code> / <code>fd(d)</code> -- 前进</li>
+            <li><code>turtle.backward(distance)</code> / <code>bk(d)</code> -- 后退</li>
+            <li><code>turtle.right(angle)</code> / <code>rt(a)</code> -- 右转</li>
+            <li><code>turtle.left(angle)</code> / <code>lt(a)</code> -- 左转</li>
+            <li><code>turtle.circle(radius)</code> -- 画圆</li>
+            <li><code>turtle.goto(x, y)</code> -- 移动到坐标</li>
+            <li><code>turtle.penup()</code> / <code>pendown()</code> -- 抬笔/落笔</li>
+          </ul>
+          <h4>颜色与填充</h4>
+          <ul>
+            <li><code>turtle.pencolor("red")</code> -- 画笔颜色</li>
+            <li><code>turtle.fillcolor("yellow")</code> -- 填充颜色</li>
+            <li><code>turtle.begin_fill()</code> / <code>turtle.end_fill()</code> -- 填充区域</li>
+            <li><code>turtle.pensize(width)</code> -- 画笔粗细</li>
+            <li><code>turtle.speed(n)</code> -- 速度 (0最快, 1-10)</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>random 库</summary>
+        <div class="kb-body">
+          <pre><code>import random
+random.seed(0)               # 设置随机种子
+random.random()               # [0.0, 1.0) 随机浮点数
+random.randint(1, 10)        # [1, 10] 随机整数（含两端）
+random.randrange(0, 10, 2)   # [0, 10) 步长2的随机整数
+random.uniform(1.0, 5.0)     # [1.0, 5.0] 随机浮点数
+random.choice([1,2,3,4,5])   # 随机选一个
+random.shuffle(lst)           # 原地打乱列表
+random.sample(lst, 3)         # 随机选k个，不重复</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>time 库</summary>
+        <div class="kb-body">
+          <pre><code>import time
+time.time()                   # 时间戳（秒，浮点数）
+time.localtime()              # 结构化时间
+time.strftime("%Y-%m-%d %H:%M:%S")  # 格式化
+time.strptime(str, format)     # 解析时间字符串
+time.perf_counter()            # 高精度计时器
+time.sleep(seconds)             # 休眠</code></pre>
+          <h4>常用格式符</h4>
+          <table>
+            <tr><th>符号</th><th>含义</th></tr>
+            <tr><td><code>%Y</code></td><td>四位数年份</td></tr>
+            <tr><td><code>%m</code></td><td>月 (01-12)</td></tr>
+            <tr><td><code>%d</code></td><td>日 (01-31)</td></tr>
+            <tr><td><code>%H</code></td><td>时 (00-23)</td></tr>
+            <tr><td><code>%M</code></td><td>分 (00-59)</td></tr>
+            <tr><td><code>%S</code></td><td>秒 (00-59)</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>jieba 分词</summary>
+        <div class="kb-body">
+          <pre><code>import jieba
+txt = "Python是一种广泛使用的高级编程语言"
+
+# 精确模式（默认） -- 最常用
+words = jieba.lcut(txt)
+
+# 全模式
+words = jieba.lcut(txt, cut_all=True)
+
+# 搜索引擎模式
+words = jieba.lcut_for_search(txt)
+
+# 添加自定义词
+jieba.add_word("新词")
+
+# 载入自定义词典
+jieba.load_userdict("my_dict.txt")</code></pre>
+          <ul>
+            <li><strong>精确模式</strong>：最常用，适合文本分析</li>
+            <li><strong>全模式</strong>：速度快，有冗余，适合搜索引擎</li>
+            <li><strong>搜索引擎模式</strong>：精确模式基础上对长词再次切分</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>wordcloud 词云</summary>
+        <div class="kb-body">
+          <pre><code>from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+# 基本用法
+wc = WordCloud(
+    font_path="msyh.ttf",      # 中文字体路径
+    width=800,
+    height=600,
+    background_color="white",
+    max_words=200,
+    max_font_size=100
+)
+wc.generate(text)                # 生成词云
+wc.to_file("wordcloud.png")      # 保存到文件
+
+plt.imshow(wc, interpolation="bilinear")
+plt.axis("off")
+plt.show()</code></pre>
+          <ul>
+            <li>必须指定支持中文的字体文件路径</li>
+            <li>常用中文字体：<code>simhei.ttf</code>, <code>msyh.ttf</code>, <code>simsun.ttc</code></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>异常处理</summary>
+        <div class="kb-body">
+          <pre><code>try:
+    risky_code()
+except ValueError as e:
+    print(f"值错误: {e}")
+except (TypeError, KeyError) as e:
+    print(f"类型或键错误: {e}")
+except Exception as e:
+    print(f"其他异常: {e}")
+else:
+    print("没有异常时执行")
+finally:
+    print("无论如何都执行")</code></pre>
+          <ul>
+            <li><code>try</code> -- 监控异常的代码块</li>
+            <li><code>except</code> -- 捕获特定异常类型</li>
+            <li><code>else</code> -- 无异常时执行</li>
+            <li><code>finally</code> -- 无论如何都执行（常用于资源释放）</li>
+            <li><code>raise</code> -- 主动抛出异常</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>os 模块</summary>
+        <div class="kb-body">
+          <pre><code>import os
+os.getcwd()                  # 获取当前工作目录
+os.listdir(path)             # 列出目录内容
+os.mkdir("new_dir")          # 创建目录
+os.rmdir("old_dir")          # 删除空目录
+os.chdir(path)               # 切换工作目录
+os.remove("file.txt")        # 删除文件
+os.rename("old", "new")      # 重命名
+os.stat("file.txt")          # 文件信息
+os.path.exists(path)         # 路径是否存在
+os.path.join("a", "b.txt")  # 拼接路径
+os.path.split(path)          # 拆分路径</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>pip 命令</summary>
+        <div class="kb-body">
+          <pre><code>pip install package          # 安装包
+pip install package==1.0     # 安装指定版本
+pip install --upgrade package  # 升级包
+pip uninstall package        # 卸载包
+pip list                     # 查看已安装包
+pip show package             # 查看包详情
+
+# 国内镜像源加速
+pip install package -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>PyInstaller</summary>
+        <div class="kb-body">
+          <pre><code># 基本打包
+pyinstaller myscript.py
+
+# 常用参数
+pyinstaller -F myscript.py       # 打包为单个可执行文件
+pyinstaller -w myscript.py       # 不显示控制台窗口（GUI程序）
+pyinstaller -i icon.ico myscript.py  # 设置图标
+pyinstaller -F -i icon.ico myscript.py  # 组合使用</code></pre>
+          <ul>
+            <li><code>-F</code>：单文件模式</li>
+            <li><code>-w</code>：无控制台窗口</li>
+            <li><code>-i icon</code>：指定图标</li>
+            <li><code>-d</code>：调试模式</li>
+            <li>打包后文件在 <code>dist/</code> 目录下</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== KB2: 公共基础知识速查 ===================== -->
+  <div class="page" id="page-kb2">
+    <div class="chapter-hero">
+      <h2>&#127891; 公共基础知识速查</h2>
+      <p>计算机等级考试公共基础知识核心考点</p>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>数据结构与算法</summary>
+        <div class="kb-body">
+          <h4>算法的5个基本特征</h4>
+          <ul>
+            <li><strong>可行性</strong>：算法中的每一步都能通过基本运算有限次执行实现</li>
+            <li><strong>确定性</strong>：每一步必须有明确的含义，无二义性</li>
+            <li><strong>有穷性</strong>：在有限步后必须终止</li>
+            <li><strong>有输入</strong>：零个或多个输入</li>
+            <li><strong>有输出</strong>：一个或多个输出</li>
+          </ul>
+          <h4>复杂度</h4>
+          <ul>
+            <li><strong>时间复杂度</strong>：算法执行所需基本运算次数，用 O 记号表示</li>
+            <li><strong>空间复杂度</strong>：算法执行所需辅助存储空间</li>
+            <li>常见时间复杂度：O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n^2) &lt; O(n^3)</li>
+          </ul>
+          <h4>存储结构</h4>
+          <table>
+            <tr><th>类型</th><th>线性结构</th><th>非线性结构</th></tr>
+            <tr><td>顺序存储</td><td>数组</td><td>-</td></tr>
+            <tr><td>链式存储</td><td>链表</td><td>树、图</td></tr>
+          </table>
+          <ul>
+            <li>线性结构：一对一关系（数组、链表、栈、队列）</li>
+            <li>非线性结构：一对多或多对多（树、图）</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>栈与队列</summary>
+        <div class="kb-body">
+          <h4>栈 (Stack) -- 后进先出 LIFO</h4>
+          <ul>
+            <li>只允许在栈顶进行插入和删除操作</li>
+            <li>操作：<code>push</code> (入栈), <code>pop</code> (出栈)</li>
+            <li>应用：递归、表达式求值、括号匹配</li>
+          </ul>
+          <h4>队列 (Queue) -- 先进先出 FIFO</h4>
+          <ul>
+            <li>队尾进、队头出</li>
+            <li>操作：<code>enqueue</code> (入队), <code>dequeue</code> (出队)</li>
+            <li>应用：任务调度、BFS遍历</li>
+          </ul>
+          <h4>循环队列</h4>
+          <ul>
+            <li>队头指针 <code>front</code>，队尾指针 <code>rear</code></li>
+            <li>队空条件：<code>front == rear</code></li>
+            <li>元素个数公式见 kb4 页</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>树与二叉树</summary>
+        <div class="kb-body">
+          <h4>基本性质</h4>
+          <ul>
+            <li>度为0的叶子结点数 n0 = n2 + 1（度为2的结点数加1）</li>
+            <li>二叉树第 k 层最多有 <code>2^(k-1)</code> 个结点</li>
+            <li>深度为 k 的二叉树最多有 <code>2^k - 1</code> 个结点</li>
+            <li>完全二叉树深度为 <code>[log2(n)] + 1</code></li>
+          </ul>
+          <h4>满二叉树 vs 完全二叉树</h4>
+          <table>
+            <tr><th>类型</th><th>特点</th></tr>
+            <tr><td>满二叉树</td><td>每层结点数都达到最大值</td></tr>
+            <tr><td>完全二叉树</td><td>除最后一层外每层满，最后一层从左到右连续</td></tr>
+          </table>
+          <h4>遍历方式</h4>
+          <ul>
+            <li><strong>前序遍历</strong>：根 - 左 - 右 (Preorder)</li>
+            <li><strong>中序遍历</strong>：左 - 根 - 右 (Inorder)</li>
+            <li><strong>后序遍历</strong>：左 - 右 - 根 (Postorder)</li>
+            <li><strong>层序遍历</strong>：按层从左到右</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>查找技术</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>查找方法</th><th>平均比较次数</th><th>前提条件</th></tr>
+            <tr><td>顺序查找</td><td><code>n / 2</code></td><td>无</td></tr>
+            <tr><td>二分查找</td><td><code>log2(n)</code></td><td>有序且顺序存储</td></tr>
+          </table>
+          <ul>
+            <li>顺序查找：从头到尾逐个比较，适用于任何线性表</li>
+            <li>二分查找（折半查找）：每次与中间元素比较，缩小一半范围</li>
+            <li>二分查找的效率高，但前提是数据必须有序且使用顺序存储</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>排序对比</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>排序方法</th><th>最坏时间复杂度</th><th>平均时间复杂度</th></tr>
+            <tr><td>冒泡排序</td><td><code>O(n(n-1)/2)</code></td><td><code>O(n^2)</code></td></tr>
+            <tr><td>快速排序</td><td><code>O(n(n-1)/2)</code></td><td><code>O(n log2 n)</code></td></tr>
+            <tr><td>插入排序</td><td><code>O(n(n-1)/2)</code></td><td><code>O(n^2)</code></td></tr>
+            <tr><td>选择排序</td><td><code>O(n(n-1)/2)</code></td><td><code>O(n^2)</code></td></tr>
+            <tr><td>堆排序</td><td><code>O(n log2 n)</code></td><td><code>O(n log2 n)</code></td></tr>
+            <tr><td>归并排序</td><td><code>O(n log2 n)</code></td><td><code>O(n log2 n)</code></td></tr>
+          </table>
+          <ul>
+            <li>冒泡、插入、选择排序的最坏比较次数均为 <code>n(n-1)/2</code></li>
+            <li>堆排序和归并排序最坏情况也为 <code>O(n log2 n)</code></li>
+            <li>快速排序平均性能最好，但最坏退化为 O(n^2)</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>程序设计基础</summary>
+        <div class="kb-body">
+          <h4>结构化程序设计</h4>
+          <ul>
+            <li><strong>自顶向下</strong>：从整体到局部逐步细化</li>
+            <li><strong>逐步求精</strong>：每一步细化到可以直接编程</li>
+            <li><strong>模块化设计</strong>：将问题分解为若干独立模块</li>
+            <li><strong>限制使用 GOTO</strong>：提高可读性</li>
+          </ul>
+          <h4>面向对象程序设计</h4>
+          <ul>
+            <li><strong>封装</strong> (Encapsulation)：将数据和操作封装在对象中</li>
+            <li><strong>继承</strong> (Inheritance)：子类继承父类的属性和方法</li>
+            <li><strong>多态</strong> (Polymorphism)：同一操作作用于不同对象产生不同结果</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>软件工程</summary>
+        <div class="kb-body">
+          <h4>软件生命周期</h4>
+          <ul>
+            <li><strong>需求分析</strong>：确定系统做什么（功能需求 + 非功能需求）</li>
+            <li><strong>总体设计</strong>：确定系统结构（模块划分、接口定义）</li>
+            <li><strong>详细设计</strong>：确定每个模块的算法和数据结构</li>
+            <li><strong>编码</strong>：编写代码</li>
+            <li><strong>测试</strong>：发现并消除错误</li>
+            <li><strong>维护</strong>：修正错误、完善功能</li>
+          </ul>
+          <h4>软件测试方法</h4>
+          <table>
+            <tr><th>类型</th><th>方法</th><th>说明</th></tr>
+            <tr><td>白盒测试</td><td>语句覆盖、分支覆盖、路径覆盖</td><td>关注内部逻辑结构</td></tr>
+            <tr><td>黑盒测试</td><td>等价类划分、边界值分析</td><td>关注功能需求</td></tr>
+          </table>
+          <ul>
+            <li>测试的目的：<strong>发现错误</strong>，而不是证明没有错误</li>
+            <li>调试(Debugging)：定位错误并改正</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>数据库基础</summary>
+        <div class="kb-body">
+          <h4>核心概念</h4>
+          <ul>
+            <li><strong>DBMS</strong>（数据库管理系统）：管理数据库的核心软件</li>
+            <li><strong>三级模式</strong>：概念模式（全局）、外模式（用户视图）、内模式（存储）</li>
+            <li><strong>两级映射</strong>：外模式/概念模式映射、概念模式/内模式映射</li>
+            <li>两级映射保证了数据的<strong>逻辑独立性</strong>和<strong>物理独立性</strong></li>
+          </ul>
+          <h4>E-R 模型</h4>
+          <ul>
+            <li>三个基本要素：<strong>实体</strong>、<strong>属性</strong>、<strong>联系</strong></li>
+            <li>联系类型：1:1、1:N、M:N</li>
+            <li>矩形表示实体，椭圆表示属性，菱形表示联系</li>
+          </ul>
+          <h4>关系代数</h4>
+          <ul>
+            <li><strong>选择</strong> (Selection)：选取满足条件的行，记为 sigma</li>
+            <li><strong>投影</strong> (Projection)：选取指定列，记为 pi</li>
+            <li><strong>连接</strong> (Join)：按条件合并两个关系</li>
+          </ul>
+          <h4>完整性约束</h4>
+          <ul>
+            <li><strong>实体完整性</strong>：主键不能为 NULL</li>
+            <li><strong>参照完整性</strong>：外键必须引用已存在的主键</li>
+            <li><strong>用户定义完整性</strong>：自定义约束条件</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>计算机硬件</summary>
+        <div class="kb-body">
+          <h4>冯诺依曼体系结构</h4>
+          <ul>
+            <li><strong>运算器</strong> + <strong>控制器</strong> = <strong>CPU（中央处理器）</strong></li>
+            <li><strong>存储器</strong>：内存储器（RAM+ROM）+ 外存储器</li>
+            <li><strong>输入设备</strong>：键盘、鼠标等</li>
+            <li><strong>输出设备</strong>：显示器、打印机等</li>
+          </ul>
+          <h4>存储器层次</h4>
+          <ul>
+            <li>寄存器 &gt; Cache(缓存) &gt; 内存(RAM) &gt; 外存(硬盘)</li>
+            <li>速度递减，容量递增，成本递减</li>
+          </ul>
+          <h4>总线</h4>
+          <ul>
+            <li><strong>数据总线</strong>：传输数据</li>
+            <li><strong>地址总线</strong>：传输地址信息</li>
+            <li><strong>控制总线</strong>：传输控制信号</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>操作系统</summary>
+        <div class="kb-body">
+          <h4>进程状态</h4>
+          <ul>
+            <li><strong>就绪</strong>：已获得除CPU外的所有资源，等待调度</li>
+            <li><strong>运行</strong>：正在CPU上执行</li>
+            <li><strong>阻塞</strong>：等待某事件完成（如I/O）</li>
+          </ul>
+          <ul>
+            <li><strong>PCB</strong>（进程控制块）：进程的唯一标志</li>
+          </ul>
+          <h4>操作系统类型</h4>
+          <table>
+            <tr><th>类型</th><th>特点</th></tr>
+            <tr><td>批处理系统</td><td>成批处理作业，吞吐量大</td></tr>
+            <tr><td>分时系统</td><td>多用户共享，交互性强</td></tr>
+            <tr><td>实时系统</td><td>及时响应，可靠性高</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>编码基础</summary>
+        <div class="kb-body">
+          <h4>ASCII 编码</h4>
+          <ul>
+            <li>标准 ASCII：7位编码，0-127，共128个字符</li>
+            <li>扩展 ASCII：8位编码，0-255，共256个字符</li>
+            <li>数字 '0'-'9'：48-57</li>
+            <li>大写 'A'-'Z'：65-90</li>
+            <li>小写 'a'-'z'：97-122</li>
+            <li>空格：32</li>
+          </ul>
+          <h4>汉字编码转换</h4>
+          <ul>
+            <li>区位码 --&gt; 国标码：每个字节 + 20H（即 +32）</li>
+            <li>国标码 --&gt; 机内码：每个字节 + 80H（即 +128）</li>
+            <li>区位码 --&gt; 机内码：每个字节 + A0H（即 +160）</li>
+          </ul>
+          <h4>补码</h4>
+          <ul>
+            <li>正数补码 = 原码</li>
+            <li>负数补码 = 原码符号位不变，数值位按位取反后再加1</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>网络基础</summary>
+        <div class="kb-body">
+          <h4>网络分类</h4>
+          <table>
+            <tr><th>类型</th><th>英文</th><th>范围</th></tr>
+            <tr><td>局域网</td><td>LAN</td><td>几百米到几千米</td></tr>
+            <tr><td>城域网</td><td>MAN</td><td>整个城市</td></tr>
+            <tr><td>广域网</td><td>WAN</td><td>跨国、全球</td></tr>
+          </table>
+          <h4>TCP/IP 协议</h4>
+          <ul>
+            <li><strong>应用层</strong>：HTTP, FTP, SMTP, DNS, Telnet</li>
+            <li><strong>传输层</strong>：TCP（可靠），UDP（快速不可靠）</li>
+            <li><strong>网络层</strong>：IP（路由寻址）</li>
+            <li><strong>网络接口层</strong>：物理传输</li>
+          </ul>
+          <h4>IP 地址</h4>
+          <ul>
+            <li>IPv4：4字节（如 192.168.1.1），32位</li>
+            <li>IPv6：16字节，128位</li>
+            <li>域名系统(DNS)：将域名解析为IP地址</li>
+          </ul>
+          <h4>常用协议端口</h4>
+          <table>
+            <tr><th>协议</th><th>端口号</th><th>用途</th></tr>
+            <tr><td>HTTP</td><td>80</td><td>网页浏览</td></tr>
+            <tr><td>FTP</td><td>21</td><td>文件传输</td></tr>
+            <tr><td>SMTP</td><td>25</td><td>发送邮件</td></tr>
+            <tr><td>HTTPS</td><td>443</td><td>安全网页</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== KB3: 常用代码模板 ===================== -->
+  <div class="page" id="page-kb3">
+    <div class="chapter-hero">
+      <h2>&#128290; 常用代码模板</h2>
+      <p>考试高频代码模板，可直接复制使用</p>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>词频统计模式</summary>
+        <div class="kb-body">
+          <pre><code>text = input("请输入文本: ")
+words = text.split()
+freq = {}
+for w in words:
+    freq[w] = freq.get(w, 0) + 1
+
+# 按词频降序排序
+items = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+for word, count in items:
+    print(f"{word}: {count}")</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>文件读写模式</summary>
+        <div class="kb-body">
+          <h4>文本文件读写</h4>
+          <pre><code># 读取文件
+with open("input.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+    for line in lines:
+        line = line.strip()  # 去除换行符
+        print(line)
+
+# 写入文件
+with open("output.txt", "w", encoding="utf-8") as f:
+    f.write("Hello World\n")
+    f.writelines(["Line 1\n", "Line 2\n"])
+
+# 追加写入
+with open("log.txt", "a", encoding="utf-8") as f:
+    f.write("new entry\n")</code></pre>
+          <h4>CSV 文件读写</h4>
+          <pre><code>import csv
+
+# 读取 CSV
+with open("data.csv", "r", encoding="utf-8") as f:
+    reader = csv.reader(f)
+    header = next(reader)  # 跳过表头
+    for row in reader:
+        print(row)
+
+# 写入 CSV
+with open("result.csv", "w", encoding="utf-8", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Name", "Score"])
+    writer.writerow(["Tom", 95])
+    writer.writerow(["Alice", 88])</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>列表输入求和</summary>
+        <div class="kb-body">
+          <pre><code># 方法一：手动输入以空格分隔的数字
+nums = input("输入数字（空格分隔）: ").split()
+nums = [float(x) for x in nums]
+total = sum(nums)
+avg = total / len(nums)
+print(f"总和: {total}, 平均值: {avg:.2f}")
+
+# 方法二：eval 输入
+nums = eval(input("输入列表: "))
+print(f"最大值: {max(nums)}, 最小值: {min(nums)}")</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>九九乘法表</summary>
+        <div class="kb-body">
+          <pre><code># 基本版本
+for i in range(1, 10):
+    for j in range(1, i + 1):
+        print(f"{j}x{i}={i*j}", end="\t")
+    print()
+
+# 格式化对齐版本
+for i in range(1, 10):
+    for j in range(1, i + 1):
+        print(f"{j}x{i}={i*j:2d}", end="  ")
+    print()</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>斐波那契数列</summary>
+        <div class="kb-body">
+          <h4>递归实现</h4>
+          <pre><code>def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+# 输出前20项
+for i in range(20):
+    print(fib(i), end=" ")</code></pre>
+          <h4>循环实现（推荐）</h4>
+          <pre><code>def fib_loop(n):
+    a, b = 0, 1
+    result = []
+    for _ in range(n):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+print(fib_loop(20))</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>冒泡排序</summary>
+        <div class="kb-body">
+          <pre><code>def bubble_sort(lst):
+    n = len(lst)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if lst[j] > lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+    return lst
+
+nums = [64, 34, 25, 12, 22, 11, 90]
+print(bubble_sort(nums))  # [11, 12, 22, 25, 34, 64, 90]</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>二分查找</summary>
+        <div class="kb-body">
+          <pre><code>def binary_search(lst, target):
+    left, right = 0, len(lst) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if lst[mid] == target:
+            return mid
+        elif lst[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1  # 未找到
+
+nums = [1, 3, 5, 7, 9, 11, 13, 15]
+idx = binary_search(nums, 7)
+print(f"查找结果: 索引 {idx}")  # 索引 3</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>矩阵转置</summary>
+        <div class="kb-body">
+          <pre><code>matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# 方法一：列表推导式
+transposed = [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+
+# 方法二：zip
+transposed = list(map(list, zip(*matrix)))
+
+for row in transposed:
+    print(row)</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>判断素数</summary>
+        <div class="kb-body">
+          <pre><code>def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# 输出100以内的素数
+for num in range(2, 101):
+    if is_prime(num):
+        print(num, end=" ")</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>turtle 绘图 -- 正多边形 / 五角星</summary>
+        <div class="kb-body">
+          <h4>正多边形</h4>
+          <pre><code>import turtle
+
+n = int(input("边数: "))
+length = int(input("边长: "))
+
+turtle.speed(0)
+for i in range(n):
+    turtle.forward(length)
+    turtle.right(360 / n)
+
+turtle.done()</code></pre>
+          <h4>五角星</h4>
+          <pre><code>import turtle
+
+turtle.speed(0)
+turtle.pencolor("red")
+turtle.fillcolor("yellow")
+turtle.begin_fill()
+for i in range(5):
+    turtle.forward(200)
+    turtle.right(144)
+turtle.end_fill()
+turtle.done()</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>随机验证码生成</summary>
+        <pre><code>import random
+
+# 数字验证码
+code = ""
+for i in range(4):
+    code += str(random.randint(0, 9))
+print(f"验证码: {code}")
+
+# 数字+字母混合验证码
+import string
+chars = string.digits + string.ascii_letters
+code = "".join(random.choices(chars, k=4))
+print(f"混合验证码: {code}")</code></pre>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>JSON 读写</summary>
+        <div class="kb-body">
+          <pre><code>import json
+
+# 字典/列表 转 JSON 字符串
+data = {"name": "Tom", "scores": [90, 85, 92]}
+json_str = json.dumps(data, ensure_ascii=False, indent=2)
+print(json_str)
+
+# JSON 字符串 转 字典/列表
+parsed = json.loads(json_str)
+
+# 写入 JSON 文件
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+
+# 读取 JSON 文件
+with open("data.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+print(data)</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== KB4: 考试公式与计算 ===================== -->
+  <div class="page" id="page-kb4">
+    <div class="chapter-hero">
+      <h2>&#128202; 考试公式与计算</h2>
+      <p>计算机等级考试常用公式速查与计算方法</p>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>栈元素个数计算</summary>
+        <div class="kb-body">
+          <div class="kb-formula">
+            <div><strong>栈元素个数 = 栈顶 - 栈底 + 1</strong></div>
+            <div class="note">注意区分栈底位置的定义方式</div>
+          </div>
+          <h4>三种初始状态</h4>
+          <table>
+            <tr><th>初始化方式</th><th>栈空条件</th><th>元素个数公式</th></tr>
+            <tr><td><code>top = 0</code>（指向下一个位置）</td><td><code>top == 0</code></td><td><code>top</code></td></tr>
+            <tr><td><code>top = -1</code>（指向栈顶元素）</td><td><code>top == -1</code></td><td><code>top + 1</code></td></tr>
+            <tr><td><code>top = base - 1</code></td><td><code>top == base - 1</code></td><td><code>top - base + 1</code></td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>循环队列元素个数</summary>
+        <div class="kb-body">
+          <div class="kb-formula">
+            <div class="formula">front &lt; rear : 元素个数 = rear - front</div>
+            <div class="formula">front &gt; rear : 元素个数 = maxSize - front + rear</div>
+            <div class="formula">front == rear : 队列为空 或 队列已满（需额外标志区分）</div>
+          </div>
+          <h4>通用公式</h4>
+          <div class="kb-formula">
+            <div class="formula">元素个数 = (rear - front + maxSize) % maxSize</div>
+            <div class="note">这个通用公式自动处理 front &gt; rear 和 front &lt; rear 的情况</div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>二叉树公式</summary>
+        <div class="kb-body">
+          <div class="kb-formula">
+            <div class="formula">n0 = n2 + 1（叶子结点数 = 度为2的结点数 + 1）</div>
+            <div class="formula">第 k 层最多 2^(k-1) 个结点</div>
+            <div class="formula">深度为 k 的二叉树最多 2^k - 1 个结点</div>
+            <div class="formula">完全二叉树深度 = [log2(n)] + 1</div>
+          </div>
+          <h4>推导关系</h4>
+          <ul>
+            <li>设 n 为总结点数，n0 为叶子结点（度0），n1 为度1结点，n2 为度2结点</li>
+            <li><code>n = n0 + n1 + n2</code>（总结点 = 各度结点之和）</li>
+            <li>边数 = <code>n - 1 = 0*n0 + 1*n1 + 2*n2</code></li>
+            <li>联立可得：<code>n0 = n2 + 1</code></li>
+          </ul>
+          <h4>满二叉树</h4>
+          <ul>
+            <li>深度为 k 的满二叉树有 <code>2^k - 1</code> 个结点</li>
+            <li>第 k 层有 <code>2^(k-1)</code> 个结点（全部为叶子）</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>树的分支数计算</summary>
+        <div class="kb-body">
+          <div class="kb-formula">
+            <div class="formula">分支数（边数） = 总结点数 - 1</div>
+            <div class="formula">分支数 = n1 + 2*n2 + 3*n3 + ... + k*nk</div>
+          </div>
+          <ul>
+            <li>度为 m 的结点有 m 个分支（出边）</li>
+            <li>对于二叉树：分支数 = <code>n1 + 2*n2</code></li>
+            <li>任何树的分支数 = 总节点数 - 1（因为根节点没有入边）</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>排序时间复杂度对比表</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>排序方法</th><th>最好</th><th>平均</th><th>最坏</th><th>空间</th><th>稳定性</th></tr>
+            <tr><td>冒泡排序</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr>
+            <tr><td>选择排序</td><td>O(n^2)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>不稳定</td></tr>
+            <tr><td>插入排序</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>O(1)</td><td>稳定</td></tr>
+            <tr><td>快速排序</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n^2)</td><td>O(log n)</td><td>不稳定</td></tr>
+            <tr><td>堆排序</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>不稳定</td></tr>
+            <tr><td>归并排序</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>稳定</td></tr>
+          </table>
+          <ul>
+            <li>冒泡/插入排序最好情况为已排好序的序列，O(n)</li>
+            <li>快速排序最坏退化到 O(n^2)，如序列已有序且选第一个元素为基准</li>
+            <li>归并排序空间复杂度 O(n)，需要额外辅助数组</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>查找比较次数表</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>查找方法</th><th>平均比较次数</th><th>最大比较次数</th><th>前提</th></tr>
+            <tr><td>顺序查找</td><td>(n+1)/2</td><td>n</td><td>无</td></tr>
+            <tr><td>二分查找</td><td>log2(n+1)-1</td><td>[log2(n)]+1</td><td>有序顺序存储</td></tr>
+          </table>
+          <ul>
+            <li>顺序查找在等概率情况下的平均比较次数 = (1+2+...+n)/n = (n+1)/2</li>
+            <li>二分查找每次排除一半元素，效率为 O(log2 n)</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>进制转换方法</summary>
+        <div class="kb-body">
+          <h4>十进制转其他进制</h4>
+          <div class="kb-formula">
+            <div class="formula">除基取余法：不断除以基数取余数，余数倒序排列</div>
+          </div>
+          <pre><code># 十进制转二进制：除2取余
+# 例: 13(10) = 1101(2)
+# 13 / 2 = 6 余 1
+#  6 / 2 = 3 余 0
+#  3 / 2 = 1 余 1
+#  1 / 2 = 0 余 1
+# 结果: 1101 (从下往上读)</code></pre>
+          <h4>其他进制转十进制</h4>
+          <div class="kb-formula">
+            <div class="formula">按权展开法: d_k * base^k + d_{k-1} * base^{k-1} + ... + d_0 * base^0</div>
+          </div>
+          <pre><code># 二进制 1101 转十进制
+# 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0
+# = 8 + 4 + 0 + 1 = 13</code></pre>
+          <h4>Python 快捷方式</h4>
+          <pre><code>bin(13)      # '0b1101'  十进制转二进制
+oct(13)      # '0o15'    十进制转八进制
+hex(13)      # '0xd'     十进制转十六进制
+int('1101', 2)   # 13  二进制转十进制
+int('15', 8)     # 13  八进制转十进制
+int('d', 16)     # 13  十六进制转十进制</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>声音文件大小计算公式</summary>
+        <div class="kb-body">
+          <div class="kb-formula">
+            <div class="formula">文件大小(字节) = 采样频率(Hz) x 量化位数(bit) x 声道数 x 时间(秒) / 8</div>
+            <div class="note">除以8是因为从位(bit)转换为字节(Byte)</div>
+          </div>
+          <h4>例题</h4>
+          <pre><code># 一首44.1kHz, 16位, 双声道, 3分钟的声音文件大小
+采样频率 = 44100 Hz
+量化位数 = 16 bit
+声道数 = 2
+时间 = 3 * 60 = 180 秒
+
+文件大小 = 44100 * 16 * 2 * 180 / 8
+        = 44100 * 720
+        = 31,752,000 字节
+        ≈ 30.27 MB</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>多媒体相关计算</summary>
+        <div class="kb-body">
+          <h4>图像大小</h4>
+          <div class="kb-formula">
+            <div class="formula">图像大小(字节) = 水平像素 x 垂直像素 x 颜色深度(bit) / 8</div>
+            <div class="note">颜色深度: 黑白=1, 256色=8, 16位色=16, 24位真彩色=24, 32位=32</div>
+          </div>
+          <pre><code># 1920x1080, 24位真彩色
+大小 = 1920 * 1080 * 24 / 8
+     = 6,220,800 字节
+     ≈ 5.93 MB</code></pre>
+          <h4>视频大小</h4>
+          <div class="kb-formula">
+            <div class="formula">视频大小(字节) = 帧大小(字节) x 帧率(fps) x 时间(秒)</div>
+            <div class="note">注意: 实际视频经过压缩，此公式计算的是未压缩原始大小</div>
+          </div>
+          <pre><code># 1920x1080, 24位色, 30fps, 1分钟
+帧大小 = 1920 * 1080 * 24 / 8 = 6,220,800 字节
+视频大小 = 6,220,800 * 30 * 60
+        = 11,197,440,000 字节
+        ≈ 10.43 GB（未压缩）</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== SYLLABUS: 官方考试大纲 ===================== -->
+  <div class="page" id="page-syllabus">
+    <div class="chapter-hero">
+      <h2>&#128196; 全国计算机等级考试二级Python考试大纲</h2>
+      <p>2025年版官方大纲，明确考试范围与要求</p>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128311; 基本要求</summary>
+        <div class="kb-body">
+          <ol>
+            <li>掌握Python语言的基本语法规则。</li>
+            <li>掌握不少于<strong>3个</strong>基本的Python标准库。</li>
+            <li>掌握不少于<strong>3个</strong>Python第三方库，掌握获取并安装第三方库的方法。</li>
+            <li>能够阅读和分析Python程序。</li>
+            <li>熟练使用IDLE开发环境，能够将脚本程序转变为可执行程序。</li>
+            <li>了解Python计算生态在以下方面（不限于）的主要第三方库名称：网络爬虫、数据分析、数据可视化、机器学习、Web开发等。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128214; 一、Python语言基本语法元素</summary>
+        <div class="kb-body">
+          <ol>
+            <li>程序的基本语法元素：程序的格式框架、缩进、注释、变量、命名、保留字、连接符、数据类型、赋值语句、引用。</li>
+            <li>基本输入输出函数：<code>input()</code>、<code>eval()</code>、<code>print()</code>。</li>
+            <li>源程序的书写风格。</li>
+            <li>Python语言的特点。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128290; 二、基本数据类型</summary>
+        <div class="kb-body">
+          <ol>
+            <li>数字类型：整数类型、浮点数类型和复数类型。</li>
+            <li>数字类型的运算：数字运算操作符、数字运算函数。</li>
+            <li>真假无：<code>True</code>、<code>False</code>、<code>None</code>。</li>
+            <li>字符串类型及格式化：索引、切片、基本的<code>format()</code>格式化方法。</li>
+            <li>字符串类型的操作：字符串操作符、操作函数和操作方法。</li>
+            <li>类型判断和类型间转换。</li>
+            <li>逻辑运算和比较运算。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#9881; 三、程序的控制结构</summary>
+        <div class="kb-body">
+          <ol>
+            <li>程序的三种控制结构：顺序、分支、循环。</li>
+            <li>程序的分支结构：单分支结构、二分支结构、多分支结构。</li>
+            <li>程序的循环结构：遍历循环、条件循环。</li>
+            <li>程序的循环控制：<code>break</code>、<code>continue</code>。</li>
+            <li>程序的异常处理：<code>try-except</code>及异常处理类型。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128736; 四、函数和代码复用</summary>
+        <div class="kb-body">
+          <ol>
+            <li>函数的定义和使用。</li>
+            <li>函数的参数传递：可选参数传递、参数名称传递、函数的返回值。</li>
+            <li>变量的作用域：局部变量和全局变量。</li>
+            <li>函数递归的定义和使用。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128229; 五、组合数据类型</summary>
+        <div class="kb-body">
+          <ol>
+            <li>组合数据类型的基本概念。</li>
+            <li>列表类型：创建、索引、切片。操作符、操作函数和操作方法。</li>
+            <li>集合类型：创建。操作符、操作函数和操作方法。</li>
+            <li>字典类型：创建、索引。操作符、操作函数和操作方法。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128196; 六、文件和数据格式化</summary>
+        <div class="kb-body">
+          <ol>
+            <li>文件的使用：文件打开、读写和关闭。</li>
+            <li>数据组织的维度：一维数据和二维数据。</li>
+            <li>一维数据的处理：表示、存储和处理。</li>
+            <li>二维数据的处理：表示、存储和处理。</li>
+            <li>采用CSV格式对一二维数据文件的读写。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#129504; 七、Python程序设计方法</summary>
+        <div class="kb-body">
+          <ol>
+            <li>过程式编程方法。</li>
+            <li>函数式编程方法。</li>
+            <li>生态式编程方法。</li>
+            <li>蒙特卡洛计算方法。</li>
+            <li>递归计算方法。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#127758; 八、Python计算生态</summary>
+        <div class="kb-body">
+          <ol>
+            <li>标准库的使用：<code>turtle</code>库、<code>random</code>库、<code>time</code>库。</li>
+            <li>基本的Python内置函数。</li>
+            <li>利用<code>pip</code>工具的第三方库安装方法。</li>
+            <li>第三方库的使用：<code>jieba</code>库、<code>PyInstaller</code>库、基本<code>NumPy</code>库。</li>
+            <li>更广泛的Python计算生态，只要求了解第三方库的名称，不限于以下领域：
+              <ul>
+                <li>网络爬虫</li>
+                <li>数据分析</li>
+                <li>文本处理</li>
+                <li>数据可视化</li>
+                <li>用户图形界面</li>
+                <li>机器学习</li>
+                <li>Web开发</li>
+                <li>游戏开发等</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128200; 考试方式与题型分值</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>项目</th><th>说明</th></tr>
+            <tr><td>考试形式</td><td>上机考试</td></tr>
+            <tr><td>考试时长</td><td>120分钟</td></tr>
+            <tr><td>满分</td><td>100分</td></tr>
+            <tr><td>操作系统</td><td>Windows 7</td></tr>
+            <tr><td>Python版本</td><td>建议Python 3.5.3至Python 3.9.10</td></tr>
+            <tr><td>开发环境</td><td>IDLE</td></tr>
+          </table>
+          <h4>题型及分值</h4>
+          <table>
+            <tr><th>题型</th><th>分值</th><th>说明</th></tr>
+            <tr><td>单项选择题</td><td>40分</td><td>含公共基础知识部分10分</td></tr>
+            <tr><td>操作题</td><td>60分</td><td>包括基本编程题和综合编程题</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128640; 基于大纲的学习路线建议</summary>
+        <div class="kb-body">
+          <h4>第一阶段：Python基础（对应大纲模块一、二）</h4>
+          <ul>
+            <li>学习Python基本语法元素：缩进、注释、变量、命名、保留字、数据类型、赋值语句</li>
+            <li>掌握基本输入输出函数：<code>input()</code>、<code>eval()</code>、<code>print()</code></li>
+            <li>掌握数字类型（整数、浮点数、复数）及其运算</li>
+            <li>掌握字符串类型的索引、切片、格式化及操作方法</li>
+            <li>掌握类型判断与转换、逻辑运算和比较运算</li>
+          </ul>
+          <h4>第二阶段：程序结构与函数（对应大纲模块三、四）</h4>
+          <ul>
+            <li>学习三种控制结构（顺序、分支、循环）</li>
+            <li>掌握单分支、二分支、多分支结构</li>
+            <li>掌握遍历循环（<code>for</code>）和条件循环（<code>while</code>）</li>
+            <li>掌握循环控制语句：<code>break</code>、<code>continue</code></li>
+            <li>掌握异常处理：<code>try-except</code></li>
+            <li>学习函数的定义、参数传递、返回值、变量作用域</li>
+            <li>理解并掌握递归</li>
+          </ul>
+          <h4>第三阶段：组合数据类型（对应大纲模块五）</h4>
+          <ul>
+            <li>理解组合数据类型的基本概念</li>
+            <li>掌握列表的创建、索引、切片及操作方法</li>
+            <li>掌握集合的创建及操作方法</li>
+            <li>掌握字典的创建、索引及操作方法</li>
+          </ul>
+          <h4>第四阶段：文件与数据格式化（对应大纲模块六）</h4>
+          <ul>
+            <li>掌握文件的打开、读写和关闭</li>
+            <li>理解一维数据和二维数据的组织方式</li>
+            <li>掌握CSV格式文件的读写操作</li>
+          </ul>
+          <h4>第五阶段：程序设计方法与计算生态（对应大纲模块七、八）</h4>
+          <ul>
+            <li>了解过程式、函数式、生态式编程方法</li>
+            <li>了解蒙特卡洛计算方法和递归计算方法</li>
+            <li>熟练使用标准库：<code>turtle</code>、<code>random</code>、<code>time</code></li>
+            <li>掌握<code>pip</code>安装第三方库的方法</li>
+            <li>熟练使用第三方库：<code>jieba</code>、<code>PyInstaller</code>、<code>NumPy</code></li>
+            <li>了解更广泛的Python计算生态各领域主要第三方库名称</li>
+          </ul>
+          <h4>第六阶段：综合练习与模拟考试</h4>
+          <ul>
+            <li>熟悉IDLE开发环境</li>
+            <li>练习将脚本程序转变为可执行程序</li>
+            <li>进行选择题专项练习（含公共基础知识）</li>
+            <li>进行基本编程题和综合编程题的专项训练</li>
+            <li>模拟真实考试环境进行全真演练</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== PRACTICE: 操作题特训 ===================== -->
+  <div class="page" id="page-practice">
+    <div class="chapter-hero">
+      <h2>&#9997; 操作题特训</h2>
+      <p>真题题库 + 知识点分类 + 高频模板 + 避坑指南</p>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128200; 考试题型与分值分布</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>题型</th><th>题号</th><th>分值</th><th>说明</th></tr>
+            <tr><td>单项选择题</td><td>1-40</td><td>40分</td><td>10道公共基础 + 30道Python，每题1分</td></tr>
+            <tr><td>基础编程</td><td>41-43</td><td>15分</td><td>每题5分，字符串/算法/jieba</td></tr>
+            <tr><td>简单应用</td><td>44-45</td><td>25分</td><td>44题turtle(10分)，45题综合编程(15分)</td></tr>
+            <tr><td>综合应用</td><td>46</td><td>20分</td><td>分3小问，分词/文件/排序</td></tr>
+          </table>
+          <p><strong>操作题文件命名规则：</strong>PY101.py / PY102.py / PY103.py（基础）→ PY201.py / PY202.py（简单应用）→ PY301-1/2/3.py（综合应用）</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128034; turtle 绘图题</summary>
+        <div class="kb-body">
+          <h4>核心函数速记</h4>
+          <ul>
+            <li><code>turtle.fd(d)</code> / <code>turtle.bk(d)</code> — 前进/后退</li>
+            <li><code>turtle.seth(a)</code> — 设置绝对角度（0右，90上）</li>
+            <li><code>turtle.right(a)</code> / <code>turtle.left(a)</code> — 相对旋转</li>
+            <li><code>turtle.circle(r, extent, steps)</code> — 画圆/多边形</li>
+            <li><code>turtle.begin_fill()</code> / <code>end_fill()</code> — 填充（必须配对）</li>
+            <li><code>turtle.penup()</code> / <code>pendown()</code> — 抬笔/落笔</li>
+            <li><code>turtle.goto(x, y)</code> — 移动到坐标</li>
+            <li><code>turtle.hideturtle()</code> — 隐藏海龟</li>
+          </ul>
+          <h4>典型题目模式</h4>
+          <pre><code>// 等边三角形
+import turtle
+for i in range(3):
+    turtle.seth(i * 120)
+    turtle.fd(100)
+
+// 五角星
+from turtle import *
+for i in range(5):
+    fd(200)
+    right(144)
+
+// 填充圆形
+import turtle
+turtle.color('black', 'yellow')
+turtle.begin_fill()
+turtle.circle(50)
+turtle.end_fill()
+
+// 绘制条形图
+import turtle as t
+ls = [69, 292, 33, 131, 61, 254]
+x0, y0 = -200, -100
+X_len, Y_len = 400, 300
+t.penup(); t.goto(x0, y0); t.pendown()
+t.fd(X_len); t.fd(-X_len); t.seth(90); t.fd(Y_len)
+t.pencolor('red'); t.pensize(5)
+for i in range(len(ls)):
+    t.penup(); t.goto(x0 + (i+1)*50, y0); t.seth(90); t.pendown()
+    t.fd(ls[i])
+t.done()
+</code></pre>
+          <p><strong>常见陷阱：</strong><code>seth()</code>是绝对角度，<code>right()/left()</code>是相对角度；<code>circle(radius, steps=n)</code>可绘制正n边形；<code>begin_fill()</code>和<code>end_fill()</code>必须配对。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128223; 格式化输出题</summary>
+        <div class="kb-body">
+          <h4>format() 格式化速查</h4>
+          <table>
+            <tr><th>格式</th><th>含义</th><th>示例</th></tr>
+            <tr><td><code>{:*^30}</code></td><td>星号填充、居中、宽度30</td><td><code>print("{:*^30}".format(s))</code></td></tr>
+            <tr><td><code>{:,}</code></td><td>千位分隔符</td><td><code>print("{:,}".format(1234567))</code></td></tr>
+            <tr><td><code>{:.2f}</code></td><td>保留2位小数</td><td><code>print("{:.2f}".format(3.14159))</code></td></tr>
+            <tr><td><code>{:>10}</code></td><td>右对齐、宽度10</td><td><code>print("{:>10}".format(s))</code></td></tr>
+            <tr><td><code>{:0>2}</code></td><td>前导零、宽度2</td><td><code>print("{:0>2}".format(5))</code></td></tr>
+            <tr><td><code>{:.1%}</code></td><td>百分比格式</td><td><code>print("{:.1%}".format(0.85))</code></td></tr>
+          </table>
+          <h4>典型题目</h4>
+          <pre><code>// 星号填充居中
+s = input("请输入一个字符串:")
+print("{:*^30}".format(s))
+
+// 千位分隔符
+n = eval(input("请输入正整数:"))
+print("{:,}".format(n))
+
+// 数字转中文大写
+n = input()
+s = "〇一二三四五六七八九"
+for c in "0123456789":
+    n = n.replace(c, s[eval(c)])
+print(n)
+
+// 各位数字求和
+s = input("请输入一个正整数:")
+cs = 0
+for c in s:
+    cs += eval(c)
+print("{:=>25}".format(cs))
+</code></pre>
+          <p><strong>常见陷阱：</strong>填充字符、对齐方式、宽度的顺序 <code>{:*^30}</code>；<code>eval()</code>可将字符串转Python表达式求值；<code>chr()</code>和<code>ord()</code>互为逆运算。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#9881; 控制结构与算法题</summary>
+        <div class="kb-body">
+          <h4>高频算法模板</h4>
+          <pre><code>// 斐波那契数列
+a, b = 0, 1
+while a <= 50:
+    print(a, end=',')
+    a, b = b, a+b
+
+// 素数判断
+for num in range(lower, upper+1):
+    for i in range(2, num):
+        if num % i == 0:
+            break
+    else:
+        print(num)  // for-else: 未被break时执行
+
+// 随机选择
+import random
+random.seed(0)
+name = random.choice(brandlist)
+
+// 分段折扣
+if n >= 10: cost = 150*n*0.7
+elif n >= 4: cost = 150*n*0.8
+elif n >= 2: cost = 150*n*0.9
+else: cost = 150*n
+
+// 凯撒密码
+for p in intxt:
+    if "a" <= p <= "z":
+        print(chr(ord("a") + (ord(p)-ord("a")+3)%26), end="")
+    elif "A" <= p <= "Z":
+        print(chr(ord("A") + (ord(p)-ord("A")+3)%26), end="")
+    else:
+        print(p, end="")
+
+// 杨辉三角
+a = [[1]*(i+1) for i in range(8)]
+for i in range(2, 8):
+    for j in range(1, i):
+        a[i][j] = a[i-1][j-1] + a[i-1][j]
+
+// 输入合法性验证
+while True:
+    try:
+        a = eval(input("请输入正整数:"))
+        if a > 0 and type(a) == int:
+            print(a); break
+        else: print("请输入正整数")
+    except: print("请输入正整数")
+</code></pre>
+          <p><strong>常见陷阱：</strong><code>for-else</code> 结构——循环未被 <code>break</code> 中断时执行 <code>else</code> 块；<code>random.seed()</code> 用于设置随机种子保证结果可复现；<code>type(a) == int</code> 判断整数类型（注意 <code>bool</code> 是 <code>int</code> 子类）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128229; 组合数据与jieba分词</summary>
+        <div class="kb-body">
+          <h4>高频操作模板</h4>
+          <pre><code>// jieba分词逆序输出
+import jieba
+txt = input("请输入中文文本:")
+ls = jieba.lcut(txt)
+for i in ls[::-1]:
+    print(i, end="")
+
+// 统计字符数和词数
+s = input()
+n = len(s)
+m = len(jieba.lcut(s))
+print("字符数:{}, 词语数:{}".format(n, m))
+
+// 字典统计频次
+d = {}
+for c in fruits:
+    d[c] = d.get(c, 0) + 1
+ls = list(d.items())
+ls.sort(key=lambda x: x[1], reverse=True)
+
+// 列表去重（打乱顺序）
+new_lis = list(set(lis))
+
+// 字典排序取前3
+lt = list(lst.items())
+lt.sort(key=lambda x: x[1], reverse=True)
+for i in range(3):
+    print("{}:{}".format(lt[i][0], lt[i][1]))
+
+// 等差数列
+a, b, c = eval(input("首项,公差,项数:"))
+ls = [a + i*b for i in range(c)]
+</code></pre>
+          <p><strong>常见陷阱：</strong><code>list(set(lis))</code> 去重但打乱顺序；<code>sort()</code> 原地排序返回 <code>None</code>，如需新列表用 <code>sorted()</code>；<code>lambda x: x[1]</code> 按元组第二个元素排序。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128196; 文件操作综合题</summary>
+        <div class="kb-body">
+          <h4>高频文件操作模式</h4>
+          <pre><code>// 基础文件读写
+fi = open("input.txt", "r")
+fo = open("output.txt", "w")
+content = fi.read()
+fo.write(content)
+fi.close(); fo.close()
+
+// 推荐写法（自动关闭）
+with open("input.txt", "r") as fi:
+    content = fi.read()
+
+// 字符频次统计（不含标点）
+d = {}
+for c in txts:
+    if c in "，。！？、；：\"\"''（）【】":
+        continue
+    d[c] = d.get(c, 0) + 1
+ls = list(d.items())
+ls.sort(key=lambda x: x[1], reverse=True)
+
+// CSV文件处理
+fi = open("data.csv", "r")
+for line in fi:
+    ls = line.strip("\n").split(",")
+fi.close()
+
+// 人员信息统计
+while data:
+    name, gender, age = data.split()
+    // ...处理...
+    data = input()
+
+// 成绩筛选（无不及格且总成绩前10）
+L.sort(key=lambda x: x[-1], reverse=True)
+for i in range(10):
+    fo.write(" ".join(L[i][:-1]) + "\n")
+
+// 九九乘法表写入文件
+fo = open("PY202.txt", "w")
+for i in range(1, 10):
+    for j in range(1, i+1):
+        fo.write("{}*{}={:>2} ".format(i, j, i*j))
+    fo.write("\n")
+fo.close()
+</code></pre>
+          <p><strong>常见陷阱：</strong>文件打开后必须 <code>close()</code>，或使用 <code>with open(...) as f:</code>；<code>readlines()</code> 保留换行符，需用 <code>strip("\n")</code> 去除；写入文件的内容必须是字符串，数字需用 <code>str()</code> 转换。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128170; 高频代码模板速记</summary>
+        <div class="kb-body">
+          <ol>
+            <li><strong>字符串格式化：</strong><code>"{:*^30}".format(s)</code></li>
+            <li><strong>字典统计频次：</strong><code>d[key] = d.get(key, 0) + 1</code></li>
+            <li><strong>字典按值排序：</strong><code>ls = list(d.items()); ls.sort(key=lambda x: x[1], reverse=True)</code></li>
+            <li><strong>jieba分词：</strong><code>import jieba; ls = jieba.lcut(txt)</code></li>
+            <li><strong>文件读写：</strong><code>with open(f, "r") as fi: content = fi.read()</code></li>
+            <li><strong>turtle基础：</strong><code>import turtle; turtle.fd(); turtle.seth(); turtle.circle()</code></li>
+            <li><strong>随机数：</strong><code>import random; random.seed(); random.choice(); random.randint()</code></li>
+            <li><strong>斐波那契：</strong><code>a, b = 0, 1; while a <= n: print(a); a, b = b, a+b</code></li>
+            <li><strong>素数判断：</strong><code>for i in range(2, num): if num % i == 0: return False</code></li>
+            <li><strong>列表去重：</strong><code>list(set(ls))</code></li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#10071; 常见错误与避坑指南</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>错误类型</th><th>正确做法</th></tr>
+            <tr><td>文件未关闭</td><td>使用 <code>with open(...) as f:</code> 或确保调用 <code>close()</code></td></tr>
+            <tr><td><code>sort()</code> 返回None</td><td><code>sort()</code> 是原地排序；如需新列表用 <code>sorted()</code></td></tr>
+            <tr><td><code>randint(0,4)</code> 越界</td><td>列表5个元素索引0-4，<code>randint(0,4)</code> 正确</td></tr>
+            <tr><td>字符串与数字拼接</td><td>先用 <code>str()</code> 转换数字，或使用 <code>format()</code></td></tr>
+            <tr><td><code>jieba</code> 未导入</td><td>文件开头必须写 <code>import jieba</code></td></tr>
+            <tr><td>turtle方向混淆</td><td><code>seth()</code> 是绝对角度，<code>right()/left()</code> 是相对角度</td></tr>
+            <tr><td><code>eval()</code> 安全性</td><td>考试环境下可用，但实际生产环境慎用</td></tr>
+            <tr><td>字典 <code>get()</code> 用法</td><td><code>d.get(key, default)</code>，key不存在返回default</td></tr>
+            <tr><td>切片逆序</td><td><code>ls[::-1]</code> 是列表逆序，<code>s[::-1]</code> 是字符串逆序</td></tr>
+            <tr><td><code>break</code> 与 <code>for-else</code></td><td><code>for</code> 循环未被 <code>break</code> 时执行 <code>else</code> 块</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128640; 答题策略与时间分配</summary>
+        <div class="kb-body">
+          <ol>
+            <li><strong>基础编程题（PY101-103）</strong>：重点掌握字符串格式化、基础算法、jieba分词，注意填空位置通常只需要一行代码或表达式。每题5-8分钟。</li>
+            <li><strong>简单应用题（PY201-202）</strong>：turtle题注意角度计算；综合编程题注意字典统计和文件输出。PY201约5分钟，PY202约10分钟。</li>
+            <li><strong>综合应用题（PY301）</strong>：通常分3个小问，难度递增。先确保前两个小问得分，第三问尽量完成核心逻辑。约15-20分钟。</li>
+            <li><strong>文件操作题</strong>：牢记打开-处理-关闭的流程，优先使用 <code>with</code> 语句。</li>
+            <li><strong>时间分配建议</strong>：选择题40分钟 → 基础编程15分钟 → turtle 5分钟 → 综合编程10分钟 → 综合应用20分钟 → 检查10分钟。</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="page" id="page-kb5">
+    <div class="chapter-hero">
+      <h2>&#129520; 面向对象与异常处理</h2>
+      <p>类、对象、继承、多态、异常捕获与处理</p>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#127970; 面向对象编程基础</summary>
+        <div class="kb-body">
+          <h4>基本概念</h4>
+          <ul>
+            <li><strong>类(Class)</strong>：对象的蓝图/模板，定义了对象的属性和方法</li>
+            <li><strong>对象(Object)</strong>：类的实例，具有具体的属性值</li>
+            <li><strong>属性(Attribute)</strong>：对象的特征/数据，通过 <code>self.属性名</code> 访问</li>
+            <li><strong>方法(Method)</strong>：对象的行为/函数，定义在类内部</li>
+          </ul>
+          <h4>定义类与创建对象</h4>
+<pre><code>class MyClass:
+    """类的文档字符串"""
+    count = 0  # 类变量（所有实例共享）
+
+    def __init__(self, name, age):  # 构造方法
+        self.name = name  # 实例变量
+        self.age = age
+        MyClass.count += 1
+
+    def say_hi(self):  # 实例方法
+        print(f"你好，我是{self.name}，今年{self.age}岁")
+
+# 创建对象
+p1 = MyClass("小明", 20)
+p1.say_hi()  # 你好，我是小明，今年20岁
+print(MyClass.count)  # 1</code></pre>
+          <h4>关键要点</h4>
+          <ul>
+            <li><code>__init__()</code> 是构造方法，创建对象时自动调用</li>
+            <li><code>self</code> 代表实例本身，类似其他语言的 <code>this</code></li>
+            <li>类变量在所有实例间共享，实例变量各自独立</li>
+            <li>通过 <code>self.变量名</code> 定义实例属性</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128170; 类的继承与多态</summary>
+        <div class="kb-body">
+          <h4>继承</h4>
+<pre><code>class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print(f"{self.name}发出了声音")
+
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name}：汪汪汪！")
+
+class Cat(Animal):
+    def speak(self):
+        print(f"{self.name}：喵喵喵！")
+
+# 使用
+dog = Dog("旺财")
+dog.speak()  # 旺财：汪汪汪！
+
+cat = Cat("小花")
+cat.speak()  # 小花：喵喵喵！</code></pre>
+          <h4>多态</h4>
+          <ul>
+            <li>子类重写父类方法，同一方法在不同子类有不同表现</li>
+            <li>调用时只看对象类型，不看引用类型</li>
+          </ul>
+          <h4>super() 调用父类方法</h4>
+<pre><code>class Horse:
+    def __init__(self, category, gender, age):
+        self.category = category
+        self.gender = gender
+        self.age = age
+
+    def run(self):
+        return "在草原上奔跑"
+
+class Camel(Horse):
+    def __init__(self, category, gender, age):
+        super().__init__(category, gender, age)
+
+    def run(self):
+        return "在沙漠上奔跑"</code></pre>
+          <h4>多重继承</h4>
+<pre><code>class Base1:
+    def method1(self): print("Base1")
+
+class Base2:
+    def method2(self): print("Base2")
+
+class Derived(Base1, Base2):
+    pass
+
+d = Derived()
+d.method1()  # Base1
+d.method2()  # Base2</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128274; 访问控制与特殊方法</summary>
+        <div class="kb-body">
+          <h4>访问控制</h4>
+          <table>
+            <tr><th>类型</th><th>写法</th><th>含义</th></tr>
+            <tr><td>公有</td><td><code>name</code></td><td>类内外均可访问</td></tr>
+            <tr><td>保护</td><td><code>_name</code></td><td>约定不对外，但技术上可访问</td></tr>
+            <tr><td>私有</td><td><code>__name</code></td><td>名称修饰为 <code>_ClassName__name</code></td></tr>
+          </table>
+          <h4>常用特殊方法</h4>
+          <table>
+            <tr><th>方法</th><th>触发时机</th></tr>
+            <tr><td><code>__init__(self, ...)</code></td><td>创建对象时</td></tr>
+            <tr><td><code>__str__(self)</code></td><td><code>print()</code> 或 <code>str()</code> 时</td></tr>
+            <tr><td><code>__repr__(self)</code></td><td><code>repr()</code> 或交互模式下显示</td></tr>
+            <tr><td><code>__len__(self)</code></td><td><code>len()</code> 时</td></tr>
+            <tr><td><code>__add__(self, other)</code></td><td><code>+</code> 运算符</td></tr>
+            <tr><td><code>__eq__(self, other)</code></td><td><code>==</code> 运算符</td></tr>
+            <tr><td><code>__lt__(self, other)</code></td><td><code>&lt;</code> 运算符</td></tr>
+            <tr><td><code>__getitem__(self, key)</code></td><td><code>obj[key]</code> 索引</td></tr>
+            <tr><td><code>__call__(self, *args)</code></td><td><code>obj()</code> 像函数一样调用</td></tr>
+          </table>
+<pre><code>class MyList:
+    def __init__(self, data):
+        self.data = data
+    def __str__(self):
+        return f"MyList({self.data})"
+    def __len__(self):
+        return len(self.data)
+    def __add__(self, other):
+        return MyList(self.data + other.data)
+
+a = MyList([1, 2, 3])
+b = MyList([4, 5])
+print(a)      # MyList([1, 2, 3])
+print(len(a)) # 3
+print(a + b)  # MyList([1, 2, 3, 4, 5])</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#10071; 异常处理</summary>
+        <div class="kb-body">
+          <h4>try-except-else-finally 结构</h4>
+<pre><code>try:
+    # 可能出错的代码
+    result = 10 / 0
+except ZeroDivisionError:
+    # 捕获特定异常
+    print("除数不能为零！")
+except (TypeError, ValueError) as e:
+    # 捕获多种异常
+    print(f"类型或值错误: {e}")
+except Exception as e:
+    # 捕获所有其他异常
+    print(f"未知错误: {e}")
+else:
+    # 没有异常时执行
+    print(f"结果是 {result}")
+finally:
+    # 无论是否异常都执行
+    print("程序结束")</code></pre>
+          <h4>常见异常类型</h4>
+          <table>
+            <tr><th>异常</th><th>触发场景</th></tr>
+            <tr><td><code>ZeroDivisionError</code></td><td>除以零</td></tr>
+            <tr><td><code>TypeError</code></td><td>类型不匹配的操作</td></tr>
+            <tr><td><code>ValueError</code></td><td>值不合法（如 <code>int("abc")</code>）</td></tr>
+            <tr><td><code>IndexError</code></td><td>索引超出范围</td></tr>
+            <tr><td><code>KeyError</code></td><td>字典键不存在</td></tr>
+            <tr><td><code>FileNotFoundError</code></td><td>文件不存在</td></tr>
+            <tr><td><code>AttributeError</code></td><td>对象没有该属性/方法</td></tr>
+            <tr><td><code>NameError</code></td><td>变量未定义</td></tr>
+            <tr><td><code>ImportError</code></td><td>模块导入失败</td></tr>
+          </table>
+          <h4>主动抛出异常</h4>
+<pre><code># raise 抛出异常
+raise ValueError("年龄不能为负数")
+
+# 自定义异常类
+class MyError(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+    def __str__(self):
+        return f"MyError: {self.msg}"
+
+raise MyError("自定义错误")</code></pre>
+          <h4>assert 断言</h4>
+<pre><code>assert 条件, "错误信息"
+# 等价于:
+# if not 条件:
+#     raise AssertionError("错误信息")</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="page" id="page-kb6">
+    <div class="chapter-hero">
+      <h2>&#128196; 文件操作与正则表达式</h2>
+      <p>文件读写、CSV处理、正则匹配与替换</p>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128194; 文件基本操作</summary>
+        <div class="kb-body">
+          <h4>打开模式</h4>
+          <table>
+            <tr><th>模式</th><th>说明</th><th>文件不存在时</th></tr>
+            <tr><td><code>"r"</code></td><td>只读（默认）</td><td>报错 FileNotFoundError</td></tr>
+            <tr><td><code>"w"</code></td><td>只写（覆盖）</td><td>创建新文件</td></tr>
+            <tr><td><code>"a"</code></td><td>追加写入</td><td>创建新文件</td></tr>
+            <tr><td><code>"rb"</code></td><td>读二进制</td><td>报错</td></tr>
+            <tr><td><code>"wb"</code></td><td>写二进制</td><td>创建</td></tr>
+            <tr><td><code>"r+"</code></td><td>读写</td><td>报错</td></tr>
+            <tr><td><code>"w+"</code></td><td>读写（覆盖）</td><td>创建</td></tr>
+          </table>
+          <h4>三种读取方式</h4>
+<pre><code># read() - 读取全部内容为字符串
+with open("file.txt", "r") as f:
+    content = f.read()
+
+# readline() - 读取一行
+with open("file.txt", "r") as f:
+    line = f.readline()
+
+# readlines() - 读取所有行为列表
+with open("file.txt", "r") as f:
+    lines = f.readlines()</code></pre>
+          <h4>写入文件</h4>
+<pre><code># write() - 写入字符串
+with open("out.txt", "w") as f:
+    f.write("第一行\n")
+    f.write("第二行\n")
+
+# writelines() - 写入列表
+lines = ["第一行\n", "第二行\n", "第三行\n"]
+with open("out.txt", "w") as f:
+    f.writelines(lines)</code></pre>
+          <h4>文件指针</h4>
+<pre><code>with open("file.txt", "r") as f:
+    f.tell()     # 获取当前位置
+    f.seek(0)    # 移到开头
+    f.seek(0, 2) # 移到末尾
+    content = f.read()</code></pre>
+          <p><strong>最佳实践：</strong>始终使用 <code>with open(...) as f:</code> 语句，自动关闭文件，避免资源泄漏。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128202; CSV 文件处理</summary>
+        <div class="kb-body">
+          <h4>手动处理 CSV</h4>
+<pre><code># 读取CSV
+with open("data.csv", "r") as f:
+    for line in f:
+        cols = line.strip("\n").split(",")
+        print(cols)
+
+# 写入CSV
+with open("out.csv", "w") as f:
+    f.write("姓名,年龄,成绩\n")
+    f.write("张三,20,95\n")
+    f.write("李四,21,88\n")</code></pre>
+          <h4>使用 csv 模块（推荐）</h4>
+<pre><code>import csv
+
+# 读取
+with open("data.csv", "r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(row)
+
+# 写入
+with open("out.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["姓名", "年龄", "成绩"])
+    writer.writerow(["张三", 20, 95])</code></pre>
+          <h4>一维与二维数据</h4>
+          <ul>
+            <li><strong>一维数据</strong>：列表、集合、字典值 — 用 <code>.split()</code> 和 <code>",".join()</code> 处理</li>
+            <li><strong>二维数据</strong>：列表的列表 — 用嵌套循环或 <code>csv</code> 模块处理</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128269; 正则表达式</summary>
+        <div class="kb-body">
+          <h4>常用模块</h4>
+<pre><code>import re
+
+# re.match() - 从开头匹配
+m = re.match(r"hello", "hello world")
+# re.search() - 搜索第一个匹配
+m = re.search(r"world", "hello world")
+# re.findall() - 查找所有匹配
+lst = re.findall(r"\d+", "a1b22c333")
+# 结果: ["1", "22", "333"]
+# re.sub() - 替换
+result = re.sub(r"\d+", "NUM", "a1b22c333")
+# 结果: "aNUMbNUMcNUM"
+# re.split() - 分割
+lst = re.split(r"[,;]", "a,b;c,d")
+# 结果: ["a", "b", "c", "d"]</code></pre>
+          <h4>常用正则模式</h4>
+          <table>
+            <tr><th>模式</th><th>含义</th><th>示例</th></tr>
+            <tr><td><code>.</code></td><td>任意字符</td><td><code>a.c</code> 匹配 abc, a1c</td></tr>
+            <tr><td><code>\d</code></td><td>数字 [0-9]</td><td><code>\d+</code> 匹配 123</td></tr>
+            <tr><td><code>\w</code></td><td>字母/数字/下划线</td><td><code>\w+</code> 匹配 hello_1</td></tr>
+            <tr><td><code>\s</code></td><td>空白字符</td><td><code>\s+</code> 匹配空格/制表符</td></tr>
+            <tr><td><code>^</code></td><td>行首</td><td><code>^Hello</code></td></tr>
+            <tr><td><code>$</code></td><td>行尾</td><td><code>end$</code></td></tr>
+            <tr><td><code>*</code></td><td>0次或多次</td><td><code>ab*c</code> 匹配 ac, abc, abbc</td></tr>
+            <tr><td><code>+</code></td><td>1次或多次</td><td><code>ab+c</code> 匹配 abc, abbc</td></tr>
+            <tr><td><code>?</code></td><td>0次或1次</td><td><code>colou?r</code> 匹配 color/colour</td></tr>
+            <tr><td><code>{m,n}</code></td><td>m到n次</td><td><code>\d{3,5}</code> 匹配3-5位数字</td></tr>
+            <tr><td><code>[abc]</code></td><td>字符集</td><td><code>[aeiou]</code> 匹配元音</td></tr>
+            <tr><td><code>(...)</code></td><td>分组</td><td><code>(\d+)-(\d+)</code></td></tr>
+            <tr><td><code>|</code></td><td>或</td><td><code>cat|dog</code></td></tr>
+          </table>
+          <h4>编译正则（性能优化）</h4>
+<pre><code>pattern = re.compile(r"\d+")
+result = pattern.findall("a1b22c333")
+# ["1", "22", "333"]</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128230; os 模块与路径操作</summary>
+        <div class="kb-body">
+<pre><code>import os
+
+# 当前工作目录
+os.getcwd()
+
+# 列出目录内容
+os.listdir(".")
+
+# 创建/删除目录
+os.mkdir("new_dir")
+os.makedirs("a/b/c")
+os.rmdir("empty_dir")
+
+# 删除/重命名文件
+os.remove("file.txt")
+os.rename("old.txt", "new.txt")
+
+# 路径拼接（推荐）
+os.path.join("folder", "file.txt")
+
+# 判断是否存在
+os.path.exists("file.txt")
+os.path.isfile("file.txt")
+os.path.isdir("folder")
+
+# 路径拆分
+os.path.split("/a/b/c.txt")   # ('/a/b', 'c.txt')
+os.path.splitext("c.txt")      # ('c', '.txt')
+
+# 获取文件大小
+os.path.getsize("file.txt")</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="page" id="page-kb7">
+    <div class="chapter-hero">
+      <h2>&#128640; 进阶拓展</h2>
+      <p>日期时间、多线程、网络编程、GUI、数据库、项目实战方向</p>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128197; 日期与时间</summary>
+        <div class="kb-body">
+<pre><code>import time
+import datetime
+
+# time 模块
+time.time()          # 当前时间戳（秒）
+time.localtime()      # 结构化时间
+time.strftime("%Y-%m-%d %H:%M:%S")  # 格式化
+time.strptime("2024-01-01", "%Y-%m-%d")  # 解析
+time.perf_counter()   # 高精度计时
+time.sleep(1)         # 暂停1秒
+
+# datetime 模块
+now = datetime.datetime.now()
+print(now.year, now.month, now.day)
+print(now.strftime("%Y年%m月%d日"))
+
+# 日期计算
+delta = datetime.timedelta(days=7)
+future = now + delta
+print(future.strftime("%Y-%m-%d"))</code></pre>
+          <h4>常用格式化符号</h4>
+          <table>
+            <tr><th>符号</th><th>含义</th><th>示例</th></tr>
+            <tr><td><code>%Y</code></td><td>四位年份</td><td>2024</td></tr>
+            <tr><td><code>%m</code></td><td>月份(01-12)</td><td>07</td></tr>
+            <tr><td><code>%d</code></td><td>日期(01-31)</td><td>09</td></tr>
+            <tr><td><code>%H</code></td><td>小时(00-23)</td><td>14</td></tr>
+            <tr><td><code>%M</code></td><td>分钟(00-59)</td><td>30</td></tr>
+            <tr><td><code>%S</code></td><td>秒(00-59)</td><td>45</td></tr>
+            <tr><td><code>%A</code></td><td>星期名</td><td>Monday</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128268; 多线程基础</summary>
+        <div class="kb-body">
+          <h4>threading 模块</h4>
+<pre><code>import threading
+import time
+
+def task(name):
+    for i in range(3):
+        print(f"{name}: {i}")
+        time.sleep(1)
+
+# 创建并启动线程
+t1 = threading.Thread(target=task, args=("线程1",))
+t2 = threading.Thread(target=task, args=("线程2",))
+t1.start()
+t2.start()
+
+# 等待线程结束
+t1.join()
+t2.join()
+print("主程序结束")</code></pre>
+          <h4>线程锁（防止竞争）</h4>
+<pre><code>import threading
+
+lock = threading.Lock()
+counter = 0
+
+def increment():
+    global counter
+    with lock:  # 获取锁
+        counter += 1
+    # 离开 with 块自动释放锁</code></pre>
+          <p><strong>注意：</strong>Python 的 GIL（全局解释器锁）使得多线程在 CPU 密集型任务中不会真正并行，但在 I/O 密集型任务（网络请求、文件读写）中可以有效提升性能。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#127760; 网络编程基础</summary>
+        <div class="kb-body">
+          <h4>socket 编程</h4>
+<pre><code># TCP 服务器
+import socket
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("0.0.0.0", 8080))
+server.listen(5)
+print("服务器启动，等待连接...")
+
+conn, addr = server.accept()
+print(f"客户端连接: {addr}")
+data = conn.recv(1024)
+conn.send(b"Hello Client")
+conn.close()
+
+# TCP 客户端
+import socket
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(("127.0.0.1", 8080))
+client.send(b"Hello Server")
+data = client.recv(1024)
+print(data.decode())
+client.close()</code></pre>
+          <h4>HTTP 请求（urllib）</h4>
+<pre><code>from urllib import request
+
+response = request.urlopen("http://example.com")
+html = response.read().decode("utf-8")
+print(html[:200])</code></pre>
+          <h4>第三方库方向</h4>
+          <ul>
+            <li><strong>网络爬虫</strong>：<code>requests</code>、<code>scrapy</code>、<code>beautifulsoup4</code></li>
+            <li><strong>数据可视化</strong>：<code>matplotlib</code>、<code>seaborn</code>、<code>pyecharts</code></li>
+            <li><strong>数据分析</strong>：<code>pandas</code>、<code>numpy</code>、<code>scipy</code></li>
+            <li><strong>机器学习</strong>：<code>scikit-learn</code>、<code>tensorflow</code>、<code>pytorch</code></li>
+            <li><strong>Web开发</strong>：<code>flask</code>、<code>django</code>、<code>fastapi</code></li>
+            <li><strong>GUI开发</strong>：<code>tkinter</code>、<code>pyqt</code>、<code>wxpython</code></li>
+            <li><strong>游戏开发</strong>：<code>pygame</code></li>
+            <li><strong>图像处理</strong>：<code>Pillow</code>、<code>opencv-python</code></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128451; GUI 编程入门</summary>
+        <div class="kb-body">
+<pre><code>import tkinter as tk
+
+root = tk.Tk()
+root.title("我的窗口")
+root.geometry("400x300")
+
+# 标签
+label = tk.Label(root, text="Hello Python!")
+label.pack()
+
+# 按钮
+def on_click():
+    label.config(text="按钮被点击了！")
+
+btn = tk.Button(root, text="点击我", command=on_click)
+btn.pack()
+
+# 输入框
+entry = tk.Entry(root)
+entry.pack()
+
+root.mainloop()</code></pre>
+          <h4>常用组件</h4>
+          <table>
+            <tr><th>组件</th><th>用途</th></tr>
+            <tr><td><code>Label</code></td><td>显示文本</td></tr>
+            <tr><td><code>Button</code></td><td>按钮</td></tr>
+            <tr><td><code>Entry</code></td><td>单行输入框</td></tr>
+            <tr><td><code>Text</code></td><td>多行文本框</td></tr>
+            <tr><td><code>Listbox</code></td><td>列表框</td></tr>
+            <tr><td><code>Checkbutton</code></td><td>复选框</td></tr>
+            <tr><td><code>Radiobutton</code></td><td>单选框</td></tr>
+            <tr><td><code>Scale</code></td><td>滑块</td></tr>
+            <tr><td><code>Canvas</code></td><td>画布（绘图）</td></tr>
+            <tr><td><code>Menu</code></td><td>菜单栏</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128451; 数据库操作入门</summary>
+        <div class="kb-body">
+<pre><code>import sqlite3
+
+# 连接数据库（不存在则创建）
+conn = sqlite3.connect("test.db")
+cursor = conn.cursor()
+
+# 创建表
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS students (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        age INTEGER,
+        score REAL
+    )
+""")
+
+# 插入数据
+cursor.execute("INSERT INTO students VALUES (1, '张三', 20, 95.5)")
+conn.commit()
+
+# 查询数据
+cursor.execute("SELECT * FROM students")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
+
+# 关闭连接
+conn.close()</code></pre>
+          <h4>常用 SQL 操作</h4>
+          <table>
+            <tr><th>操作</th><th>SQL</th></tr>
+            <tr><td>查询</td><td><code>SELECT * FROM table WHERE condition</code></td></tr>
+            <tr><td>插入</td><td><code>INSERT INTO table VALUES (...)</code></td></tr>
+            <tr><td>更新</td><td><code>UPDATE table SET col=val WHERE condition</code></td></tr>
+            <tr><td>删除</td><td><code>DELETE FROM table WHERE condition</code></td></tr>
+            <tr><td>排序</td><td><code>SELECT * FROM table ORDER BY col ASC/DESC</code></td></tr>
+            <tr><td>统计</td><td><code>SELECT COUNT(*), AVG(score) FROM table</code></td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128218; 项目实战方向概览</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>方向</th><th>核心库</th><th>应用场景</th></tr>
+            <tr><td>网络爬虫</td><td>requests, beautifulsoup4, jieba</td><td>数据采集、舆情分析</td></tr>
+            <tr><td>词频统计</td><td>jieba, wordcloud, csv</td><td>文本分析、关键词提取</td></tr>
+            <tr><td>区块链</td><td>flask, hashlib, json</td><td>链式数据结构、共识算法</td></tr>
+            <tr><td>图片处理</td><td>Pillow, opencv-python, hashlib</td><td>批量处理、格式转换、相似检测</td></tr>
+            <tr><td>邮件收发</td><td>smtplib, poplib, email</td><td>自动化邮件通知</td></tr>
+            <tr><td>Web应用</td><td>flask, django</td><td>网站开发、API接口</td></tr>
+            <tr><td>数据可视化</td><td>matplotlib, pyecharts</td><td>图表生成、数据报告</td></tr>
+          </table>
+          <p>以上方向本书均有完整项目实战代码，可作为课后拓展学习。结合前面学到的函数、文件操作、面向对象等知识，逐步构建完整项目。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
   </div> <!-- end content -->
 </main>
 </div> <!-- end app -->
@@ -5159,6 +7776,8 @@ function showPage(page) {
     quiz: '模拟测验中心',
     progress: '学习进度',
     search: '知识点搜索',
+    syllabus: '官方考试大纲',
+    practice: '操作题特训',
     pt1: 'Tensor与autograd',
     pt2: '线性神经网络',
     pt3: '深度学习计算',
@@ -5166,7 +7785,14 @@ function showPage(page) {
     pt5: '循环神经网络RNN',
     pt6: '优化算法',
     pt7: '计算机视觉实战',
-    pt8: '自然语言处理NLP'
+    pt8: '自然语言处理NLP',
+    kb1: '知识百科 - Python 语法速查',
+    kb2: '知识百科 - 公共基础知识速查',
+    kb3: '知识百科 - 常用代码模板',
+    kb4: '知识百科 - 考试公式与计算',
+    kb5: '知识百科 - 面向对象与异常',
+    kb6: '知识百科 - 文件与正则表达式',
+    kb7: '知识百科 - 进阶拓展'
   };
   document.getElementById('pageTitle').textContent = titles[page] || page;
 
