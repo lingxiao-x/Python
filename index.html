@@ -58,7 +58,7 @@
   .dash-card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;cursor:pointer}
   .dash-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
   .dash-card .header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .dash-card .icon-box{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .dash-card .icon-box{min-width:40px;height:28px;padding:0 10px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;white-space:nowrap}
   .dash-card .title{font-size:15px;font-weight:700;color:var(--primary)}
   .dash-card .desc{font-size:13px;color:var(--text-light);margin-bottom:12px}
   .dash-card .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--text-light)}
@@ -85,6 +85,18 @@
   .tip-box{background:#f0fdf4;border-left:4px solid var(--success);padding:14px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:12px 0;color:#166534}
 
   .example-block{background:#1e293b;color:#e2e8f0;padding:18px 20px;border-radius:var(--radius-sm);margin:14px 0;overflow-x:auto}
+
+  /* Code runner */
+  .run-btn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s}
+  .run-btn:hover{background:var(--primary)}
+  .run-btn:disabled{background:#94a3b8;cursor:wait}
+  .run-output{margin-top:10px;background:#0f172a;color:#4ade80;padding:12px 14px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;white-space:pre-wrap;word-break:break-word;display:none;max-height:300px;overflow-y:auto}
+  .run-output.show{display:block}
+  .run-output.error{color:#f87171}
+  .run-status{font-size:12px;color:var(--text-light);margin-left:8px}
+  .playground-box{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
+  .playground-editor{width:100%;min-height:220px;background:#1e293b;color:#e2e8f0;font-family:'Courier New',monospace;font-size:14px;border:none;border-radius:var(--radius-sm);padding:16px;resize:vertical;box-sizing:border-box}
+  .playground-editor:focus{outline:2px solid var(--accent)}
   .example-block .ex-title{color:#60a5fa;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
   .example-block pre{margin:0;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-all}
   .example-block code{background:none;padding:0;color:#e2e8f0;font-size:13px}
@@ -122,6 +134,9 @@
   .quiz-result.show{display:block}
   .quiz-result.ok{background:#d1fae5;color:#065f46;border:1px solid #a7f3d0}
   .quiz-result.err{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+  .related-link{margin-top:10px;font-size:13px}
+  .related-link a{color:var(--accent);text-decoration:none;font-weight:600}
+  .related-link a:hover{text-decoration:underline}
 
   .btn{padding:10px 22px;border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
   .btn-primary{background:var(--accent);color:#fff}
@@ -141,6 +156,18 @@
   .progress-card .top .pct{font-size:18px;font-weight:700;color:var(--accent)}
   .progress-card .bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden}
   .progress-card .bar-fill{height:100%;border-radius:4px;transition:width .5s}
+
+  /* Review tags */
+  .review-tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600}
+  .review-tag.ok{background:#d1fae5;color:#065f46}
+  .review-tag.warn{background:#fef3c7;color:#92400e}
+  .review-tag.due{background:#fee2e2;color:#991b1b}
+
+  /* Wrong book quiz modal */
+  .wbq-modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:1000;align-items:center;justify-content:center;padding:20px}
+  .wbq-modal.show{display:flex}
+  .wbq-box{background:var(--card);border-radius:var(--radius);padding:24px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto}
+  .wbq-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--border)}
 
   /* Table */
   .data-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow)}
@@ -357,8 +384,8 @@
 
   <div class="nav-section">
     <div class="nav-title">学习路径</div>
-    <a class="nav-item active" onclick="showPage('dashboard')" data-page="dashboard"><span class="icon">&#127968;</span>学习仪表盘</a>
-    <a class="nav-item" onclick="showPage('search')" data-page="search"><span class="icon">&#128269;</span>知识点搜索</a>
+    <a class="nav-item active" onclick="showPage('dashboard')" data-page="dashboard"><span class="icon">Part1</span>学习仪表盘</a>
+    <a class="nav-item" onclick="showPage('search')" data-page="search"><span class="icon">Part2</span>知识点搜索</a>
   </div>
 
   <div class="nav-section">
@@ -391,35 +418,35 @@
 
   <div class="nav-section">
     <div class="nav-title">考试与测验</div>
-    <a class="nav-item" onclick="showPage('ch13')" data-page="ch13"><span class="icon">&#127891;</span>公共基础知识 <span class="badge" id="b-ch13">0%</span></a>
-    <a class="nav-item" onclick="showPage('quiz')" data-page="quiz"><span class="icon">&#9997;</span>模拟测验中心 <span class="badge" id="b-quiz">0%</span></a>
-    <a class="nav-item" onclick="showPage('progress')" data-page="progress"><span class="icon">&#128200;</span>学习进度 <span class="badge" id="b-progress"></span></a>
+    <a class="nav-item" onclick="showPage('ch13')" data-page="ch13"><span class="icon">Part3</span>公共基础知识 <span class="badge" id="b-ch13">0%</span></a>
+    <a class="nav-item" onclick="showPage('quiz')" data-page="quiz"><span class="icon">Part4</span>模拟测验中心 <span class="badge" id="b-quiz">0%</span></a>
+    <a class="nav-item" onclick="showPage('progress')" data-page="progress"><span class="icon">Part5</span>学习进度 <span class="badge" id="b-progress"></span></a>
   </div>
 <div class="nav-section">
   <div class="nav-title">&#129302; 深度学习拓展</div>
-  <a class="nav-item" onclick="showPage('pt1')" data-page="pt1"><span class="icon">&#128187;</span>Tensor与autograd</a>
-  <a class="nav-item" onclick="showPage('pt2')" data-page="pt2"><span class="icon">&#129302;</span>线性神经网络</a>
-  <a class="nav-item" onclick="showPage('pt3')" data-page="pt3"><span class="icon">&#128202;</span>深度学习计算</a>
-  <a class="nav-item" onclick="showPage('pt4')" data-page="pt4"><span class="icon">&#127752;</span>卷积神经网络CNN</a>
-  <a class="nav-item" onclick="showPage('pt5')" data-page="pt5"><span class="icon">&#128257;</span>循环神经网络RNN</a>
-  <a class="nav-item" onclick="showPage('pt6')" data-page="pt6"><span class="icon">&#128200;</span>优化算法</a>
-  <a class="nav-item" onclick="showPage('pt7')" data-page="pt7"><span class="icon">&#128247;</span>计算机视觉实战</a>
-  <a class="nav-item" onclick="showPage('pt8')" data-page="pt8"><span class="icon">&#128172;</span>自然语言处理NLP</a>
+  <a class="nav-item" onclick="showPage('pt1')" data-page="pt1"><span class="icon">Part6</span>Tensor与autograd</a>
+  <a class="nav-item" onclick="showPage('pt2')" data-page="pt2"><span class="icon">Part7</span>线性神经网络</a>
+  <a class="nav-item" onclick="showPage('pt3')" data-page="pt3"><span class="icon">Part8</span>深度学习计算</a>
+  <a class="nav-item" onclick="showPage('pt4')" data-page="pt4"><span class="icon">Part9</span>卷积神经网络CNN</a>
+  <a class="nav-item" onclick="showPage('pt5')" data-page="pt5"><span class="icon">Part10</span>循环神经网络RNN</a>
+  <a class="nav-item" onclick="showPage('pt6')" data-page="pt6"><span class="icon">Part11</span>优化算法</a>
+  <a class="nav-item" onclick="showPage('pt7')" data-page="pt7"><span class="icon">Part12</span>计算机视觉实战</a>
+  <a class="nav-item" onclick="showPage('pt8')" data-page="pt8"><span class="icon">Part13</span>自然语言处理NLP</a>
   </div>
 <div class="nav-section">
   <div class="nav-title">&#128218; 知识百科</div>
-  <a class="nav-item" onclick="showPage('kb1')" data-page="kb1"><span class="icon">&#128214;</span>Python 语法速查</a>
-  <a class="nav-item" onclick="showPage('kb2')" data-page="kb2"><span class="icon">&#127891;</span>公共基础知识速查</a>
-  <a class="nav-item" onclick="showPage('kb3')" data-page="kb3"><span class="icon">&#128290;</span>常用代码模板</a>
-  <a class="nav-item" onclick="showPage('kb4')" data-page="kb4"><span class="icon">&#128202;</span>考试公式与计算</a>
-  <a class="nav-item" onclick="showPage('kb5')" data-page="kb5"><span class="icon">&#129520;</span>面向对象与异常</a>
-  <a class="nav-item" onclick="showPage('kb6')" data-page="kb6"><span class="icon">&#128196;</span>文件与正则表达式</a>
-  <a class="nav-item" onclick="showPage('kb7')" data-page="kb7"><span class="icon">&#128640;</span>进阶拓展</a>
+  <a class="nav-item" onclick="showPage('kb1')" data-page="kb1"><span class="icon">Part14</span>Python 语法速查</a>
+  <a class="nav-item" onclick="showPage('kb2')" data-page="kb2"><span class="icon">Part15</span>公共基础知识速查</a>
+  <a class="nav-item" onclick="showPage('kb3')" data-page="kb3"><span class="icon">Part16</span>常用代码模板</a>
+  <a class="nav-item" onclick="showPage('kb4')" data-page="kb4"><span class="icon">Part17</span>考试公式与计算</a>
+  <a class="nav-item" onclick="showPage('kb5')" data-page="kb5"><span class="icon">Part18</span>面向对象与异常</a>
+  <a class="nav-item" onclick="showPage('kb6')" data-page="kb6"><span class="icon">Part19</span>文件与正则表达式</a>
+  <a class="nav-item" onclick="showPage('kb7')" data-page="kb7"><span class="icon">Part20</span>进阶拓展</a>
 </div>
 <div class="nav-section">
   <div class="nav-title">&#127891; 备考指南</div>
-  <a class="nav-item" onclick="showPage('syllabus')" data-page="syllabus"><span class="icon">&#128196;</span>官方考试大纲</a>
-  <a class="nav-item" onclick="showPage('practice')" data-page="practice"><span class="icon">&#9997;</span>操作题特训</a>
+  <a class="nav-item" onclick="showPage('syllabus')" data-page="syllabus"><span class="icon">Part21</span>官方考试大纲</a>
+  <a class="nav-item" onclick="showPage('practice')" data-page="practice"><span class="icon">Part22</span>操作题特训</a>
 </div>
 </nav>
 
@@ -455,37 +482,37 @@
     <h3 style="font-size:18px;color:var(--primary);margin-bottom:16px">&#128161; 选择学习板块</h3>
     <div class="dashboard-grid">
       <div class="dash-card" onclick="showPage('ch1')" style="border-top:4px solid #3b82f6">
-        <div class="header"><div class="icon-box" style="background:#dbeafe;color:#2563eb">&#128187;</div><div class="title">Python基础入门</div></div>
+        <div class="header"><div class="icon-box" style="background:#dbeafe;color:#2563eb">Part1</div><div class="title">Python基础入门</div></div>
         <div class="desc">环境搭建、变量、数据类型、运算符</div>
         <div class="meta"><span>3个章节</span><span id="prog-base">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-base" style="width:0%;background:#3b82f6"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch4')" style="border-top:4px solid #8b5cf6">
-        <div class="header"><div class="icon-box" style="background:#ede9fe;color:#7c3aed">&#9881;</div><div class="title">程序控制结构</div></div>
+        <div class="header"><div class="icon-box" style="background:#ede9fe;color:#7c3aed">Part2</div><div class="title">程序控制结构</div></div>
         <div class="desc">分支、循环、函数、模块</div>
         <div class="meta"><span>3个章节</span><span id="prog-ctrl">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-ctrl" style="width:0%;background:#8b5cf6"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch7')" style="border-top:4px solid #10b981">
-        <div class="header"><div class="icon-box" style="background:#d1fae5;color:#059669">&#128230;</div><div class="title">组合数据类型</div></div>
+        <div class="header"><div class="icon-box" style="background:#d1fae5;color:#059669">Part3</div><div class="title">组合数据类型</div></div>
         <div class="desc">列表、元组、字典、集合、文件</div>
         <div class="meta"><span>3个章节</span><span id="prog-data">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-data" style="width:0%;background:#10b981"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch10')" style="border-top:4px solid #f59e0b">
-        <div class="header"><div class="icon-box" style="background:#fef3c7;color:#d97706">&#128208;</div><div class="title">标准库与实战</div></div>
+        <div class="header"><div class="icon-box" style="background:#fef3c7;color:#d97706">Part4</div><div class="title">标准库与实战</div></div>
         <div class="desc">turtle、random、pandas、matplotlib</div>
         <div class="meta"><span>3个章节</span><span id="prog-lib">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-lib" style="width:0%;background:#f59e0b"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch13')" style="border-top:4px solid #ef4444">
-        <div class="header"><div class="icon-box" style="background:#fee2e2;color:#dc2626">&#127891;</div><div class="title">公共基础知识</div></div>
+        <div class="header"><div class="icon-box" style="background:#fee2e2;color:#dc2626">Part5</div><div class="title">公共基础知识</div></div>
         <div class="desc">数据结构、算法、软件工程、数据库</div>
         <div class="meta"><span>1个章节</span><span id="prog-pub">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-pub" style="width:0%;background:#ef4444"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('quiz')" style="border-top:4px solid #06b6d4">
-        <div class="header"><div class="icon-box" style="background:#cffafe;color:#0891b2">&#9997;</div><div class="title">模拟测验中心</div></div>
+        <div class="header"><div class="icon-box" style="background:#cffafe;color:#0891b2">Part6</div><div class="title">模拟测验中心</div></div>
         <div class="desc">综合模拟题，检验学习成果</div>
         <div class="meta"><span>多套试卷</span><span id="prog-quiz">未开始</span></div>
         <div class="bar"><div class="bar-fill" id="bar-quiz" style="width:0%;background:#06b6d4"></div></div>
@@ -4808,9 +4835,25 @@ print(f"输出形状: {output.shape}")</code></pre>
   <div class="page" id="page-progress">
     <div class="chapter-hero">
       <h2>&#128200; 学习进度</h2>
-      <p>查看各章节完成情况和测验成绩</p>
+      <p>查看各章节完成情况、复习提醒和错题本</p>
     </div>
     <div class="progress-grid" id="progressGrid"></div>
+    <div id="wrongBookArea" style="margin-top:20px"></div>
+  </div>
+
+  <!-- 错题重练弹窗 -->
+  <div class="wbq-modal" id="wrongBookQuizModal">
+    <div class="wbq-box">
+      <div class="wbq-header">
+        <h3>📕 错题重练</h3>
+        <button class="btn btn-outline" onclick="closeWrongBookQuiz()">关闭</button>
+      </div>
+      <div id="wrongBookQuizContent"></div>
+      <div class="btn-group" style="margin-top:16px">
+        <button class="btn btn-primary" onclick="submitWrongBookAnswer()">提交答案</button>
+        <button class="btn btn-outline" onclick="nextWrongBookQuizQuestion()">下一题</button>
+      </div>
+    </div>
   </div>
 
   <!-- ===================== KB1: Python 语法速查 ===================== -->
@@ -6437,6 +6480,23 @@ int('d', 16)     # 13  十六进制转十进制</code></pre>
       <p>真题题库 + 知识点分类 + 高频模板 + 避坑指南</p>
     </div>
 
+    <div class="section-card">
+      <h3>&#9654; Python 在线练习台</h3>
+      <div class="learn-box">在下面直接写 Python 代码并运行，结果会显示在下方。首次运行需要联网加载 Python 运行环境（约十几秒），之后浏览器会缓存，可离线使用。</div>
+      <div class="playground-box" style="margin-top:12px">
+        <textarea class="playground-editor" id="playgroundEditor" spellcheck="false">print("Hello, Python!")
+
+for i in range(5):
+    print(i, i ** 2)</textarea>
+        <div style="margin-top:10px;display:flex;align-items:center;flex-wrap:wrap">
+          <button class="run-btn" id="playgroundRunBtn" onclick="runPlayground()">&#9654; 运行代码</button>
+          <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:12px" onclick="document.getElementById('playgroundEditor').value=''">清空代码</button>
+          <span class="run-status" id="playgroundStatus"></span>
+        </div>
+        <div class="run-output" id="playgroundOutput"></div>
+      </div>
+    </div>
+
     <div class="kb-section">
       <details open>
         <summary>&#128200; 考试题型与分值分布</summary>
@@ -7394,6 +7454,10 @@ conn.close()</code></pre>
   </div>
 
   </div> <!-- end content -->
+  <footer style="text-align:center;padding:24px 16px;color:var(--text-light);font-size:13px;border-top:1px solid var(--border);margin-top:20px">
+    <p>Python 二级交互式教学 · 作者 <a href="https://github.com/lingxiao-x" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">lingxiao-x</a></p>
+    <p style="margin-top:4px">本项目基于 <a href="https://github.com/lingxiao-x/Python/blob/main/LICENSE" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">MIT 许可证</a> 开源，欢迎自由使用与修改</p>
+  </footer>
 </main>
 </div> <!-- end app -->
 
@@ -7723,7 +7787,9 @@ const state = {
   currentPage: 'dashboard',
   scores: {},
   completed: {},
-  mockScores: {}
+  mockScores: {},
+  wrongBook: {},      // { "ch1-2": {chapter:'ch1', qIdx:2, q:'...', opts:[...], ans:1, explanation:'...', wrongCount:1, lastWrongAt: 1234567890} }
+  lastStudied: {}      // { ch1: timestamp } 每章最近一次提交测验的时间
 };
 
 function loadState() {
@@ -7734,6 +7800,8 @@ function loadState() {
       Object.assign(state.scores, data.scores || {});
       Object.assign(state.completed, data.completed || {});
       Object.assign(state.mockScores, data.mockScores || {});
+      Object.assign(state.wrongBook, data.wrongBook || {});
+      Object.assign(state.lastStudied, data.lastStudied || {});
     }
   } catch(e) {}
 }
@@ -7742,7 +7810,9 @@ function saveState() {
   localStorage.setItem('pythonLearnState', JSON.stringify({
     scores: state.scores,
     completed: state.completed,
-    mockScores: state.mockScores
+    mockScores: state.mockScores,
+    wrongBook: state.wrongBook,
+    lastStudied: state.lastStudied
   }));
 }
 
@@ -7882,9 +7952,35 @@ function submitQuiz(chapter) {
     expDiv.innerHTML = '💡 ' + escapeHtml(q.explanation || '无解析');
     qEl.appendChild(expDiv);
 
+    if (!isCorrect) {
+      const relatedLink = document.createElement('div');
+      relatedLink.className = 'related-link';
+      relatedLink.innerHTML = '🔗 <a href="javascript:void(0)" onclick="jumpToRelatedKnowledge(\'' + escapeHtml(q.q).replace(/'/g, "\\'") + '\')">查看相关知识点</a>';
+      qEl.appendChild(relatedLink);
+    }
+
     if (resultEl) {
       resultEl.innerHTML = isCorrect ? '✓ 回答正确！<div class="explanation">💡 ' + escapeHtml(q.explanation || '无解析') + '</div>' : '✗ 正确答案是：' + String.fromCharCode(65+q.ans) + '<div class="explanation">💡 ' + escapeHtml(q.explanation || '无解析') + '</div>';
       resultEl.className = 'quiz-result ' + (isCorrect ? 'ok' : 'err') + ' show';
+    }
+
+    // 错题本记录
+    const wrongKey = chapter + '-' + i;
+    if (!isCorrect) {
+      const prev = state.wrongBook[wrongKey];
+      state.wrongBook[wrongKey] = {
+        chapter: chapter,
+        qIdx: i,
+        q: q.q,
+        opts: q.opts,
+        ans: q.ans,
+        explanation: q.explanation || '',
+        wrongCount: prev ? prev.wrongCount + 1 : 1,
+        lastWrongAt: Date.now()
+      };
+    } else if (state.wrongBook[wrongKey]) {
+      // 这次做对了，从错题本移除
+      delete state.wrongBook[wrongKey];
     }
   });
 
@@ -7895,6 +7991,7 @@ function submitQuiz(chapter) {
 
   state.scores[chapter] = score;
   state.completed[chapter] = true;
+  state.lastStudied[chapter] = Date.now();
   saveState();
   document.getElementById('score-' + chapter).textContent = score;
   updateStats();
@@ -8282,6 +8379,22 @@ function updateProgressUI() {
   }
 }
 
+function daysAgo(ts) {
+  if (!ts) return null;
+  const diff = Date.now() - ts;
+  return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
+
+function reviewBadge(chapterId) {
+  const ts = state.lastStudied[chapterId];
+  if (!ts) return '';
+  const days = daysAgo(ts);
+  if (days === 0) return '<span class="review-tag ok">今天复习过</span>';
+  if (days <= 2) return '<span class="review-tag ok">' + days + '天前复习</span>';
+  if (days <= 6) return '<span class="review-tag warn">' + days + '天前复习，建议巩固</span>';
+  return '<span class="review-tag due">' + days + '天未复习，该复习了</span>';
+}
+
 function renderProgress() {
   const chapters = [
     {id:'ch1',name:'Python简介与环境',group:'基础入门'},
@@ -8309,6 +8422,7 @@ function renderProgress() {
     html += '<div class="top"><h4>' + ch.name + '</h4><span class="pct" style="color:' + color + '">' + (done ? score + '分' : '未开始') + '</span></div>';
     html += '<div style="font-size:12px;color:var(--text-light);margin-bottom:8px">' + ch.group + '</div>';
     html += '<div class="bar"><div class="bar-fill" style="width:' + pct + '%;background:' + color + '"></div></div>';
+    if (done) html += '<div style="margin-top:10px">' + reviewBadge(ch.id) + '</div>';
     html += '</div>';
   });
 
@@ -8322,6 +8436,147 @@ function renderProgress() {
   }
 
   document.getElementById('progressGrid').innerHTML = html;
+  renderWrongBook();
+}
+
+// ===================== 错题本 =====================
+function renderWrongBook() {
+  const container = document.getElementById('wrongBookArea');
+  if (!container) return;
+  const entries = Object.entries(state.wrongBook);
+
+  if (entries.length === 0) {
+    container.innerHTML = '<div class="section-card"><h3>📕 错题本</h3><div class="learn-box">暂无错题，继续保持！所有做错的题目会自动收录在这里，方便你专项复习。</div></div>';
+    return;
+  }
+
+  // 按最近错的时间倒序
+  entries.sort((a, b) => b[1].lastWrongAt - a[1].lastWrongAt);
+
+  let html = '<div class="section-card"><h3>📕 错题本（' + entries.length + ' 题）</h3>';
+  html += '<div class="learn-box">这些是你做错过的题目，答对一次会自动从错题本移除。建议优先复习「错误次数」多的题目。</div>';
+  html += '<div class="btn-group" style="margin:12px 0"><button class="btn btn-primary" onclick="startWrongBookQuiz()">开始错题重练</button><button class="btn btn-outline" onclick="clearWrongBook()">清空错题本</button></div>';
+  html += '<div id="wrongBookList">';
+
+  entries.forEach(([key, item]) => {
+    const chName = chapterNameMap[item.chapter] || item.chapter;
+    html += '<div class="question" data-wrongkey="' + key + '">';
+    html += '<div class="question-text"><span class="qnum" style="background:var(--danger)">✗</span>' + escapeHtml(item.q) + '</div>';
+    html += '<div style="font-size:12px;color:var(--text-light);margin-bottom:8px">来自：' + chName + ' · 错误 ' + item.wrongCount + ' 次</div>';
+    html += '<div class="options">';
+    item.opts.forEach((opt, j) => {
+      const cls = j === item.ans ? 'option correct' : 'option';
+      html += '<div class="' + cls + '" style="pointer-events:none">';
+      html += '<span class="opt-label">' + String.fromCharCode(65+j) + '</span>';
+      html += '<span>' + escapeHtml(opt) + '</span></div>';
+    });
+    html += '</div>';
+    html += '<div class="explanation">💡 ' + escapeHtml(item.explanation || '无解析') + '</div>';
+    html += '</div>';
+  });
+
+  html += '</div></div>';
+  container.innerHTML = html;
+}
+
+function clearWrongBook() {
+  if (!confirm('确定要清空整个错题本吗？此操作不可撤销。')) return;
+  state.wrongBook = {};
+  saveState();
+  renderWrongBook();
+}
+
+const chapterNameMap = {
+  ch1:'第1章 Python简介与环境', ch2:'第2章 变量与数据类型', ch3:'第3章 运算符与表达式',
+  ch4:'第4章 分支结构', ch5:'第5章 循环结构', ch6:'第6章 函数与模块',
+  ch7:'第7章 列表与元组', ch8:'第8章 字典与集合', ch9:'第9章 文件操作',
+  ch10:'第10章 turtle/random/time', ch11:'第11章 jieba/wordcloud/os', ch12:'第12章 pandas/matplotlib',
+  ch13:'第13章 公共基础知识'
+};
+
+// ===================== 错题重练模式 =====================
+let wrongBookQuizKeys = [];
+let wrongBookQuizIdx = 0;
+
+function startWrongBookQuiz() {
+  wrongBookQuizKeys = Object.keys(state.wrongBook);
+  if (wrongBookQuizKeys.length === 0) { alert('错题本是空的，没有题目可以重练。'); return; }
+  wrongBookQuizIdx = 0;
+  renderWrongBookQuizQuestion();
+  document.getElementById('wrongBookQuizModal').classList.add('show');
+}
+
+function renderWrongBookQuizQuestion() {
+  const key = wrongBookQuizKeys[wrongBookQuizIdx];
+  const item = state.wrongBook[key];
+  const box = document.getElementById('wrongBookQuizContent');
+  if (!item) { nextWrongBookQuizQuestion(); return; }
+
+  let html = '<div style="font-size:12px;color:var(--text-light);margin-bottom:8px">第 ' + (wrongBookQuizIdx+1) + ' / ' + wrongBookQuizKeys.length + ' 题 · ' + (chapterNameMap[item.chapter] || item.chapter) + '</div>';
+  html += '<div class="question-text" style="margin-bottom:14px">' + escapeHtml(item.q) + '</div>';
+  html += '<div class="options" id="wbq-options">';
+  item.opts.forEach((opt, j) => {
+    html += '<div class="option" data-opt="' + j + '" onclick="selectWrongBookOption(this,' + j + ')">';
+    html += '<span class="opt-label">' + String.fromCharCode(65+j) + '</span><span>' + escapeHtml(opt) + '</span></div>';
+  });
+  html += '</div>';
+  html += '<div class="quiz-result" id="wbq-result"></div>';
+  box.innerHTML = html;
+  box.dataset.key = key;
+}
+
+function selectWrongBookOption(el, optIdx) {
+  const box = document.getElementById('wrongBookQuizContent');
+  if (box.dataset.answered) return;
+  box.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  box.dataset.selected = optIdx;
+}
+
+function submitWrongBookAnswer() {
+  const box = document.getElementById('wrongBookQuizContent');
+  const key = box.dataset.key;
+  const item = state.wrongBook[key];
+  const selected = box.dataset.selected;
+  const resultEl = document.getElementById('wbq-result');
+  if (selected === undefined) { alert('请先选择一个答案'); return; }
+  if (box.dataset.answered) return;
+  box.dataset.answered = '1';
+
+  const sel = parseInt(selected);
+  const isCorrect = sel === item.ans;
+  box.querySelectorAll('.option').forEach((o, j) => {
+    o.style.pointerEvents = 'none';
+    if (j === item.ans) o.classList.add('correct');
+    else if (j === sel && !isCorrect) o.classList.add('wrong');
+  });
+  resultEl.innerHTML = (isCorrect ? '✓ 回答正确！本题将从错题本移除。' : '✗ 还是不对，正确答案是 ' + String.fromCharCode(65+item.ans)) + '<div class="explanation">💡 ' + escapeHtml(item.explanation || '无解析') + '</div>';
+  resultEl.className = 'quiz-result ' + (isCorrect ? 'ok' : 'err') + ' show';
+
+  if (isCorrect) {
+    delete state.wrongBook[key];
+  } else {
+    item.wrongCount += 1;
+    item.lastWrongAt = Date.now();
+  }
+  saveState();
+}
+
+function nextWrongBookQuizQuestion() {
+  if (wrongBookQuizIdx >= wrongBookQuizKeys.length - 1) {
+    closeWrongBookQuiz();
+    renderWrongBook();
+    alert('错题重练完成！');
+    return;
+  }
+  wrongBookQuizIdx++;
+  renderWrongBookQuizQuestion();
+}
+
+function closeWrongBookQuiz() {
+  document.getElementById('wrongBookQuizModal').classList.remove('show');
+  renderWrongBook();
+  updateStats();
 }
 
 // ===================== KNOWLEDGE BASE & SEARCH =====================
@@ -8573,7 +8828,8 @@ const knowledgeBase = [
     content:'<code>torchvision.transforms.Compose</code>组合多个变换。<code>RandomHorizontalFlip</code>水平翻转、<code>ColorJitter</code>颜色抖动、<code>RandomResizedCrop</code>随机裁剪。',
     example:'<span class="kw">from</span> torchvision <span class="kw">import</span> transforms\ntransform = transforms.<span class="fn">Compose</span>([\n    transforms.<span class="fn">Resize</span>(256),\n    transforms.<span class="fn">RandomCrop</span>(224),\n    transforms.<span class="fn">RandomHorizontalFlip</span>(),\n    transforms.<span class="fn">ToTensor</span>(),\n    transforms.<span class="fn">Normalize</span>([0.485,0.456,0.406], [0.229,0.224,0.225])\n])'},
   {chapter:'pt7',group:'深度学习',title:'锚框、IoU与目标检测',keywords:'锚框 anchor IoU NMS 非极大值抑制 目标检测 bounding box',tags:['PyTorch','CV'],
-    content:'<strong>锚框</strong>是预设的多尺度候选框。<strong>IoU</strong>（交并比）衡量两个框的重叠程度。<strong>NMS</strong>（非极大值抑制）去除重叠的冗余检测框。'},
+    content:'<strong>锚框</strong>是预设的多尺度候选框。<strong>IoU</strong>（交并比）衡量两个框的重叠程度。<strong>NMS</strong>（非极大值抑制）去除重叠的冗余检测框。',
+    example:'<span class="comment"># IoU计算示例（伪代码）</span>\n<span class="kw">def</span> <span class="fn">iou</span>(boxA, boxB):\n    <span class="comment"># 计算两个矩形框的交集面积 / 并集面积</span>\n    <span class="kw">return</span> intersection_area / union_area'},
 
   // ---- pt8 NLP ----
   {chapter:'pt8',group:'深度学习',title:'TextCNN文本分类',keywords:'TextCNN 文本分类 Conv1d GlobalMaxPool 一维卷积 NLP',tags:['PyTorch','NLP'],
@@ -8610,11 +8866,11 @@ function performSearch() {
     let matched = false;
 
     keywords.forEach(kw => {
-      if (item.title.toLowerCase().includes(kw)) score += 10;
-      if (item.keywords.toLowerCase().includes(kw)) score += 5;
-      if (item.tags.some(t => t.toLowerCase().includes(kw))) score += 3;
-      if (item.content.toLowerCase().includes(kw)) score += 2;
-      if (item.example.toLowerCase().includes(kw)) score += 1;
+      if ((item.title||'').toLowerCase().includes(kw)) score += 10;
+      if ((item.keywords||'').toLowerCase().includes(kw)) score += 5;
+      if ((item.tags||[]).some(t => t.toLowerCase().includes(kw))) score += 3;
+      if ((item.content||'').toLowerCase().includes(kw)) score += 2;
+      if ((item.example||'').toLowerCase().includes(kw)) score += 1;
       if (score > 0) matched = true;
     });
 
@@ -8656,10 +8912,148 @@ function performSearch() {
   showPage('search');
 }
 
-// ===================== SCROLL TOP =====================
+// ===================== 错题知识点关联跳转 =====================
+function jumpToRelatedKnowledge(questionText) {
+  // 用题干中的常见Python关键词做匹配，找出最相关的知识点标题作为搜索词
+  const commonTerms = ['print','input','range','for','while','if','elif','else','def','lambda',
+    'class','try','except','import','list','dict','set','tuple','append','pop','insert','remove',
+    'sort','sorted','split','join','strip','replace','find','format','type','int','float','str','bool',
+    'len','sum','max','min','abs','round','open','read','write','close','turtle','random','time',
+    'pandas','matplotlib','jieba','os','global','nonlocal','return','break','continue','and','or','not',
+    'is','in','切片','列表','字典','集合','元组','字符串','循环','函数','分支','异常','文件','变量','运算符'];
+
+  const found = commonTerms.filter(t => questionText.toLowerCase().includes(t.toLowerCase()));
+  const query = found.length > 0 ? found.slice(0, 3).join(' ') : questionText.slice(0, 6);
+
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.value = query;
+  performSearch();
+}
 window.addEventListener('scroll', () => {
   document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
 });
+
+// ===================== PYODIDE 代码运行器 =====================
+let pyodideInstance = null;
+let pyodideLoading = null;
+
+function loadPyodideRuntime() {
+  if (pyodideInstance) return Promise.resolve(pyodideInstance);
+  if (pyodideLoading) return pyodideLoading;
+
+  pyodideLoading = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js';
+    script.onload = async () => {
+      try {
+        pyodideInstance = await loadPyodide();
+        resolve(pyodideInstance);
+      } catch (e) {
+        reject(e);
+      }
+    };
+    script.onerror = () => reject(new Error('无法加载 Python 运行环境，请检查网络连接'));
+    document.head.appendChild(script);
+  });
+  return pyodideLoading;
+}
+
+async function runPythonCode(code, outputEl, statusEl, btnEl) {
+  outputEl.classList.remove('error');
+  outputEl.classList.add('show');
+  outputEl.textContent = '';
+  if (btnEl) { btnEl.disabled = true; btnEl.textContent = '⏳ 运行中...'; }
+  if (statusEl) statusEl.textContent = pyodideInstance ? '' : '首次运行需加载Python环境，请稍候...';
+
+  try {
+    const pyodide = await loadPyodideRuntime();
+    if (statusEl) statusEl.textContent = '';
+
+    // 捕获print输出
+    pyodide.setStdout({ batched: (s) => { outputEl.textContent += s + '\n'; } });
+    pyodide.setStderr({ batched: (s) => { outputEl.textContent += s + '\n'; } });
+
+    await pyodide.runPythonAsync(code);
+
+    if (!outputEl.textContent) outputEl.textContent = '（程序已运行，无输出）';
+  } catch (err) {
+    outputEl.classList.add('error');
+    outputEl.textContent = '运行出错：\n' + err.message;
+  } finally {
+    if (btnEl) { btnEl.disabled = false; btnEl.textContent = '▶ 运行'; }
+  }
+}
+
+function runPlayground() {
+  const code = document.getElementById('playgroundEditor').value;
+  const output = document.getElementById('playgroundOutput');
+  const status = document.getElementById('playgroundStatus');
+  const btn = document.getElementById('playgroundRunBtn');
+  if (!code.trim()) { alert('请先输入代码'); return; }
+  runPythonCode(code, output, status, btn);
+}
+
+// 判断代码块是否是"可独立运行的Python代码"（排除命令行、纯注释、纯提示文字等）
+function isRunnableCode(rawText) {
+  const lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  if (lines.length === 0) return false;
+
+  const codeLines = lines.filter(l => !l.startsWith('#'));
+  if (codeLines.length === 0) return false; // 纯注释，不可运行
+
+  // 排除明显的命令行/安装指令（不是Python语法）
+  const shellPatterns = /^(python|pip|python3|cd|conda|\$|>)\s/;
+  const shellLineCount = codeLines.filter(l => shellPatterns.test(l)).length;
+  if (shellLineCount / codeLines.length > 0.5) return false;
+
+  // 排除含有 input() 的代码（浏览器环境下Pyodide的input处理复杂，暂不支持交互输入）
+  if (/\binput\s*\(/.test(rawText)) return false;
+
+  return true;
+}
+
+function extractCodeText(codeEl) {
+  // pre>code 内部用了 span 高亮标签，取纯文本内容（去掉HTML转义后的文本）
+  return codeEl.textContent;
+}
+
+function injectRunButtons() {
+  document.querySelectorAll('.example-block').forEach((block, idx) => {
+    if (block.dataset.runInjected) return; // 防止重复注入
+    const codeEl = block.querySelector('pre code');
+    if (!codeEl) return;
+
+    const rawText = extractCodeText(codeEl);
+    if (!isRunnableCode(rawText)) return;
+
+    block.dataset.runInjected = '1';
+    const btnId = 'runbtn-' + idx + '-' + Math.random().toString(36).slice(2,7);
+    const outId = 'runout-' + idx + '-' + Math.random().toString(36).slice(2,7);
+    const statusId = 'runstatus-' + idx + '-' + Math.random().toString(36).slice(2,7);
+
+    const wrap = document.createElement('div');
+    wrap.innerHTML = '<button class="run-btn" id="' + btnId + '">&#9654; 运行</button><span class="run-status" id="' + statusId + '"></span><div class="run-output" id="' + outId + '"></div>';
+    block.appendChild(wrap);
+
+    document.getElementById(btnId).addEventListener('click', () => {
+      const code = rawText;
+      const outputEl = document.getElementById(outId);
+      const statusEl = document.getElementById(statusId);
+      const btnEl = document.getElementById(btnId);
+      runPythonCode(code, outputEl, statusEl, btnEl);
+    });
+  });
+}
+
+// 每次切换页面后，为新显示页面里的代码块注入运行按钮
+const _originalShowPageForRunBtn = showPage;
+showPage = function(page) {
+  _originalShowPageForRunBtn(page);
+  setTimeout(injectRunButtons, 50);
+};
+
+// 首次加载时也扫描一次
+setTimeout(injectRunButtons, 300);
 
 // ===================== INIT =====================
 loadState();
