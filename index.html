@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python交互式学习平台</title>
+<title>Python 交互式教学 · 分等级学习平台</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -373,8 +373,8 @@
 <!-- Sidebar -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <h1>Python学习平台</h1>
-    <p>交互式 · 章节化 · 可测验</p>
+    <h1>Python 教学</h1>
+    <p>分等级 · 交互式 · 边学边练</p>
     <svg class="progress-ring" viewBox="0 0 60 60">
       <circle class="bg" cx="30" cy="30" r="26"/>
       <circle class="fg" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36" id="ringProgress"/>
@@ -389,49 +389,49 @@
   </div>
 
   <div class="nav-section">
-    <div class="nav-title">基础入门</div>
+    <div class="nav-title">Lv.1 基础入门</div>
     <a class="nav-item" onclick="showPage('ch1')" data-page="ch1"><span class="icon">1</span>Python简介与环境 <span class="badge" id="b-ch1">0%</span></a>
     <a class="nav-item" onclick="showPage('ch2')" data-page="ch2"><span class="icon">2</span>变量与数据类型 <span class="badge" id="b-ch2">0%</span></a>
     <a class="nav-item" onclick="showPage('ch3')" data-page="ch3"><span class="icon">3</span>运算符与表达式 <span class="badge" id="b-ch3">0%</span></a>
   </div>
 
   <div class="nav-section">
-    <div class="nav-title">程序结构</div>
+    <div class="nav-title">Lv.2 程序结构</div>
     <a class="nav-item" onclick="showPage('ch4')" data-page="ch4"><span class="icon">4</span>分支结构 <span class="badge" id="b-ch4">0%</span></a>
     <a class="nav-item" onclick="showPage('ch5')" data-page="ch5"><span class="icon">5</span>循环结构 <span class="badge" id="b-ch5">0%</span></a>
     <a class="nav-item" onclick="showPage('ch6')" data-page="ch6"><span class="icon">6</span>函数与模块 <span class="badge" id="b-ch6">0%</span></a>
   </div>
 
   <div class="nav-section">
-    <div class="nav-title">核心数据</div>
+    <div class="nav-title">Lv.3 核心数据</div>
     <a class="nav-item" onclick="showPage('ch7')" data-page="ch7"><span class="icon">7</span>列表与元组 <span class="badge" id="b-ch7">0%</span></a>
     <a class="nav-item" onclick="showPage('ch8')" data-page="ch8"><span class="icon">8</span>字典与集合 <span class="badge" id="b-ch8">0%</span></a>
     <a class="nav-item" onclick="showPage('ch9')" data-page="ch9"><span class="icon">9</span>文件操作 <span class="badge" id="b-ch9">0%</span></a>
   </div>
 
   <div class="nav-section">
-    <div class="nav-title">标准库与实战</div>
+    <div class="nav-title">Lv.4 标准库与实战</div>
     <a class="nav-item" onclick="showPage('ch10')" data-page="ch10"><span class="icon">10</span>turtle / random / time <span class="badge" id="b-ch10">0%</span></a>
     <a class="nav-item" onclick="showPage('ch11')" data-page="ch11"><span class="icon">11</span>jieba / wordcloud / os <span class="badge" id="b-ch11">0%</span></a>
     <a class="nav-item" onclick="showPage('ch12')" data-page="ch12"><span class="icon">12</span>pandas / matplotlib <span class="badge new" id="b-ch12">NEW</span></a>
   </div>
 
   <div class="nav-section">
-    <div class="nav-title">考试与测验</div>
-    <a class="nav-item" onclick="showPage('ch13')" data-page="ch13"><span class="icon">Part3</span>公共基础知识 <span class="badge" id="b-ch13">0%</span></a>
-    <a class="nav-item" onclick="showPage('quiz')" data-page="quiz"><span class="icon">Part4</span>模拟测验中心 <span class="badge" id="b-quiz">0%</span></a>
-    <a class="nav-item" onclick="showPage('progress')" data-page="progress"><span class="icon">Part5</span>学习进度 <span class="badge" id="b-progress"></span></a>
+    <div class="nav-title">Lv.5 拓展与测验</div>
+    <a class="nav-item" onclick="showPage('ch13')" data-page="ch13"><span class="icon">13</span>公共基础知识 <span class="badge" id="b-ch13">0%</span></a>
+    <a class="nav-item" onclick="showPage('quiz')" data-page="quiz"><span class="icon">📝</span>模拟测验中心 <span class="badge" id="b-quiz">0%</span></a>
+    <a class="nav-item" onclick="showPage('progress')" data-page="progress"><span class="icon">📊</span>学习进度 <span class="badge" id="b-progress"></span></a>
   </div>
 <div class="nav-section">
-  <div class="nav-title">&#129302; 深度学习拓展</div>
-  <a class="nav-item" onclick="showPage('pt1')" data-page="pt1"><span class="icon">Part6</span>Tensor与autograd</a>
-  <a class="nav-item" onclick="showPage('pt2')" data-page="pt2"><span class="icon">Part7</span>线性神经网络</a>
-  <a class="nav-item" onclick="showPage('pt3')" data-page="pt3"><span class="icon">Part8</span>深度学习计算</a>
-  <a class="nav-item" onclick="showPage('pt4')" data-page="pt4"><span class="icon">Part9</span>卷积神经网络CNN</a>
-  <a class="nav-item" onclick="showPage('pt5')" data-page="pt5"><span class="icon">Part10</span>循环神经网络RNN</a>
-  <a class="nav-item" onclick="showPage('pt6')" data-page="pt6"><span class="icon">Part11</span>优化算法</a>
-  <a class="nav-item" onclick="showPage('pt7')" data-page="pt7"><span class="icon">Part12</span>计算机视觉实战</a>
-  <a class="nav-item" onclick="showPage('pt8')" data-page="pt8"><span class="icon">Part13</span>自然语言处理NLP</a>
+  <div class="nav-title">Lv.6 深度学习拓展</div>
+  <a class="nav-item" onclick="showPage('pt1')" data-page="pt1"><span class="icon">L6-1</span>Tensor与autograd</a>
+  <a class="nav-item" onclick="showPage('pt2')" data-page="pt2"><span class="icon">L6-2</span>线性神经网络</a>
+  <a class="nav-item" onclick="showPage('pt3')" data-page="pt3"><span class="icon">L6-3</span>深度学习计算</a>
+  <a class="nav-item" onclick="showPage('pt4')" data-page="pt4"><span class="icon">L6-4</span>卷积神经网络CNN</a>
+  <a class="nav-item" onclick="showPage('pt5')" data-page="pt5"><span class="icon">L6-5</span>循环神经网络RNN</a>
+  <a class="nav-item" onclick="showPage('pt6')" data-page="pt6"><span class="icon">L6-6</span>优化算法</a>
+  <a class="nav-item" onclick="showPage('pt7')" data-page="pt7"><span class="icon">L6-7</span>计算机视觉实战</a>
+  <a class="nav-item" onclick="showPage('pt8')" data-page="pt8"><span class="icon">L6-8</span>自然语言处理NLP</a>
   </div>
 <div class="nav-section">
   <div class="nav-title">&#128218; 知识百科</div>
@@ -469,51 +469,52 @@
   <!-- ===================== DASHBOARD ===================== -->
   <div class="page active" id="page-dashboard">
     <div class="chapter-hero">
-      <h2>&#128640; 欢迎来到 Python 交互式学习平台</h2>
-      <p>从零基础到通过计算机二级，12个章节 + 模拟测验，边学边练</p>
+      <h2>&#128640; 欢迎来到 Python 交互式教学平台</h2>
+      <p>从零基础到深度学习实战，6 个等级（Lv.1～Lv.6）递进式学习，边学边练</p>
       <div class="tags">
-        <span class="tag">&#128214; 12个学习章节</span>
+        <span class="tag">&#128214; 13+ 学习章节</span>
         <span class="tag">&#9997; 章节测验</span>
         <span class="tag">&#127919; 模拟考试</span>
         <span class="tag">&#128200; 进度追踪</span>
+        <span class="tag">&#127919; 6 大等级</span>
       </div>
     </div>
 
     <h3 style="font-size:18px;color:var(--primary);margin-bottom:16px">&#128161; 选择学习板块</h3>
     <div class="dashboard-grid">
       <div class="dash-card" onclick="showPage('ch1')" style="border-top:4px solid #3b82f6">
-        <div class="header"><div class="icon-box" style="background:#dbeafe;color:#2563eb">Part1</div><div class="title">Python基础入门</div></div>
+        <div class="header"><div class="icon-box" style="background:#dbeafe;color:#2563eb">Lv.1</div><div class="title">Python基础入门</div></div>
         <div class="desc">环境搭建、变量、数据类型、运算符</div>
         <div class="meta"><span>3个章节</span><span id="prog-base">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-base" style="width:0%;background:#3b82f6"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch4')" style="border-top:4px solid #8b5cf6">
-        <div class="header"><div class="icon-box" style="background:#ede9fe;color:#7c3aed">Part2</div><div class="title">程序控制结构</div></div>
+        <div class="header"><div class="icon-box" style="background:#ede9fe;color:#7c3aed">Lv.2</div><div class="title">程序控制结构</div></div>
         <div class="desc">分支、循环、函数、模块</div>
         <div class="meta"><span>3个章节</span><span id="prog-ctrl">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-ctrl" style="width:0%;background:#8b5cf6"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch7')" style="border-top:4px solid #10b981">
-        <div class="header"><div class="icon-box" style="background:#d1fae5;color:#059669">Part3</div><div class="title">组合数据类型</div></div>
+        <div class="header"><div class="icon-box" style="background:#d1fae5;color:#059669">Lv.3</div><div class="title">组合数据类型</div></div>
         <div class="desc">列表、元组、字典、集合、文件</div>
         <div class="meta"><span>3个章节</span><span id="prog-data">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-data" style="width:0%;background:#10b981"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch10')" style="border-top:4px solid #f59e0b">
-        <div class="header"><div class="icon-box" style="background:#fef3c7;color:#d97706">Part4</div><div class="title">标准库与实战</div></div>
+        <div class="header"><div class="icon-box" style="background:#fef3c7;color:#d97706">Lv.4</div><div class="title">标准库与实战</div></div>
         <div class="desc">turtle、random、pandas、matplotlib</div>
         <div class="meta"><span>3个章节</span><span id="prog-lib">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-lib" style="width:0%;background:#f59e0b"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('ch13')" style="border-top:4px solid #ef4444">
-        <div class="header"><div class="icon-box" style="background:#fee2e2;color:#dc2626">Part5</div><div class="title">公共基础知识</div></div>
+        <div class="header"><div class="icon-box" style="background:#fee2e2;color:#dc2626">Lv.5</div><div class="title">拓展与公共基础</div></div>
         <div class="desc">数据结构、算法、软件工程、数据库</div>
         <div class="meta"><span>1个章节</span><span id="prog-pub">0%</span></div>
         <div class="bar"><div class="bar-fill" id="bar-pub" style="width:0%;background:#ef4444"></div></div>
       </div>
       <div class="dash-card" onclick="showPage('quiz')" style="border-top:4px solid #06b6d4">
-        <div class="header"><div class="icon-box" style="background:#cffafe;color:#0891b2">Part6</div><div class="title">模拟测验中心</div></div>
-        <div class="desc">综合模拟题，检验学习成果</div>
+        <div class="header"><div class="icon-box" style="background:#cffafe;color:#0891b2">Lv.6</div><div class="title">测验与深度学习</div></div>
+        <div class="desc">综合模拟题 + 深度学习实战，检验并提升</div>
         <div class="meta"><span>多套试卷</span><span id="prog-quiz">未开始</span></div>
         <div class="bar"><div class="bar-fill" id="bar-quiz" style="width:0%;background:#06b6d4"></div></div>
       </div>
@@ -522,9 +523,10 @@
     <div class="section-card">
       <h3>&#128161; 学习建议</h3>
       <div class="learn-box">
-        <strong>新手路线：</strong>按顺序从第1章开始学，每章看完知识点后做章节测验，全部学完后再做模拟考试。<br>
-        <strong>考试冲刺：</strong>直接跳到「公共基础知识」和「模拟测验中心」，配合薄弱章节针对性复习。<br>
-        <strong>双及格线提醒：</strong>总分&ge;60且选择题&ge;20分才算通过，不要偏科！
+        <strong>新手路线：</strong>按等级从 Lv.1 开始，依次学完每个章节的知识点后做章节测验，逐级推进到 Lv.6。<br>
+        <strong>进阶提升：</strong>完成 Lv.1～Lv.4 后，进入「模拟测验中心」做综合模拟，再用知识百科查漏补缺。<br>
+        <strong>深度学习方向：</strong>掌握 Python 基础后，可进入 Lv.6 深度学习拓展，从 Tensor 到 CNN/RNN 实战。<br>
+        <strong>等级通关提醒：</strong>每章测验得分 &ge;60 即视为该章通关，建议逐章通关再进入下一等级。
       </div>
     </div>
   </div>
@@ -536,6 +538,17 @@
       <h2>&#128187; 第1章 Python基础入门</h2>
       <p>了解Python特点，掌握环境搭建与基本输出</p>
       <div class="tags"><span class="tag">&#9201; 预计20分钟</span><span class="tag">&#11088; 考试重点</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>了解 Python 的特点、优缺点与应用场景</li>
+        <li>掌握 Python 环境搭建与 IDLE 集成开发环境的使用</li>
+        <li>熟练使用 <code>print()</code> 和 <code>input()</code> 进行基本输入输出</li>
+        <li>理解注释规范与 PEP 8 编码风格</li>
+        <li>了解 Python 程序从编写到运行的完整执行流程</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -711,6 +724,17 @@ print("Done")</code></pre>
       <h2>&#128221; 第2章 变量与数据类型</h2>
       <p>掌握变量的定义规则，理解Python核心数据类型</p>
       <div class="tags"><span class="tag">&#9201; 预计25分钟</span><span class="tag">&#11088; 考试重点</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握变量的命名规则与赋值方式</li>
+        <li>理解 Python 中数字、字符串、布尔等基本数据类型</li>
+        <li>熟练使用类型转换函数 <code>int()</code>、<code>float()</code>、<code>str()</code></li>
+        <li>掌握字符串的索引、切片与常用方法</li>
+        <li>了解 Python 中 None 与 type()、isinstance() 的用法</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -927,6 +951,17 @@ print(s[::-1])</code></pre>
       <div class="tags"><span class="tag">&#9201; 预计20分钟</span><span class="tag">&#11088; 考试重点</span></div>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握算术运算符（含 <code>//</code> 整除、<code>%</code> 取余、<code>**</code> 幂）</li>
+        <li>掌握比较运算符与逻辑运算符（and/or/not）的短路特性</li>
+        <li>掌握赋值运算符与复合赋值（<code>+=</code>、<code>*=</code> 等）</li>
+        <li>理解成员运算符 <code>in</code> 与身份运算符 <code>is</code> 的区别</li>
+        <li>掌握运算符优先级，能正确书写复杂表达式</li>
+      </ul>
+    </div>
+
     <div class="section-card">
       <h3><span class="num">1</span>算术运算符</h3>
       <table>
@@ -1128,6 +1163,17 @@ else:
       <h2>&#9889; 第4章 分支结构</h2>
       <p>掌握if语句的各种形式与异常处理</p>
       <div class="tags"><span class="tag">&#9201; 预计25分钟</span><span class="tag">&#11088; 考试重点</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握单分支、双分支、多分支 <code>if-elif-else</code> 的写法</li>
+        <li>理解条件表达式的真值判断规则（空值、0、空容器为 False）</li>
+        <li>掌握分支嵌套与缩进规范</li>
+        <li>了解 <code>try-except</code> 异常捕获的基本用法</li>
+        <li>能运用分支结构解决实际判断问题</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -1365,6 +1411,17 @@ except ZeroDivisionError:
       <div class="tags"><span class="tag">&#9201; 预计25分钟</span><span class="tag">&#11088; 考试重点</span></div>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握 <code>for</code> 循环与 <code>range()</code> 的用法</li>
+        <li>掌握 <code>while</code> 循环的条件控制</li>
+        <li>掌握 <code>break</code>、<code>continue</code>、<code>else</code> 在循环中的作用</li>
+        <li>理解循环嵌套与循环的退出条件</li>
+        <li>能运用循环解决累加、遍历、查找等常见问题</li>
+      </ul>
+    </div>
+
     <div class="section-card">
       <h3><span class="num">1</span>for 循环</h3>
       <div class="example-block">
@@ -1594,6 +1651,17 @@ print(f"1到100偶数之和: {s}")</code></pre>
       <h2>&#9881; 第6章 函数与模块</h2>
       <p>掌握函数定义、参数、返回值及模块导入</p>
       <div class="tags"><span class="tag">&#9201; 预计30分钟</span><span class="tag">&#11088; 考试重点</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握函数的定义（<code>def</code>）与调用方式</li>
+        <li>理解参数传递：位置参数、默认参数、关键字参数、可变参数</li>
+        <li>掌握 <code>return</code> 返回值与多返回值</li>
+        <li>理解变量作用域（局部变量 vs 全局变量）</li>
+        <li>掌握模块导入 <code>import</code> / <code>from ... import</code> 与第三方库安装</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -1857,6 +1925,17 @@ print(scores)</code></pre>
       <div class="tags"><span class="tag">&#9201; 预计30分钟</span><span class="tag">&#11088; 考试重点</span></div>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握列表（list）的创建、索引、切片与增删改查</li>
+        <li>掌握列表推导式的简洁写法</li>
+        <li>掌握元组（tuple）的特性与不可变性</li>
+        <li>理解列表与元组的区别及使用场景</li>
+        <li>能运用列表解决排序、统计、查找等实际问题</li>
+      </ul>
+    </div>
+
     <div class="section-card">
       <h3><span class="num">1</span>列表基础</h3>
       <div class="example-block">
@@ -2089,6 +2168,17 @@ print(result)</code></pre>
       <div class="tags"><span class="tag">&#9201; 预计25分钟</span><span class="tag">&#11088; 考试重点</span></div>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握字典（dict）的创建、访问、增删改与遍历</li>
+        <li>理解字典键的不可变性要求</li>
+        <li>掌握集合（set）的创建与交、并、差、对称差运算</li>
+        <li>能利用集合进行去重处理</li>
+        <li>能根据场景选择字典、集合、列表等合适的数据结构</li>
+      </ul>
+    </div>
+
     <div class="section-card">
       <h3><span class="num">1</span>字典基础</h3>
       <div class="example-block">
@@ -2295,6 +2385,17 @@ print(f"对称差集: {a ^ b}")</code></pre>
       <div class="tags"><span class="tag">&#9201; 预计25分钟</span><span class="tag">&#11088; 考试重点</span></div>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握文件打开模式（r/w/a/r+/b 等）与 <code>open()</code> 函数</li>
+        <li>掌握文件的读取（<code>read</code>、<code>readline</code>、<code>readlines</code>）与写入</li>
+        <li>掌握 <code>with</code> 语句自动关闭文件的最佳实践</li>
+        <li>了解 CSV 文件的读写方法</li>
+        <li>理解文件路径与编码问题的处理</li>
+      </ul>
+    </div>
+
     <div class="section-card">
       <h3><span class="num">1</span>文件打开模式</h3>
       <table class="data-table">
@@ -2461,6 +2562,16 @@ print(f"总和: {total}")</code></pre>
       <div class="tags"><span class="tag">&#9201; 预计30分钟</span><span class="tag">&#11088; 操作题常考</span></div>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握 turtle 库的画笔控制、坐标与图形绘制</li>
+        <li>掌握 random 库的随机数生成（<code>randint</code>、<code>choice</code>、<code>shuffle</code>）</li>
+        <li>掌握 time 库的时间获取与格式化</li>
+        <li>能综合运用标准库完成简单绘图与随机化任务</li>
+      </ul>
+    </div>
+
     <div class="section-card">
       <h3><span class="num">1</span>turtle 绘图库</h3>
       <div class="example-block">
@@ -2604,6 +2715,16 @@ turtle.done()</code></pre>
       <h2>&#128172; 第11章 jieba / wordcloud / os</h2>
       <p>中文分词、词云生成和系统操作</p>
       <div class="tags"><span class="tag">&#9201; 预计20分钟</span><span class="tag">&#11088; 操作题</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握 jieba 分词的三种模式与自定义词典</li>
+        <li>掌握 wordcloud 词云图生成（含中文字体配置）</li>
+        <li>掌握 os 库的文件/目录操作</li>
+        <li>了解 PyInstaller 将脚本打包为可执行程序</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -2751,8 +2872,18 @@ print(f"词数: {len(words)}")</code></pre>
   <div class="page" id="page-ch12">
     <div class="chapter-hero">
       <h2>&#128200; 第12章 pandas / matplotlib</h2>
-      <p>2026年新增考点：数据处理和可视化</p>
-      <div class="tags"><span class="tag">&#9201; 预计30分钟</span><span class="tag">&#128293; 2026新增</span></div>
+      <p>数据处理和可视化</p>
+      <div class="tags"><span class="tag">&#9201; 预计30分钟</span><span class="tag">&#128293; 进阶拓展</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握 pandas 的 Series 与 DataFrame 基本操作</li>
+        <li>掌握数据的读取、筛选、排序与统计</li>
+        <li>掌握 matplotlib 绘制折线图、柱状图、饼图等常见图表</li>
+        <li>能完成简单的数据分析与可视化任务</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -2922,8 +3053,19 @@ print(df)</code></pre>
   <div class="page" id="page-ch13">
     <div class="chapter-hero">
       <h2>&#127891; 第13章 公共基础知识</h2>
-      <p>数据结构、算法、软件工程、数据库（考试前10道选择题）</p>
-      <div class="tags"><span class="tag">&#9201; 预计40分钟</span><span class="tag">&#11088; 10分必拿</span></div>
+      <p>数据结构、算法、软件工程、数据库（计算机通识）</p>
+      <div class="tags"><span class="tag">&#9201; 预计40分钟</span><span class="tag">&#11088; 通识必备</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#127919; 本章学习目标</h3>
+      <ul style="padding-left:20px;line-height:2;color:#334155">
+        <li>掌握数据结构基础：线性表、栈、队列、树、图</li>
+        <li>理解常见算法：排序、查找及时间/空间复杂度</li>
+        <li>了解软件工程：软件生命周期、结构化设计、测试</li>
+        <li>掌握数据库基础：关系模型、SQL、规范化</li>
+        <li>了解程序设计基础与面向对象概念</li>
+      </ul>
     </div>
 
     <div class="section-card">
@@ -6243,8 +6385,8 @@ int('d', 16)     # 13  十六进制转十进制</code></pre>
   <!-- ===================== SYLLABUS: 官方考试大纲 ===================== -->
   <div class="page" id="page-syllabus">
     <div class="chapter-hero">
-      <h2>&#128196; 全国计算机等级考试二级Python考试大纲</h2>
-      <p>2025年版官方大纲，明确考试范围与要求</p>
+      <h2>&#128196; Python 等级考试大纲</h2>
+      <p>全国计算机等级考试二级 Python 大纲（作为备考参考）</p>
     </div>
 
     <div class="kb-section">
@@ -7455,7 +7597,7 @@ conn.close()</code></pre>
 
   </div> <!-- end content -->
   <footer style="text-align:center;padding:24px 16px;color:var(--text-light);font-size:13px;border-top:1px solid var(--border);margin-top:20px">
-    <p>Python 二级交互式教学 · 作者 <a href="https://github.com/lingxiao-x" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">lingxiao-x</a></p>
+    <p>Python 交互式教学 · 作者 <a href="https://github.com/lingxiao-x" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">lingxiao-x</a></p>
     <p style="margin-top:4px">本项目基于 <a href="https://github.com/lingxiao-x/Python/blob/main/LICENSE" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">MIT 许可证</a> 开源，欢迎自由使用与修改</p>
   </footer>
 </main>
@@ -7846,7 +7988,7 @@ function showPage(page) {
     quiz: '模拟测验中心',
     progress: '学习进度',
     search: '知识点搜索',
-    syllabus: '官方考试大纲',
+    syllabus: 'Python 等级考试大纲',
     practice: '操作题特训',
     pt1: 'Tensor与autograd',
     pt2: '线性神经网络',
@@ -8709,7 +8851,7 @@ const knowledgeBase = [
   // ---- ch11 jieba/wordcloud/os ----
   {chapter:'ch11',group:'标准库',title:'jieba 中文分词',keywords:'jieba 分词 lcut cut add_word 精确模式 全模式 搜索引擎模式',tags:['jieba'],
     content:'<code>jieba.lcut()</code>默认精确模式，返回列表。<code>jieba.cut()</code>返回迭代器。可通过<code>add_word()</code>添加自定义词。',
-    example:'<span class="kw">import</span> jieba\ntxt = <span class="str">"Python是一门编程语言"</span>\nwords = jieba.<span class="fn">lcut</span>(txt)\n<span class="comment"># ["Python", "是", "一门", "编程", "语言"]</span>\njieba.<span class="fn">add_word</span>(<span class="str">"二级考试"</span>)  <span class="comment"># 添加自定义词</span>'},
+    example:'<span class="kw">import</span> jieba\ntxt = <span class="str">"Python是一门编程语言"</span>\nwords = jieba.<span class="fn">lcut</span>(txt)\n<span class="comment"># ["Python", "是", "一门", "编程", "语言"]</span>\njieba.<span class="fn">add_word</span>(<span class="str">"编程教学"</span>)  <span class="comment"># 添加自定义词</span>'},
   {chapter:'ch11',group:'标准库',title:'wordcloud 词云图',keywords:'wordcloud 词云 generate 中文 font_path',tags:['wordcloud'],
     content:'生成中文词云必须指定<code>font_path</code>中文字体路径，否则显示为方块。',
     example:'<span class="kw">from</span> wordcloud <span class="kw">import</span> WordCloud\n<span class="kw">import</span> jieba\n\ntxt = <span class="fn">open</span>(<span class="str">"text.txt"</span>).<span class="fn">read</span>()\nwords = <span class="str">" "</span>.<span class="fn">join</span>(jieba.<span class="fn">lcut</span>(txt))\n\nwc = WordCloud(<span class="str">font_path</span>=<span class="str">"simhei.ttf"</span>, width=800, height=600)\nwc.<span class="fn">generate</span>(words)\nwc.<span class="fn">to_file</span>(<span class="str">"cloud.png"</span>)'},
