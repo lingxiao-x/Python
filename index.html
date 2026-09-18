@@ -246,6 +246,37 @@
     .func-grid{grid-template-columns:1fr}
   }
 
+  /* 移动端 NCRE 等级选择器 / Tab / 徽章适配 */
+  @media(max-width:900px){
+    /* 菜单栏等级按钮：从 2 列改为单列，按钮纵向堆叠便于点击 */
+    .ncre-level-selector{grid-template-columns:1fr;gap:6px;padding:4px 12px 12px}
+    .level-btn{padding:8px 6px;font-size:12px}
+    /* 顶栏：徽章与统计区纵向换行，避免溢出 */
+    .topbar{flex-wrap:wrap;gap:8px;padding:10px 14px}
+    .topbar h2{font-size:16px;flex:1 1 auto}
+    .topbar .search-wrap{order:3;flex:1 1 100%;max-width:none;margin:6px 0 0}
+    .topbar .stats{flex:1 1 auto;justify-content:flex-end;gap:8px}
+    .ncre-current-badge{padding:3px 10px;font-size:11px;margin-left:0}
+    .stat-pill{font-size:11px;padding:3px 8px}
+    /* NCRE 专题页 Tab 条：横向滚动 + 紧凑布局 */
+    .ncre-tabs{gap:6px;padding:10px 0 14px;top:56px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+    .ncre-tab{padding:6px 12px;font-size:12px;white-space:nowrap;flex:0 0 auto}
+    .ncre-level-panel .section-card,.ncre-level-panel .kb-section{padding:14px 4px}
+    .ncre-level-panel .data-table,.ncre-level-panel table,.ncre-level-panel .kb-section .kb-body table{font-size:12px;display:block;overflow-x:auto !important;overflow-y:hidden;white-space:nowrap;max-width:100%;-webkit-overflow-scrolling:touch}
+    .ncre-level-panel .data-table th,.ncre-level-panel .data-table td,.ncre-level-panel .kb-section table th,.ncre-level-panel .kb-section table td{white-space:nowrap}
+    .ncre-level-panel pre{font-size:11.5px;padding:10px 12px}
+  }
+
+  /* 超窄屏手机（≤480px）进一步紧凑 */
+  @media(max-width:480px){
+    .topbar h2{font-size:14px}
+    .ncre-current-badge{padding:2px 8px;font-size:10.5px}
+    .ncre-tab{padding:5px 10px;font-size:11px}
+    .ncre-level-selector{padding:4px 8px 10px}
+    .chapter-hero h2{font-size:20px}
+    .chapter-hero p{font-size:13px}
+  }
+
   /* Mobile touch optimization */
   .btn,.option,.nav-item,.dash-card,.menu-btn,.scroll-top,.search-result-card{
     -webkit-tap-highlight-color:transparent;
