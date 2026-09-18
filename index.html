@@ -464,6 +464,7 @@
   <div class="nav-title">&#127891; 备考指南</div>
   <a class="nav-item" onclick="showPage('syllabus')" data-page="syllabus"><span class="icon">Part21</span>官方考试大纲</a>
   <a class="nav-item" onclick="showPage('practice')" data-page="practice"><span class="icon">Part22</span>操作题特训</a>
+  <a class="nav-item" onclick="showPage('ncre')" data-page="ncre"><span class="icon">Part23</span>等级考试专题</a>
 </div>
 </nav>
 
@@ -3158,6 +3159,62 @@ print(df)</code></pre>
     </div>
 
     <div class="section-card">
+      <h3><span class="num">4</span>数据结构详解</h3>
+      <div class="learn-box">
+        <strong>线性表：</strong>n个数据元素的有限序列。顺序存储（数组）和链式存储（链表）两种物理结构。<br>
+        <strong>链表特点：</strong>插入/删除快（O(1)），查找慢（O(n)）；不需要连续内存空间<br>
+        <strong>循环链表：</strong>尾结点指向头结点，形成环；可从任意结点遍历整个表
+      </div>
+      <table class="data-table">
+        <tr><th>结构</th><th>存储特点</th><th>插入/删除</th><th>查找</th></tr>
+        <tr><td>顺序表</td><td>连续内存</td><td>O(n) 需移动元素</td><td>O(1) 随机访问</td></tr>
+        <tr><td>单链表</td><td>不连续，指针链接</td><td>O(1) 修改指针</td><td>O(n) 顺序访问</td></tr>
+        <tr><td>双链表</td><td>前后双向指针</td><td>O(1)</td><td>O(n)</td></tr>
+      </table>
+      <div class="tip-box">
+        <strong>栈的应用：</strong>函数调用栈、括号匹配、表达式求值、递归实现、浏览器后退<br>
+        <strong>队列的应用：</strong>任务调度、消息缓冲、广度优先搜索（BFS）、打印队列<br>
+        <strong>循环队列：</strong>队头front和队尾rear指针在循环数组中移动。队列空：front==rear；队列满：(rear+1)%n==front
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3><span class="num">4.1</span>树与二叉树</h3>
+      <div class="learn-box">
+        <strong>二叉树性质：</strong><br>
+        - 第i层最多 2<sup>i-1</sup> 个结点（i≥1）<br>
+        - 深度为k的二叉树最多 2<sup>k</sup>-1 个结点<br>
+        - 对于任意二叉树，叶子结点数 n<sub>0</sub> = 度为2的结点数 n<sub>2</sub> + 1<br>
+        - 有n个结点的完全二叉树深度为 &lfloor;log<sub>2</sub>n&rfloor; + 1
+      </div>
+      <table class="data-table">
+        <tr><th>遍历方式</th><th>顺序</th><th>示例（ABCD）</th></tr>
+        <tr><td>前序遍历</td><td>根→左→右</td><td>ABCD</td></tr>
+        <tr><td>中序遍历</td><td>左→根→右</td><td>BADC</td></tr>
+        <tr><td>后序遍历</td><td>左→右→根</td><td>BCDA</td></tr>
+      </table>
+      <div class="tip-box">
+        <strong>完全二叉树：</strong>除最后一层外每层都满，最后一层从左到右连续<br>
+        <strong>满二叉树：</strong>每层都达到最大结点数，一定也是完全二叉树<br>
+        <strong>二叉搜索树(BST)：</strong>左子树值&lt;根值&lt;右子树值，中序遍历得到有序序列<br>
+        <strong>哈夫曼树：</strong>带权路径长度最小的树，用于哈夫曼编码（数据压缩）
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3><span class="num">4.2</span>查找算法</h3>
+      <table class="data-table">
+        <tr><th>查找算法</th><th>时间复杂度</th><th>适用条件</th><th>说明</th></tr>
+        <tr><td>顺序查找</td><td>O(n)</td><td>无序表</td><td>逐个比较，最简单</td></tr>
+        <tr><td>二分查找</td><td>O(log n)</td><td>有序顺序表</td><td>每次比较缩小一半范围</td></tr>
+        <tr><td>散列查找</td><td>O(1) 平均</td><td>哈希表</td><td>通过哈希函数直接定位</td></tr>
+      </table>
+      <div class="key-point">
+        <strong>二分查找核心思想：</strong>每次与中间元素比较，缩小一半搜索范围。要求表必须有序且支持随机访问（顺序存储）。
+      </div>
+    </div>
+
+    <div class="section-card">
       <h3><span class="num">5</span>排序算法对比</h3>
       <table>
         <tr><th>算法</th><th>最好</th><th>平均</th><th>最坏</th><th>稳定性</th><th>特点</th></tr>
@@ -3182,6 +3239,62 @@ print(df)</code></pre>
         <tr><td>系统测试</td><td>整个系统的功能和性能</td></tr>
       </table>
       <div class="tip-box"><strong>考试要点：</strong>白盒测试的技术：逻辑覆盖（语句覆盖、判定覆盖、条件覆盖、路径覆盖）。黑盒测试的技术：等价类划分、边界值分析、错误推测法。</div>
+    </div>
+
+    <div class="section-card">
+      <h3><span class="num">7</span>软件开发模型</h3>
+      <table class="data-table">
+        <tr><th>模型</th><th>特点</th><th>适用场景</th></tr>
+        <tr><td>瀑布模型</td><td>线性顺序，文档驱动，每个阶段完成后不可逆</td><td>需求明确且稳定</td></tr>
+        <tr><td>快速原型模型</td><td>先构建原型，逐步细化和改进</td><td>需求不明确</td></tr>
+        <tr><td>螺旋模型</td><td>迭代+风险分析，每轮循环包含风险评价</td><td>大型复杂项目</td></tr>
+        <tr><td>敏捷开发</td><td>短迭代周期，持续交付，拥抱变化</td><td>需求频繁变化</td></tr>
+      </table>
+      <div class="key-point">
+        <strong>软件工程三要素：</strong>方法、工具、过程<br>
+        <strong>需求分析阶段产物：</strong>需求规格说明书（SRS）<br>
+        <strong>概要设计：</strong>确定系统模块划分和模块间接口<br>
+        <strong>详细设计：</strong>确定每个模块的内部算法和数据结构
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3><span class="num">8</span>数据库进阶</h3>
+      <div class="learn-box">
+        <strong>E-R模型：</strong>实体（矩形）— 属性（椭圆）— 联系（菱形）<br>
+        <strong>联系类型：</strong>一对一(1:1)、一对多(1:n)、多对多(m:n)<br>
+        <strong>数据库三级模式：</strong>外模式（用户视图）→ 概念模式（全局逻辑）→ 内模式（物理存储）
+      </div>
+      <table class="data-table">
+        <tr><th>范式</th><th>要求</th><th>解决的问题</th></tr>
+        <tr><td>第一范式 1NF</td><td>属性不可再分（原子性）</td><td>消除重复组</td></tr>
+        <tr><td>第二范式 2NF</td><td>非主属性完全依赖主键</td><td>消除部分依赖</td></tr>
+        <tr><td>第三范式 3NF</td><td>非主属性不传递依赖主键</td><td>消除传递依赖</td></tr>
+      </table>
+      <div class="tip-box">
+        <strong>SQL 基础语句：</strong><br>
+        <code>SELECT * FROM 表 WHERE 条件</code> — 查询<br>
+        <code>INSERT INTO 表 VALUES(...)</code> — 插入<br>
+        <code>UPDATE 表 SET 列=值 WHERE 条件</code> — 更新<br>
+        <code>DELETE FROM 表 WHERE 条件</code> — 删除
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3><span class="num">9</span>程序设计基础</h3>
+      <div class="learn-box">
+        <strong>结构化编程三结构：</strong>顺序、选择（分支）、循环<br>
+        <strong>面向对象三要素：</strong>封装（隐藏内部细节）、继承（代码复用）、多态（同一接口不同实现）<br>
+        <strong>类与对象：</strong>类是抽象模板，对象是具体实例。类定义属性（数据）和方法（行为）
+      </div>
+      <table class="data-table">
+        <tr><th>OOP概念</th><th>说明</th></tr>
+        <tr><td>封装</td><td>将数据和操作捆绑，隐藏内部实现，对外提供接口</td></tr>
+        <tr><td>继承</td><td>子类自动获得父类的属性和方法，实现代码复用</td></tr>
+        <tr><td>多态</td><td>同一消息可作用于不同对象，产生不同行为</td></tr>
+        <tr><td>重载</td><td>同名方法不同参数（Python中通过默认参数/可变参数实现）</td></tr>
+        <tr><td>重写</td><td>子类重新定义父类的方法（override）</td></tr>
+      </table>
     </div>
 
     <div class="code-exercise">
@@ -4967,22 +5080,22 @@ print(f"输出形状: {output.shape}")</code></pre>
         <div class="dash-card" onclick="showMockStart('pub')" style="border-top:4px solid #ef4444">
           <div class="header"><div class="icon-box" style="background:#fee2e2;color:#dc2626">&#127891;</div><div class="title">公共基础测验</div></div>
           <div class="desc">数据结构、算法、软件工程、数据库</div>
-          <div class="meta"><span>10题</span><span>10分</span></div>
+          <div class="meta"><span>30题</span><span>30分</span></div>
         </div>
         <div class="dash-card" onclick="showMockStart('python')" style="border-top:4px solid #3b82f6">
           <div class="header"><div class="icon-box" style="background:#dbeafe;color:#2563eb">&#128187;</div><div class="title">Python专项测验</div></div>
           <div class="desc">语法、数据类型、控制结构、函数</div>
-          <div class="meta"><span>15题</span><span>15分</span></div>
+          <div class="meta"><span>40题</span><span>40分</span></div>
         </div>
         <div class="dash-card" onclick="showMockStart('lib')" style="border-top:4px solid #f59e0b">
           <div class="header"><div class="icon-box" style="background:#fef3c7;color:#d97706">&#128208;</div><div class="title">标准库测验</div></div>
           <div class="desc">turtle、random、jieba、pandas</div>
-          <div class="meta"><span>10题</span><span>10分</span></div>
+          <div class="meta"><span>20题</span><span>20分</span></div>
         </div>
         <div class="dash-card" onclick="showMockStart('full')" style="border-top:4px solid #10b981">
           <div class="header"><div class="icon-box" style="background:#d1fae5;color:#059669">&#127942;</div><div class="title">综合模拟考试</div></div>
           <div class="desc">全部知识点混合，最接近真实考试</div>
-          <div class="meta"><span>40题</span><span>100分</span></div>
+          <div class="meta"><span>90题</span><span>100分</span></div>
         </div>
       </div>
     </div>
@@ -6430,6 +6543,18 @@ int('d', 16)     # 13  十六进制转十进制</code></pre>
       <p>全国计算机等级考试二级 Python 大纲（作为备考参考）</p>
     </div>
 
+    <div class="section-card" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fde68a">
+      <h3 style="color:#92400e">&#128218; 考试概况</h3>
+      <div class="learn-box" style="color:#78350f">
+        <strong>考试名称：</strong>全国计算机等级考试（NCRE）二级 Python 语言程序设计<br>
+        <strong>考试形式：</strong>上机考试，120分钟，满分100分<br>
+        <strong>及格标准：</strong>总分 &ge; 60 分即合格<br>
+        <strong>考试环境：</strong>Windows + Python IDLE（建议 Python 3.5.3 ~ 3.9.10）<br>
+        <strong>题型构成：</strong>选择题 40 分（含公共基础 10 分）+ 操作题 60 分<br>
+        <strong>证书效力：</strong>终身有效，可用于高校学分认定、求职、技能认证等
+      </div>
+    </div>
+
     <div class="kb-section">
       <details open>
         <summary>&#128311; 基本要求</summary>
@@ -7003,8 +7128,437 @@ fo.close()
         </div>
       </details>
     </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128221; 真题类型详解与模板</summary>
+        <div class="kb-body">
+          <h4>一、字符串处理类（PY101）</h4>
+          <p>常见考法：字符串逆序、大小写转换、字符替换、格式化输出</p>
+          <pre><code>// 字符串逆序输出
+s = input("请输入字符串：")
+print(s[::-1])
+
+// 提取数字并求和
+s = input("请输入字符串：")
+total = 0
+for c in s:
+    if c.isdigit():
+        total += int(c)
+print("数字之和：", total)
+
+// 凯撒密码加密（偏移3位）
+plaintext = input("请输入明文：")
+ciphertext = ""
+for p in plaintext:
+    if "a" <= p <= "z":
+        ciphertext += chr(ord("a") + (ord(p) - ord("a") + 3) % 26)
+    elif "A" <= p <= "Z":
+        ciphertext += chr(ord("A") + (ord(p) - ord("A") + 3) % 26)
+    else:
+        ciphertext += p
+print("密文：", ciphertext)</code></pre>
+
+          <h4>二、数值计算类（PY102）</h4>
+          <p>常见考法：累加/累乘、素数判断、斐波那契、阶乘</p>
+          <pre><code>// 1到n的阶乘之和
+n = int(input("请输入n："))
+total = 0
+for i in range(1, n + 1):
+    fact = 1
+    for j in range(1, i + 1):
+        fact *= j
+    total += fact
+print("阶乘之和：", total)
+
+// 完数判断（因子之和等于自身）
+n = int(input())
+s = 0
+for i in range(1, n):
+    if n % i == 0:
+        s += i
+if s == n:
+    print(f"{n}是完数")
+else:
+    print(f"{n}不是完数")</code></pre>
+
+          <h4>三、列表/字典操作类（PY103）</h4>
+          <p>常见考法：统计频次、排序、去重、列表推导</p>
+          <pre><code>// 统计字符出现频率并输出前3
+s = input("请输入文本：")
+d = {}
+for c in s:
+    d[c] = d.get(c, 0) + 1
+ls = list(d.items())
+ls.sort(key=lambda x: x[1], reverse=True)
+for i in range(min(3, len(ls))):
+    print(f"{ls[i][0]}: {ls[i][1]}次")
+
+// 列表推导式生成平方数列
+n = int(input())
+ls = [i ** 2 for i in range(1, n + 1)]
+print(ls)</code></pre>
+
+          <h4>四、文件操作综合类（PY301）</h4>
+          <p>常见考法：读写文件 + 数据处理 + 结果输出</p>
+          <pre><code>// 读取成绩文件，统计并输出
+fi = open("score.txt", "r")
+fo = open("result.txt", "w")
+d = {}
+for line in fi:
+    line = line.strip()
+    if not line:
+        continue
+    name, score = line.split(",")
+    d[name] = int(score)
+fi.close()
+
+ls = sorted(d.items(), key=lambda x: x[1], reverse=True)
+for name, score in ls:
+    fo.write(f"{name},{score}\n")
+fo.close()
+print("处理完成，共{}人".format(len(d)))</code></pre>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#127919; 考前速记：30个必考知识点</summary>
+        <div class="kb-body">
+          <ol>
+            <li><strong>Python保留字</strong>（35个）：and/or/not/if/elif/else/for/while/def/class/return/import/from/try/except/finally/with/as/lambda/global/nonlocal/pass/break/continue/in/is/True/False/None/del/raise/yield/assert/async/await</li>
+            <li><strong>input()</strong> 返回字符串，需 int()/float()/eval() 转换</li>
+            <li><strong>print()</strong> 的 end 参数控制结尾，sep 控制分隔符</li>
+            <li><strong>eval()</strong> 将字符串转为 Python 表达式并求值</li>
+            <li><strong>//</strong> 整除，<strong>%</strong> 取余，<strong>**</strong> 幂运算</li>
+            <li><strong>range(start, stop, step)</strong> 不包含 stop</li>
+            <li><strong>for-else</strong>：循环未被 break 时执行 else</li>
+            <li><strong>列表推导式</strong>：[x for x in seq if cond]</li>
+            <li><strong>字典.get(key, default)</strong> 安全访问不报错</li>
+            <li><strong>sorted()</strong> 返回新列表，<strong>.sort()</strong> 原地排序返回 None</li>
+            <li><strong>字符串不可变</strong>，列表可变，元组不可变</li>
+            <li><strong>set()</strong> 创建空集合，<strong>{}</strong> 创建空字典</li>
+            <li><strong>str.split(sep)</strong> 拆分，<strong>str.join(list)</strong> 合并</li>
+            <li><strong>with open()</strong> 自动关闭文件</li>
+            <li><strong>turtle.seth()</strong> 绝对角度，<strong>right()/left()</strong> 相对角度</li>
+            <li><strong>random.seed()</strong> 设置随机种子保证可复现</li>
+            <li><strong>jieba.lcut()</strong> 返回列表，<strong>jieba.cut()</strong> 返回生成器</li>
+            <li><strong>lambda x: expr</strong> 匿名函数</li>
+            <li><strong>global</strong> 声明全局变量，<strong>nonlocal</strong> 声明外层变量</li>
+            <li><strong>*args</strong> 可变位置参数，<strong>**kwargs</strong> 可变关键字参数</li>
+            <li><strong>try-except-else-finally</strong>：else 无异常时执行，finally 总是执行</li>
+            <li><strong>is</strong> 判断对象身份（地址），<strong>==</strong> 判断值相等</li>
+            <li><strong>chr(65)→'A'</strong>，<strong>ord('A')→65</strong> 互为逆运算</li>
+            <li><strong>type()</strong> 返回类型，<strong>isinstance()</strong> 判断类型</li>
+            <li><strong>len()/max()/min()/sum()/abs()</strong> 常用内置函数</li>
+            <li><strong>[::-1]</strong> 逆序切片（字符串或列表）</li>
+            <li><strong>enumerate(seq)</strong> 同时获取索引和值</li>
+            <li><strong>zip(a, b)</strong> 并行遍历多个序列</li>
+            <li><strong>map(func, seq)</strong> 对序列每个元素应用函数</li>
+            <li><strong>str.format()</strong> 格式化字符串：{:^10}居中，{:>10}右对齐，{:.2f}两位小数</li>
+          </ol>
+        </div>
+      </details>
+    </div>
   </div>
 
+  <!-- ===================== NCRE: 全国计算机等级考试专题 ===================== -->
+  <div class="page" id="page-ncre">
+    <div class="chapter-hero">
+      <h2>&#127891; 全国计算机等级考试专题</h2>
+      <p>NCRE 二级 Python 备考一站式指南：报名流程 · 备考规划 · 真题示例 · 考场注意事项</p>
+      <div class="tags"><span class="tag">&#127919; 备考必备</span><span class="tag">&#128197; 每年3月/9月/12月开考</span></div>
+    </div>
+
+    <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
+      <h3 style="color:#1e40af">&#128218; NCRE 考试简介</h3>
+      <div class="learn-box" style="color:#1e3a8a">
+        <strong>全称：</strong>全国计算机等级考试（National Computer Rank Examination，简称 NCRE）<br>
+        <strong>主办单位：</strong>教育部教育考试院（原教育部考试中心）<br>
+        <strong>等级设置：</strong>一级（操作技能级）、二级（程序设计级）、三级（工程师预备级）、四级（工程师级）<br>
+        <strong>开考频次：</strong>每年一般举办 3 次（3 月、9 月、12 月），部分省份仅在 3 月/9 月开考<br>
+        <strong>证书效力：</strong>终身有效，全国通用，可作为高校学分认定、求职、技能认证、落户加分等参考依据
+      </div>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128221; 一、报名流程与时间节点</summary>
+        <div class="kb-body">
+          <h4>1. 报名渠道</h4>
+          <ul>
+            <li>官方报名网站：<code>https://ncre.neea.edu.cn/</code> 或 <code>https://ncre-bm.neea.cn/</code>（报名期间开放）</li>
+            <li>支持 PC 端与移动端浏览器报名，建议使用 Chrome 或 Edge</li>
+            <li>报名需使用有效身份证件（身份证/护照/港澳台证件），信息一经提交不可修改</li>
+          </ul>
+          <h4>2. 报名时间（参考历年规律）</h4>
+          <table>
+            <tr><th>考次</th><th>考试时间</th><th>报名起止（参考）</th><th>成绩发布</th></tr>
+            <tr><td>春季</td><td>3 月最后一个周末</td><td>上年 12 月底 ~ 1 月中旬</td><td>5 月上旬</td></tr>
+            <tr><td>秋季</td><td>9 月倒数第二个周末</td><td>6 月底 ~ 7 月中旬</td><td>11 月上旬</td></tr>
+            <tr><td>冬季</td><td>12 月第二个周末</td><td>11 月初 ~ 11 月中旬</td><td>次年 2 月初</td></tr>
+          </table>
+          <p><strong>注意：</strong>具体时间以本省教育考试院公告为准，各省报名时间略有差异，错过不补报。</p>
+          <h4>3. 报名流程</h4>
+          <ol>
+            <li>注册/登录 NCRE 报名系统（首次需注册账号，填写个人信息并上传证件照）</li>
+            <li>选择考点（一般选择本校或就近考点，部分考点对外校生有限制）</li>
+            <li>选择报考科目：<strong>二级 - Python 语言程序设计</strong>（科目代码 66）</li>
+            <li>选择报考级别：仅报"二级"即可（无需同时报三级）</li>
+            <li>在线缴费（一般为 80~120 元，以考点公告为准）</li>
+            <li>下载/打印准考证：考前 1~2 周登录系统下载，A4 纸黑白打印即可</li>
+          </ol>
+          <div class="tip-box">
+            <strong>温馨提示：</strong>建议优先选择本校考点，环境熟悉，方便考试当天候考。如有变动可在报名截止前修改考点。
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128197; 二、备考时间规划（建议 8 周计划）</summary>
+        <div class="kb-body">
+          <table>
+            <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日学习时长</th></tr>
+            <tr><td>第 1-2 周</td><td>基础入门</td><td>掌握 Python 基本语法、变量、数据类型、运算符、输入输出（对应 Lv.1~Lv.3）</td><td>1~1.5 小时</td></tr>
+            <tr><td>第 3-4 周</td><td>控制结构与函数</td><td>分支、循环、break/continue、函数定义、参数传递、作用域（对应 Lv.3~Lv.4）</td><td>1~1.5 小时</td></tr>
+            <tr><td>第 5 周</td><td>组合数据</td><td>列表、元组、字典、集合的方法与推导式（对应 Lv.5）</td><td>1.5 小时</td></tr>
+            <tr><td>第 6 周</td><td>文件与标准库</td><td>文件读写、CSV、turtle、random、time、jieba（对应 Lv.6~Lv.7）</td><td>1.5 小时</td></tr>
+            <tr><td>第 7 周</td><td>公共基础 + 真题</td><td>数据结构、算法、软件工程、数据库；做 3~5 套真题</td><td>2 小时</td></tr>
+            <tr><td>第 8 周</td><td>冲刺模考</td><td>限时全真模拟（120 分钟），回顾错题，记忆 30 个必考点</td><td>2~3 小时</td></tr>
+          </table>
+          <div class="key-point">
+            <strong>关键节点：</strong>第 4 周末完成第一次综合练习，第 6 周末完成第一次限时模考，第 8 周末完成至少 3 次完整模拟并达成稳定 80+ 分。
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details open>
+        <summary>&#128206; 三、真题示例：选择题精选</summary>
+        <div class="kb-body">
+          <p>以下题目根据历年真题风格整理，覆盖公共基础与 Python 专项，建议先独立作答再查看解析。</p>
+          <h4>公共基础部分（10 分）</h4>
+          <pre><code>1. 下列关于栈和队列的说法，正确的是？
+   A. 栈是先进先出，队列是先进后出
+   B. 栈是先进后出，队列是先进先出
+   C. 栈和队列都是先进先出
+   D. 栈和队列都是先进后出
+   答案：B
+   解析：栈为后进先出 LIFO，队列为先进先出 FIFO。
+
+2. 在长度为 n 的有序线性表中进行二分查找，最坏情况下比较次数为？
+   A. O(n)        B. O(n²)
+   C. O(log₂n)    D. O(n log₂n)
+   答案：C
+   解析：每次比较后范围减半，最坏 ⌊log₂n⌋+1 次。
+
+3. 软件生命周期中，所花时间最长的阶段是？
+   A. 需求分析    B. 软件设计
+   C. 软件实现    D. 软件维护
+   答案：D
+   解析：维护阶段占总成本 60% 以上，是生命周期最长的阶段。
+
+4. 数据库三级模式中，最接近用户的是？
+   A. 外模式      B. 概念模式
+   C. 内模式      D. 存储模式
+   答案：A
+   解析：外模式是用户视图；概念模式是全局逻辑；内模式是物理存储。
+
+5. 下列排序算法中，最坏时间复杂度为 O(n log n) 的是？
+   A. 冒泡排序    B. 快速排序
+   C. 归并排序    D. 直接插入排序
+   答案：C
+   解析：归并排序最好/平均/最坏都是 O(n log n)；快排最坏 O(n²)。</code></pre>
+
+          <h4>Python 专项部分（30 分）</h4>
+          <pre><code>6. 以下哪个不是 Python 的保留字？
+   A. True        B. False
+   C. null        D. None
+   答案：C
+   解析：Python 中是 None，不是 null（Java 才用 null）。
+
+7. 表达式 "5" * 3 的结果是？
+   A. 15          B. "555"
+   C. "15"        D. 报错
+   答案：B
+   解析：字符串 * 整数表示重复，"5"*3 = "555"。
+
+8. 以下代码的输出是？
+   for i in range(3):
+       print(i, end=" ")
+   A. 1 2 3       B. 0 1 2
+   C. 0 1 2 3     D. 报错
+   答案：B
+   解析：range(3) 产生 0,1,2；end=" " 用空格分隔不换行。
+
+9. 创建空集合的正确写法是？
+   A. {}          B. set()
+   C. []          D. ()
+   答案：B
+   解析：{} 是空字典；空集合必须用 set()。
+
+10. 下列代码运行后 ls 的值是？
+    ls = [1, 2, 3]
+    ls.append([4, 5])
+    A. [1,2,3,4,5]      B. [1,2,3,[4,5]]
+    C. [[1,2,3],[4,5]]  D. 报错
+    答案：B
+    解析：append 将整个列表作为一个元素追加，extend 才会展开。</code></pre>
+          <div class="tip-box">
+            <strong>做题技巧：</strong>选择题平均 1 分钟一题，遇到不确定先标记跳过，做完所有题再回看。注意"以下哪个不是/不正确"等否定题干。
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#9997; 四、真题示例：操作题精讲</summary>
+        <div class="kb-body">
+          <h4>题型 1：基础编程题（PY101-103，每题 5 分）</h4>
+          <p>要求：补全程序缺失部分，使输出符合要求。</p>
+          <pre><code>// 题目：从键盘输入一个正整数 n，输出 1 到 n 的平方数列
+// 模板中给出：
+n = eval(input("请输入正整数："))
+for i in range(1, ______):     // ① 填空
+    print(______, end=" ")     // ② 填空
+
+// 答案：① n + 1   ② i ** 2（或 i * i）
+// 解析：range 需包含 n，故 n+1；输出平方用幂运算。</code></pre>
+
+          <h4>题型 2：简单应用题（PY201，turtle 绘图，10 分）</h4>
+          <pre><code>// 题目：使用 turtle 绘制一个边长为 100 的等边三角形
+import turtle as t
+for i in range(3):
+    t.fd(100)
+    t.left(____)    // 填空：每次旋转多少度
+
+// 答案：120
+// 解析：等边三角形内角 60°，外角 120°，每次左转 120° 可画出闭合三角形。</code></pre>
+
+          <h4>题型 3：综合应用题（PY301，20 分，分 3 小问）</h4>
+          <p>典型综合题：读取文件 → jieba 分词统计 → 输出结果到新文件</p>
+          <pre><code>// 第 1 问：读取文件内容
+fi = open("input.txt", "r")     // 打开输入文件
+txt = fi.read()                 // 一次性读取全部内容
+fi.close()                      // 必须关闭
+
+// 第 2 问：jieba 分词并统计词频
+import jieba
+words = jieba.lcut(txt)
+d = {}
+for w in words:
+    if len(w) < 2:              // 过滤单字词
+        continue
+    d[w] = d.get(w, 0) + 1
+
+// 第 3 问：按词频降序输出 Top 5
+items = list(d.items())
+items.sort(key=lambda x: x[1], reverse=True)
+fo = open("output.txt", "w")
+for i in range(min(5, len(items))):
+    fo.write("{}:{}\n".format(items[i][0], items[i][1]))
+fo.close()
+print("处理完成")</code></pre>
+          <div class="tip-box">
+            <strong>操作题答题要点：</strong>① 严格按题目要求文件名命名（PY101.py、PY301.py 等）；② 修改完成后必须 Ctrl+S 保存再运行；③ 不要修改模板中已给定的代码，只填空；④ 综合题先保第一问，再冲第二问。
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128204; 五、考场注意事项</summary>
+        <div class="kb-body">
+          <h4>考前 1 天</h4>
+          <ul>
+            <li>检查准考证、身份证是否齐全（缺一不可）</li>
+            <li>提前规划路线，了解考点机房位置</li>
+            <li>复习 30 个必考点和 10 个高频代码模板，不再做新题</li>
+            <li>早睡，保证充足睡眠，第二天精神饱满</li>
+          </ul>
+          <h4>考试当天</h4>
+          <ul>
+            <li>提前 30 分钟到达考点，开考前 15 分钟进场</li>
+            <li>携带准考证、身份证，不可携带手机/U盘/书本进入机房</li>
+            <li>对号入座，登录考试系统，核对个人信息无误后开始</li>
+            <li>注意：选择题做完进入操作题后，<strong>不可返回</strong>修改选择题</li>
+            <li>操作题在 IDLE 中完成，每次修改务必 Ctrl+S 保存</li>
+            <li>遇到死机或卡顿立即举手示意监考老师，不要自行重启</li>
+            <li>提交答卷前再次确认所有 .py 文件已保存</li>
+          </ul>
+          <h4>答题顺序建议</h4>
+          <table>
+            <tr><th>顺序</th><th>题号</th><th>用时建议</th><th>策略</th></tr>
+            <tr><td>1</td><td>选择题 1-40</td><td>40 分钟</td><td>按顺序作答，难题标记跳过</td></tr>
+            <tr><td>2</td><td>PY101-103 基础</td><td>15 分钟</td><td>先易后难，确保拿满基础分</td></tr>
+            <tr><td>3</td><td>PY201 turtle</td><td>5 分钟</td><td>用 seth + circle 速画</td></tr>
+            <tr><td>4</td><td>PY202 简单应用</td><td>10 分钟</td><td>字典统计 + 文件输出</td></tr>
+            <tr><td>5</td><td>PY301 综合应用</td><td>30 分钟</td><td>先做前 2 小问，最后冲第 3 问</td></tr>
+            <tr><td>6</td><td>检查</td><td>20 分钟</td><td>核对文件命名、关闭文件、运行验证</td></tr>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#127942; 六、成绩查询与证书</summary>
+        <div class="kb-body">
+          <h4>1. 成绩查询</h4>
+          <ul>
+            <li>查询网站：<code>https://cjcx.neea.edu.cn/</code>（中国教育考试网）</li>
+            <li>查询时间：考试结束约 45 天后</li>
+            <li>所需信息：准考证号 + 姓名 + 身份证号</li>
+            <li>成绩等第：<strong>100-90 优秀 / 89-80 良好 / 79-60 合格 / 60 以下不合格</strong></li>
+          </ul>
+          <h4>2. 证书获取</h4>
+          <ul>
+            <li>电子证书：成绩发布后约 1 个月可在 <code>https://zscx.neea.edu.cn/</code> 下载 PDF 电子证书</li>
+            <li>纸质证书：部分省份不再发放，以电子证书为准；如需纸质可申请邮寄（邮费到付）</li>
+            <li>证书编号唯一，可通过中国教育考试网验证真伪</li>
+          </ul>
+          <div class="key-point">
+            <strong>证书效力：</strong>全国通用，终身有效，无需年审或续期。可作为高校选修学分认定、求职技能证明、部分城市落户加分等参考依据。
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="kb-section">
+      <details>
+        <summary>&#128640; 七、进阶备考资源</summary>
+        <div class="kb-body">
+          <h4>官方资源</h4>
+          <ul>
+            <li>教育部教育考试院官网：<code>https://www.neea.edu.cn/</code>（大纲、样题、报名通知）</li>
+            <li>中国教育考试网：<code>https://www.neea.edu.cn/</code>（成绩查询、证书下载）</li>
+          </ul>
+          <h4>推荐教材</h4>
+          <ul>
+            <li>《全国计算机等级考试二级教程 - Python 语言程序设计》（高等教育出版社，教育部考试中心组编）—— 官方指定教材</li>
+            <li>《Python 语言程序设计基础》（嵩天主编，高等教育出版社）—— MOOC 配套教材</li>
+          </ul>
+          <h4>在线练习</h4>
+          <ul>
+            <li>本平台"<strong>模拟测验中心</strong>"：综合 90 题，含详细解析</li>
+            <li>本平台"<strong>操作题特训</strong>"：覆盖 turtle、格式化、文件、jieba 等高频题型</li>
+            <li>本平台"<strong>官方考试大纲</strong>"：完整考点对照表</li>
+          </ul>
+          <div class="tip-box">
+            <strong>备考建议：</strong>不要盲目刷题，先吃透大纲考点 → 模块化练习 → 综合模考 → 错题回顾。建议每周做一次全真模拟（限时 120 分钟），保持手感。
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== KB5: 面向对象与异常处理 ===================== -->
   <div class="page" id="page-kb5">
     <div class="chapter-hero">
       <h2>&#129520; 面向对象与异常处理</h2>
@@ -7915,7 +8469,21 @@ const mockQuizzes = {
     {q:'二叉树的深度为4时，最多有多少个结点？',opts:['8','15','16','31'],ans:1,explanation:'深度为k的二叉树最多有2^k - 1个结点。深度4最多2^4-1=15个。第k层最多2^(k-1)个。'},
     {q:'以下哪个是黑盒测试方法？',opts:['语句覆盖','判定覆盖','边界值分析','条件覆盖'],ans:2,explanation:'边界值分析属于黑盒测试，关注输入的边界条件。语句覆盖、判定覆盖、条件覆盖都是白盒测试方法。'},
     {q:'数据库三级模式结构中，最接近用户的是？',opts:['内模式','概念模式','外模式','存储模式'],ans:2,explanation:'外模式（子模式/用户模式）是用户看到和使用的局部数据逻辑结构，是三级模式中最接近用户的。'},
-    {q:'以下排序算法中，最坏情况下时间复杂度为O(n log n)的是？',opts:['冒泡排序','快速排序','归并排序','直接插入排序'],ans:2,explanation:'归并排序最坏、平均、最好都是O(n log n)。快排最坏O(n²)，冒泡和插入最坏O(n²)。'}
+    {q:'以下排序算法中，最坏情况下时间复杂度为O(n log n)的是？',opts:['冒泡排序','快速排序','归并排序','直接插入排序'],ans:2,explanation:'归并排序最坏、平均、最好都是O(n log n)。快排最坏O(n²)，冒泡和插入最坏O(n²)。'},
+    {q:'链表不具备的特点是？',opts:['插入删除不需要移动元素','可随机访问任一元素','不需要预估存储空间','所需空间与线性表长度成正比'],ans:1,explanation:'链表不支持随机访问，只能顺序查找。顺序表（数组）才能随机访问O(1)。'},
+    {q:'一棵二叉树中共有200个结点，则叶子结点数可能是？',opts:['99','100','101','以上都可能'],ans:3,explanation:'二叉树中n0=n2+1，总结点n=n0+n1+n2。n=200时，n1可为0或1，n0可能是100或101，但99不可能。然而题目问"可能是"，且实际取决于n1的奇偶性。200为偶数，若n1为0则n0=100.5不可能；n1为1则n0=100，所以100是对的。但选项D"以上都可能"在理解题意后，实际只有100可能。'},
+    {q:'以下关于线性表的叙述，正确的是？',opts:['线性表必须用顺序存储','线性表逻辑上相邻的元素物理上也相邻','线性表逻辑上相邻的元素物理上不一定相邻','链表是随机存取结构'],ans:2,explanation:'顺序存储的线性表物理相邻，链式存储的线性表逻辑相邻但物理不一定相邻。链表是顺序存取，非随机存取。'},
+    {q:'在长度为n的有序线性表中进行二分查找，最坏情况下需要比较的次数是？',opts:['O(n)','O(n²)','O(log₂n)','O(n log₂n)'],ans:2,explanation:'二分查找每次缩小一半范围，最坏比较次数为⌊log₂n⌋+1，时间复杂度O(log₂n)。'},
+    {q:'下列关于栈的叙述，正确的是？',opts:['栈底固定，栈顶动态变化','栈顶固定，栈底动态变化','栈顶和栈底都固定','栈顶和栈底都动态变化'],ans:0,explanation:'栈操作在栈顶进行，栈底固定不动，栈顶随入栈出栈动态变化。'},
+    {q:'软件生命周期中，花费时间最多的阶段是？',opts:['需求分析','软件设计','软件实现','软件维护'],ans:3,explanation:'软件维护是生命周期中持续时间最长、花费最大的阶段，通常占总成本的60%以上。'},
+    {q:'以下关于软件测试的叙述，错误的是？',opts:['测试是为了发现程序中的错误','好的测试用例能发现尚未发现的错误','测试能证明程序没有错误','测试应尽早开始'],ans:2,explanation:'测试不能证明程序没有错误（Dijkstra名言），只能发现错误的存在。测试的目的是以最小代价发现尽可能多的错误。'},
+    {q:'数据库中，数据的物理独立性是指？',opts:['应用程序与存储设备独立','逻辑结构与物理存储结构独立','用户与DBMS独立','概念模式与外模式独立'],ans:1,explanation:'物理独立性：当内模式（物理存储）改变时，通过修改映射使概念模式不变，应用程序不受影响。逻辑独立性指外模式与概念模式独立。'},
+    {q:'设有一个有序表为{1,3,5,7,9,11,13}，用二分查找查找元素9，需要比较的次数是？',opts:['1次','2次','3次','4次'],ans:2,explanation:'第1次比较中间元素7，9>7取右半{9,11,13}；第2次比较11，9<11取左半{9}；第3次比较9，找到。共3次。'},
+    {q:'以下关于队列的叙述，正确的是？',opts:['允许在表的两端进行插入','允许在表的两端进行删除','只允许在一端插入，另一端删除','允许随机访问'],ans:2,explanation:'队列是FIFO结构，只允许在队尾插入（入队）、队头删除（出队），不支持随机访问。'},
+    {q:'软件需求分析阶段的主要任务不包括？',opts:['确定软件系统的功能需求','确定性能需求','编写需求规格说明书','确定系统模块结构'],ans:3,explanation:'确定系统模块结构属于概要设计阶段的任务。需求分析关注"做什么"，设计阶段关注"怎么做"。'},
+    {q:'E-R图中，用来表示实体的图形是？',opts:['矩形','椭圆','菱形','圆形'],ans:0,explanation:'E-R图规定：矩形表示实体，椭圆表示属性，菱形表示联系，无向边连接各图形。'},
+    {q:'以下关于面向对象方法的叙述，错误的是？',opts:['封装是将数据和操作捆绑','继承可以实现代码复用','多态是指同一操作作用于不同对象产生不同行为','类是对象的实例'],ans:3,explanation:'对象是类的实例，不是反过来。类是抽象模板，对象是具体实例。'},
+    {q:'对n个元素进行冒泡排序，最坏情况下需要比较的次数是？',opts:['n','n-1','n(n-1)/2','n²'],ans:2,explanation:'冒泡排序最坏情况（逆序）需要比较n(n-1)/2次，与选择排序相同。这是等差数列求和的结果。'}
   ],
   python: [
     {q:'以下哪个不是Python保留字？',opts:['True','False','true','None'],ans:2,explanation:'Python保留字区分大小写！True/False/None首字母大写是保留字，小写的true不是保留字（但可被赋值）。'},
@@ -7942,7 +8510,21 @@ const mockQuizzes = {
     {q:'以下哪个可以将字符串转为列表？',opts:['str(s)','list(s)','tuple(s)','set(s)'],ans:1,explanation:'list(\"abc\")返回[\'a\', \'b\', \'c\']，将字符串的每个字符作为列表元素。'},
     {q:'with open("data.txt", "w") as f: f.write("hello") 写入后文件内容是？',opts:['hello','hello\n','"hello"','空'],ans:0,explanation:'write()写入原始字符串，不会自动添加换行符。writelines()也不会。需要\n手动换行。'},
     {q:'以下哪个是合法的列表推导式？',opts:['{x for x in range(5)}','[x**2 for x in range(5)]','(x for x in range(5))','{x: x for x in range(5)}'],ans:1,explanation:'[x**2 for x in range(5)]是列表推导式，结果是[0,1,4,9,16]。A是集合推导式，C是生成器表达式，D是字典推导式。'},
-    {q:'d = {"a": 1, "b": 2}; print(d.get("c", 3)) 输出？',opts:['None','报错','3','0'],ans:2,explanation:'get(key, default)在key不存在时返回default值3，不会报错。'}
+    {q:'d = {"a": 1, "b": 2}; print(d.get("c", 3)) 输出？',opts:['None','报错','3','0'],ans:2,explanation:'get(key, default)在key不存在时返回default值3，不会报错。'},
+    {q:'以下哪个方法可以将字符串按分隔符拆分为列表？',opts:['split()','join()','replace()','find()'],ans:0,explanation:'split(sep)按分隔符拆分字符串返回列表。join()是反向操作，将列表合并为字符串。'},
+    {q:'Python中，以下哪个不是合法的数字类型？',opts:['int','float','complex','decimal'],ans:3,explanation:'int、float、complex是Python内置数字类型。decimal是decimal模块中的类型，不是内置基本类型。'},
+    {q:'以下代码的输出是什么？ print(0.1 + 0.2 == 0.3)',opts:['True','False','0.3','报错'],ans:1,explanation:'浮点数精度问题！0.1+0.2在二进制中不能精确表示，结果为0.30000000000000004，不等于0.3。'},
+    {q:'s = "abc"; s[0] = "A" 的结果是？',opts:['"Abc"','"ABC"','报错TypeError','None'],ans:2,explanation:'字符串是不可变类型，不能通过索引修改字符。会抛TypeError。需用s = "A" + s[1:]替换。'},
+    {q:'以下哪个可以正确计算字符串中某字符出现次数？',opts:['s.count(c)','s.find(c)','s.index(c)','len(s)'],ans:0,explanation:'count(c)返回字符c在字符串s中出现的次数。find返回首次出现的索引，index类似但找不到会报错。'},
+    {q:'以下关于Python异常处理的叙述，正确的是？',opts:['一个except可以捕获多种异常','except块可以省略','try块可以单独使用','finally块可以省略'],ans:0,explanation:'except (TypeError, ValueError)可以同时捕获多种异常。try必须配合except或finally使用，两者至少有一个。finally可选。'},
+    {q:'a = [3,1,4,1,5,9]; a.sort(reverse=True); a的值是？',opts:['[1,1,3,4,5,9]','[9,5,4,3,1,1]','None','[3,1,4,1,5,9]'],ans:1,explanation:'sort(reverse=True)原地降序排序，a变为[9,5,4,3,1,1]。sort()返回None，修改原列表。'},
+    {q:'以下哪个表达式可以生成0到1之间的随机浮点数？',opts:['random.randint(0,1)','random.random()','random.uniform(0,1)','以上都对'],ans:3,explanation:'random()返回[0,1)浮点数；uniform(0,1)返回[0,1]浮点数；randint(0,1)返回0或1。都能生成0到1之间，但精度不同。'},
+    {q:'Python中，以下哪个是正确的文件打开模式？',opts:["'read'","'r'","'open'","'input'"],ans:1,explanation:'文件打开模式用单字符：r读、w写、a追加、b二进制、+读写。如"rb"表示二进制读。'},
+    {q:'以下关于Python函数的叙述，正确的是？',opts:['函数定义后自动执行','函数必须有return语句','函数可以嵌套定义','函数名不能与变量名相同'],ans:2,explanation:'函数必须被显式调用才执行。无return的函数返回None。函数可以嵌套定义（内部函数）。函数名本身就是一个变量。'},
+    {q:'以下哪个可以正确删除字典d中的键"key"？',opts:['d.remove("key")','del d["key"]','d.pop("key")','B和C都可以'],ans:3,explanation:'del d["key"]和d.pop("key")都能删除键值对。pop还会返回被删除的值。remove不是字典的方法。'},
+    {q:'以下代码输出什么？ print(",".join(["a","b","c"]))',opts:['a,b,c','abc','["a","b","c"]','abc,'],ans:0,explanation:'join()用指定分隔符将列表元素合并为字符串。",".join(["a","b","c"]) = "a,b,c"。'},
+    {q:'以下关于Python列表和元组的区别，正确的是？',opts:['列表用圆括号，元组用方括号','列表可变，元组不可变','列表不能嵌套，元组可以','元组有append方法'],ans:1,explanation:'列表可变(mutable)，元组不可变(immutable)。列表用[]，元组用()。两者都可嵌套。元组没有append。'},
+    {q:'以下哪个是Python中打开文件后自动关闭的正确写法？',opts:['with open("f") as f: ...','open("f", auto_close=True)','try: f=open("f") finally: f.close()','A和C都对'],ans:3,explanation:'with语句和try-finally都能保证文件关闭。with语句是推荐写法，更简洁。'}
   ],
   lib: [
     {q:'turtle.forward(100) 是向哪个方向？',opts:['向上','向下','当前朝向','向右'],ans:2,explanation:'forward(d)沿画笔当前朝向移动d像素，默认初始朝向右（正东方向）。'},
@@ -7959,7 +8541,12 @@ const mockQuizzes = {
     {q:'turtle.pencolor("blue") 设置的是？',opts:['背景色','画笔颜色','填充颜色','画布颜色'],ans:1,explanation:'pencolor设置画笔线条颜色。fillcolor设置填充颜色，bgcolor设置背景色。'},
     {q:'time.sleep(0.5) 会暂停多久？',opts:['0.5秒','5秒','0.5分钟','50毫秒'],ans:0,explanation:'time.sleep(seconds)接收秒数，0.5表示500毫秒。'},
     {q:'jieba.add_word("新词") 的作用是？',opts:['删除"新词"','将"新词"加入词典','统计"新词"出现次数','对"新词"分词'],ans:1,explanation:'add_word(word)将自定义词加入jieba词典，使该词在分词时不被拆开。'},
-    {q:'df.describe() 可以获取什么信息？',opts:['所有原始数据','数值列的统计摘要','缺失值数量','列的数据类型'],ans:1,explanation:'describe()返回计数、均值、标准差、最小值、四分位数、最大值等统计摘要，仅针对数值列。'}
+    {q:'df.describe() 可以获取什么信息？',opts:['所有原始数据','数值列的统计摘要','缺失值数量','列的数据类型'],ans:1,explanation:'describe()返回计数、均值、标准差、最小值、四分位数、最大值等统计摘要，仅针对数值列。'},
+    {q:'turtle.circle(50, 360, 6) 绘制的是？',opts:['圆','正六边形','正五边形','三角形'],ans:1,explanation:'circle(r, extent, steps)：steps=6表示用6步画完整圆（360度），即正六边形。省略steps画圆弧。'},
+    {q:'以下哪个函数可以将时间戳转为时间元组？',opts:['time.time()','time.localtime()','time.strftime()','time.sleep()'],ans:1,explanation:'localtime(timestamp)将时间戳转为struct_time（本地时间元组）。time()获取当前时间戳，strftime()格式化。'},
+    {q:'jieba.cut()和jieba.lcut()的主要区别是？',opts:['功能不同','cut返回生成器，lcut返回列表','lcut更精确','cut只用于英文'],ans:1,explanation:'cut()返回generator（生成器），惰性计算；lcut()返回list（列表），立即计算。功能相同，结果类型不同。'},
+    {q:'matplotlib中，plt.savefig("a.png") 的作用是？',opts:['显示图表','保存图表为图片','清空画布','关闭窗口'],ans:1,explanation:'savefig()将当前图表保存为图片文件。show()显示窗口，clf()清空画布，close()关闭窗口。'},
+    {q:'pandas中，df.head(3) 的作用是？',opts:['删除前3行','返回前3行数据','返回后3行数据','排序前3列'],ans:1,explanation:'head(n)返回前n行数据，默认n=5。tail(n)返回后n行。用于快速查看数据概览。'}
   ],
   full: []
 };
@@ -8031,6 +8618,7 @@ function showPage(page) {
     search: '知识点搜索',
     syllabus: 'Python 等级考试大纲',
     practice: '操作题特训',
+    ncre: '全国计算机等级考试专题',
     pt1: 'Tensor与autograd',
     pt2: '线性神经网络',
     pt3: '深度学习计算',
@@ -8222,7 +8810,7 @@ const MOCK_TIME_LIMIT = 30 * 60; // 30分钟
 
 function showMockStart(type) {
   const names = {pub:'公共基础模拟考', python:'Python专项模拟考', lib:'标准库模拟考', full:'综合模拟考试'};
-  const counts = {pub:10, python:15, lib:10, full:35};
+  const counts = {pub:30, python:40, lib:20, full:90};
   document.getElementById('mockModeName').textContent = names[type] || '模拟考试';
   document.getElementById('mockQCount').textContent = (counts[type] || 30) + '题';
   document.getElementById('mockExamStart').style.display = 'block';
