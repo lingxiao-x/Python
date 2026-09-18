@@ -41,6 +41,29 @@
   .nav-item .badge.done{background:var(--success);color:#fff}
   .nav-item .badge.new{background:var(--danger);color:#fff}
 
+  .nav-ncre-level{background:linear-gradient(180deg,rgba(96,165,250,0.08),transparent);padding-bottom:6px;border-radius:8px;margin:10px 6px 8px}
+  .ncre-level-selector{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px 10px 10px}
+  .level-btn{background:rgba(255,255,255,0.04);color:#94a3b8;border:1px solid rgba(96,165,250,0.25);border-radius:6px;padding:6px 4px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;text-align:center;line-height:1.3}
+  .level-btn:hover{background:rgba(96,165,250,0.18);color:#dbeafe;border-color:rgba(96,165,250,0.5)}
+  .level-btn.active{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;border-color:#3b82f6;box-shadow:0 2px 8px rgba(59,130,246,0.35)}
+  .level-btn.level-3{background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.3)}
+  .level-btn.level-3.active{background:linear-gradient(135deg,#10b981,#059669);border-color:#10b981;box-shadow:0 2px 8px rgba(16,185,129,0.35)}
+  .level-btn.level-4{background:rgba(245,158,11,0.05);border-color:rgba(245,158,11,0.3)}
+  .level-btn.level-4.active{background:linear-gradient(135deg,#f59e0b,#d97706);border-color:#f59e0b;box-shadow:0 2px 8px rgba(245,158,11,0.35)}
+  .ncre-current-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;margin-left:10px;box-shadow:0 2px 6px rgba(59,130,246,0.35)}
+  .ncre-current-badge.level-3{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 2px 6px rgba(16,185,129,0.35)}
+  .ncre-current-badge.level-4{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 2px 6px rgba(245,158,11,0.35)}
+
+  .ncre-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 18px;border-bottom:2px solid var(--border);margin-bottom:22px;position:sticky;top:64px;background:var(--bg);z-index:5}
+  .ncre-tab{padding:8px 16px;background:#f1f5f9;color:#475569;border:1px solid #cbd5e1;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+  .ncre-tab:hover{background:#e2e8f0;color:#1e293b}
+  .ncre-tab.active{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;border-color:#3b82f6;box-shadow:0 2px 8px rgba(59,130,246,0.25)}
+  .ncre-tab.level-3.active{background:linear-gradient(135deg,#10b981,#059669);border-color:#10b981;box-shadow:0 2px 8px rgba(16,185,129,0.25)}
+  .ncre-tab.level-4.active{background:linear-gradient(135deg,#f59e0b,#d97706);border-color:#f59e0b;box-shadow:0 2px 8px rgba(245,158,11,0.25)}
+  .ncre-level-panel{display:none;animation:fadeIn .25s ease}
+  .ncre-level-panel.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
   .main{margin-left:280px;flex:1;padding:0;transition:margin .3s}
   .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);padding:14px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
   .topbar h2{font-size:18px;font-weight:700;color:var(--primary)}
@@ -460,11 +483,24 @@
   <a class="nav-item" onclick="showPage('kb6')" data-page="kb6"><span class="icon">Part19</span>文件与正则表达式</a>
   <a class="nav-item" onclick="showPage('kb7')" data-page="kb7"><span class="icon">Part20</span>进阶拓展</a>
 </div>
+<div class="nav-section nav-ncre-level">
+  <div class="nav-title">&#127891; NCRE 等级选择</div>
+  <div class="ncre-level-selector">
+    <button type="button" class="level-btn active" data-level="2" onclick="selectNcreLevel(2)">二级 Python</button>
+    <button type="button" class="level-btn" data-level="3-1" onclick="selectNcreLevel('3-1')">三级 数据库</button>
+    <button type="button" class="level-btn" data-level="3-2" onclick="selectNcreLevel('3-2')">三级 Linux</button>
+    <button type="button" class="level-btn" data-level="3-3" onclick="selectNcreLevel('3-3')">三级 信息安全</button>
+    <button type="button" class="level-btn" data-level="4-1" onclick="selectNcreLevel('4-1')">四级 数据库</button>
+    <button type="button" class="level-btn" data-level="4-2" onclick="selectNcreLevel('4-2')">四级 网络</button>
+    <button type="button" class="level-btn" data-level="4-3" onclick="selectNcreLevel('4-3')">四级 信息安全</button>
+    <button type="button" class="level-btn" data-level="4-4" onclick="selectNcreLevel('4-4')">四级 Linux</button>
+  </div>
+</div>
 <div class="nav-section">
-  <div class="nav-title">&#127891; 备考指南</div>
-  <a class="nav-item" onclick="showPage('syllabus')" data-page="syllabus"><span class="icon">Part21</span>官方考试大纲</a>
-  <a class="nav-item" onclick="showPage('practice')" data-page="practice"><span class="icon">Part22</span>操作题特训</a>
-  <a class="nav-item" onclick="showPage('ncre')" data-page="ncre"><span class="icon">Part23</span>等级考试专题</a>
+  <div class="nav-title">&#128218; 备考指南</div>
+  <a class="nav-item" onclick="showPage('ncre')" data-page="ncre"><span class="icon">Part21</span>等级考试专题</a>
+  <a class="nav-item" onclick="showPage('syllabus')" data-page="syllabus"><span class="icon">Part22</span>官方考试大纲</a>
+  <a class="nav-item" onclick="showPage('practice')" data-page="practice"><span class="icon">Part23</span>操作题特训</a>
 </div>
 </nav>
 
@@ -477,6 +513,7 @@
       <input class="search-input" id="searchInput" type="text" placeholder="搜索知识点、函数、关键词..." oninput="handleSearch()" onkeydown="if(event.key==='Enter'){performSearch();event.preventDefault()}">
     </div>
     <div class="stats">
+      <span class="ncre-current-badge" id="ncreCurrentBadge" title="点击切换 NCRE 等级" onclick="showPage('ncre')" style="display:none">&#127891; <span id="ncreCurrentText">二级 Python</span></span>
       <div class="stat-pill">&#11088; 总分 <span class="val" id="totalScore">0</span></div>
       <div class="stat-pill">&#127942; 已完成 <span class="val" id="completedCh">0/13</span></div>
     </div>
@@ -7264,294 +7301,762 @@ print("处理完成，共{}人".format(len(d)))</code></pre>
   </div>
 
   <!-- ===================== NCRE: 全国计算机等级考试专题 ===================== -->
+  <!-- ===================== NCRE: 全国计算机等级考试专题（多等级 Tab）===================== -->
   <div class="page" id="page-ncre">
     <div class="chapter-hero">
       <h2>&#127891; 全国计算机等级考试专题</h2>
-      <p>NCRE 二级 Python 备考一站式指南：报名流程 · 备考规划 · 真题示例 · 考场注意事项</p>
-      <div class="tags"><span class="tag">&#127919; 备考必备</span><span class="tag">&#128197; 每年3月/9月/12月开考</span></div>
+      <p>NCRE Python 相关等级一站式备考：二级 Python · 三级数据库/Linux/信息安全 · 四级 4 大方向 · 含报名/备考/真题/考场</p>
+      <div class="tags"><span class="tag">&#127919; 备考必备</span><span class="tag">&#128197; 每年3月/9月开考</span><span class="tag">&#128204; 共 8 个 Python 相关方向</span></div>
+    </div>
+
+    <!-- 等级 Tab 切换条 -->
+    <div class="ncre-tabs" id="ncreTabs">
+      <button type="button" class="ncre-tab active" data-level="2" onclick="switchNcreTab(2)">二级 Python</button>
+      <button type="button" class="ncre-tab level-3" data-level="3-1" onclick="switchNcreTab('3-1')">三级 数据库</button>
+      <button type="button" class="ncre-tab level-3" data-level="3-2" onclick="switchNcreTab('3-2')">三级 Linux</button>
+      <button type="button" class="ncre-tab level-3" data-level="3-3" onclick="switchNcreTab('3-3')">三级 信息安全</button>
+      <button type="button" class="ncre-tab level-4" data-level="4-1" onclick="switchNcreTab('4-1')">四级 数据库</button>
+      <button type="button" class="ncre-tab level-4" data-level="4-2" onclick="switchNcreTab('4-2')">四级 网络</button>
+      <button type="button" class="ncre-tab level-4" data-level="4-3" onclick="switchNcreTab('4-3')">四级 信息安全</button>
+      <button type="button" class="ncre-tab level-4" data-level="4-4" onclick="switchNcreTab('4-4')">四级 Linux</button>
     </div>
 
     <div class="section-card" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe">
-      <h3 style="color:#1e40af">&#128218; NCRE 考试简介</h3>
+      <h3 style="color:#1e40af">&#128218; NCRE 考试简介（通用）</h3>
       <div class="learn-box" style="color:#1e3a8a">
         <strong>全称：</strong>全国计算机等级考试（National Computer Rank Examination，简称 NCRE）<br>
         <strong>主办单位：</strong>教育部教育考试院（原教育部考试中心）<br>
-        <strong>等级设置：</strong>一级（操作技能级）、二级（程序设计级）、三级（工程师预备级）、四级（工程师级）<br>
-        <strong>开考频次：</strong>每年一般举办 3 次（3 月、9 月、12 月），部分省份仅在 3 月/9 月开考<br>
-        <strong>证书效力：</strong>终身有效，全国通用，可作为高校学分认定、求职、技能认证、落户加分等参考依据
+        <strong>等级体系：</strong>一级（操作技能级）/ 二级（程序设计级）/ 三级（工程师预备级）/ 四级（工程师级）<br>
+        <strong>开考频次：</strong>全国每年 2 次（3 月最后一个周末、9 月倒数第二个周末），部分省份补考 12 月<br>
+        <strong>成绩等第：</strong>100-90 优秀 / 89-80 良好 / 79-60 合格 / 60 以下 不及格<br>
+        <strong>证书效力：</strong>电子证书，全国通用，终身有效<br>
+        <strong>报名网站：</strong><code>https://ncre-bm.neea.edu.cn/</code>
       </div>
     </div>
 
-    <div class="kb-section">
-      <details open>
-        <summary>&#128221; 一、报名流程与时间节点</summary>
-        <div class="kb-body">
-          <h4>1. 报名渠道</h4>
-          <ul>
-            <li>官方报名网站：<code>https://ncre.neea.edu.cn/</code> 或 <code>https://ncre-bm.neea.cn/</code>（报名期间开放）</li>
-            <li>支持 PC 端与移动端浏览器报名，建议使用 Chrome 或 Edge</li>
-            <li>报名需使用有效身份证件（身份证/护照/港澳台证件），信息一经提交不可修改</li>
-          </ul>
-          <h4>2. 报名时间（参考历年规律）</h4>
-          <table>
-            <tr><th>考次</th><th>考试时间</th><th>报名起止（参考）</th><th>成绩发布</th></tr>
-            <tr><td>春季</td><td>3 月最后一个周末</td><td>上年 12 月底 ~ 1 月中旬</td><td>5 月上旬</td></tr>
-            <tr><td>秋季</td><td>9 月倒数第二个周末</td><td>6 月底 ~ 7 月中旬</td><td>11 月上旬</td></tr>
-            <tr><td>冬季</td><td>12 月第二个周末</td><td>11 月初 ~ 11 月中旬</td><td>次年 2 月初</td></tr>
-          </table>
-          <p><strong>注意：</strong>具体时间以本省教育考试院公告为准，各省报名时间略有差异，错过不补报。</p>
-          <h4>3. 报名流程</h4>
-          <ol>
-            <li>注册/登录 NCRE 报名系统（首次需注册账号，填写个人信息并上传证件照）</li>
-            <li>选择考点（一般选择本校或就近考点，部分考点对外校生有限制）</li>
-            <li>选择报考科目：<strong>二级 - Python 语言程序设计</strong>（科目代码 66）</li>
-            <li>选择报考级别：仅报"二级"即可（无需同时报三级）</li>
-            <li>在线缴费（一般为 80~120 元，以考点公告为准）</li>
-            <li>下载/打印准考证：考前 1~2 周登录系统下载，A4 纸黑白打印即可</li>
-          </ol>
-          <div class="tip-box">
-            <strong>温馨提示：</strong>建议优先选择本校考点，环境熟悉，方便考试当天候考。如有变动可在报名截止前修改考点。
-          </div>
+    <!-- ============ Panel 2: 二级 Python ============ -->
+    <div class="ncre-level-panel active" data-level-panel="2">
+      <div class="section-card">
+        <h3>&#128187; 二级 Python 语言程序设计（科目 66）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>66</td><td>120 分钟</td><td>201（公共基础）+ 266（Python）</td><td>上机考试</td><td>科目 66 合格且选择题得分≥选择题总分 50%</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>题型分值：</strong>选择题 40 分（公共基础 10 分 + Python 30 分）+ 操作题 60 分（基础 3 题×5 分 + turtle 10 分 + 简单应用 10 分 + 综合应用 25 分）<br>
+          <strong>能力要求：</strong>掌握 Python 基本语法、数据类型、控制结构、函数、组合数据、文件读写、标准库（turtle/random/jieba/time/os）<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9734;&#9734;&#9734;（入门级，高校生可在大一/大二报考）
         </div>
-      </details>
-    </div>
+      </div>
 
-    <div class="kb-section">
-      <details open>
-        <summary>&#128197; 二、备考时间规划（建议 8 周计划）</summary>
-        <div class="kb-body">
-          <table>
-            <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日学习时长</th></tr>
-            <tr><td>第 1-2 周</td><td>基础入门</td><td>掌握 Python 基本语法、变量、数据类型、运算符、输入输出（对应 Lv.1~Lv.3）</td><td>1~1.5 小时</td></tr>
-            <tr><td>第 3-4 周</td><td>控制结构与函数</td><td>分支、循环、break/continue、函数定义、参数传递、作用域（对应 Lv.3~Lv.4）</td><td>1~1.5 小时</td></tr>
-            <tr><td>第 5 周</td><td>组合数据</td><td>列表、元组、字典、集合的方法与推导式（对应 Lv.5）</td><td>1.5 小时</td></tr>
-            <tr><td>第 6 周</td><td>文件与标准库</td><td>文件读写、CSV、turtle、random、time、jieba（对应 Lv.6~Lv.7）</td><td>1.5 小时</td></tr>
-            <tr><td>第 7 周</td><td>公共基础 + 真题</td><td>数据结构、算法、软件工程、数据库；做 3~5 套真题</td><td>2 小时</td></tr>
-            <tr><td>第 8 周</td><td>冲刺模考</td><td>限时全真模拟（120 分钟），回顾错题，记忆 30 个必考点</td><td>2~3 小时</td></tr>
-          </table>
-          <div class="key-point">
-            <strong>关键节点：</strong>第 4 周末完成第一次综合练习，第 6 周末完成第一次限时模考，第 8 周末完成至少 3 次完整模拟并达成稳定 80+ 分。
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报名流程（二级 Python）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>登录 <code>https://ncre-bm.neea.edu.cn/</code>（报名期间开放，建议 Chrome 浏览器）</li>
+              <li>注册/登录账号，使用有效身份证件（首次需上传证件照）</li>
+              <li>选择考点（建议本校考点，环境熟悉）</li>
+              <li>选择报考科目：<strong>二级 - Python 语言程序设计（科目 66）</strong></li>
+              <li>在线缴费（约 80~137 元，各省略有差异）</li>
+              <li>考前 1~2 周下载并打印准考证（A4 黑白即可）</li>
+            </ol>
+            <div class="tip-box">
+              <strong>温馨提示：</strong>报名截止前可修改考点/科目；截止后不可修改。请尽早报名，部分热门考点考位有限。
+            </div>
           </div>
-        </div>
-      </details>
-    </div>
+        </details>
+      </div>
 
-    <div class="kb-section">
-      <details open>
-        <summary>&#128206; 三、真题示例：选择题精选</summary>
-        <div class="kb-body">
-          <p>以下题目根据历年真题风格整理，覆盖公共基础与 Python 专项，建议先独立作答再查看解析。</p>
-          <h4>公共基础部分（10 分）</h4>
-          <pre><code>1. 下列关于栈和队列的说法，正确的是？
-   A. 栈是先进先出，队列是先进后出
-   B. 栈是先进后出，队列是先进先出
-   C. 栈和队列都是先进先出
-   D. 栈和队列都是先进后出
-   答案：B
-   解析：栈为后进先出 LIFO，队列为先进先出 FIFO。
-
-2. 在长度为 n 的有序线性表中进行二分查找，最坏情况下比较次数为？
-   A. O(n)        B. O(n²)
-   C. O(log₂n)    D. O(n log₂n)
-   答案：C
-   解析：每次比较后范围减半，最坏 ⌊log₂n⌋+1 次。
-
-3. 软件生命周期中，所花时间最长的阶段是？
-   A. 需求分析    B. 软件设计
-   C. 软件实现    D. 软件维护
-   答案：D
-   解析：维护阶段占总成本 60% 以上，是生命周期最长的阶段。
-
-4. 数据库三级模式中，最接近用户的是？
-   A. 外模式      B. 概念模式
-   C. 内模式      D. 存储模式
-   答案：A
-   解析：外模式是用户视图；概念模式是全局逻辑；内模式是物理存储。
-
-5. 下列排序算法中，最坏时间复杂度为 O(n log n) 的是？
-   A. 冒泡排序    B. 快速排序
-   C. 归并排序    D. 直接插入排序
-   答案：C
-   解析：归并排序最好/平均/最坏都是 O(n log n)；快排最坏 O(n²)。</code></pre>
-
-          <h4>Python 专项部分（30 分）</h4>
-          <pre><code>6. 以下哪个不是 Python 的保留字？
-   A. True        B. False
-   C. null        D. None
-   答案：C
-   解析：Python 中是 None，不是 null（Java 才用 null）。
-
-7. 表达式 "5" * 3 的结果是？
-   A. 15          B. "555"
-   C. "15"        D. 报错
-   答案：B
-   解析：字符串 * 整数表示重复，"5"*3 = "555"。
-
-8. 以下代码的输出是？
-   for i in range(3):
-       print(i, end=" ")
-   A. 1 2 3       B. 0 1 2
-   C. 0 1 2 3     D. 报错
-   答案：B
-   解析：range(3) 产生 0,1,2；end=" " 用空格分隔不换行。
-
-9. 创建空集合的正确写法是？
-   A. {}          B. set()
-   C. []          D. ()
-   答案：B
-   解析：{} 是空字典；空集合必须用 set()。
-
-10. 下列代码运行后 ls 的值是？
-    ls = [1, 2, 3]
-    ls.append([4, 5])
-    A. [1,2,3,4,5]      B. [1,2,3,[4,5]]
-    C. [[1,2,3],[4,5]]  D. 报错
-    答案：B
-    解析：append 将整个列表作为一个元素追加，extend 才会展开。</code></pre>
-          <div class="tip-box">
-            <strong>做题技巧：</strong>选择题平均 1 分钟一题，遇到不确定先标记跳过，做完所有题再回看。注意"以下哪个不是/不正确"等否定题干。
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 8 周规划（二级 Python）</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-2 周</td><td>基础入门</td><td>Python 语法、变量、数据类型、运算符、输入输出（Lv.1~Lv.3）</td><td>1~1.5h</td></tr>
+              <tr><td>第 3-4 周</td><td>控制+函数</td><td>分支、循环、函数、参数、作用域（Lv.3~Lv.4）</td><td>1~1.5h</td></tr>
+              <tr><td>第 5 周</td><td>组合数据</td><td>列表、元组、字典、集合与推导式（Lv.5）</td><td>1.5h</td></tr>
+              <tr><td>第 6 周</td><td>文件+标准库</td><td>文件读写、CSV、turtle、random、jieba（Lv.6~Lv.7）</td><td>1.5h</td></tr>
+              <tr><td>第 7 周</td><td>公共基础+真题</td><td>数据结构、算法、软件工程、数据库；做 3~5 套真题</td><td>2h</td></tr>
+              <tr><td>第 8 周</td><td>冲刺模考</td><td>120 分钟全真模拟、错题回顾、30 个必考点</td><td>2~3h</td></tr>
+            </table>
+            <div class="key-point">
+              <strong>关键节点：</strong>第 4 周末首次综合练习，第 6 周末首次限时模考，第 8 周末达成稳定 80+ 分。
+            </div>
           </div>
-        </div>
-      </details>
-    </div>
+        </details>
+      </div>
 
-    <div class="kb-section">
-      <details>
-        <summary>&#9997; 四、真题示例：操作题精讲</summary>
-        <div class="kb-body">
-          <h4>题型 1：基础编程题（PY101-103，每题 5 分）</h4>
-          <p>要求：补全程序缺失部分，使输出符合要求。</p>
-          <pre><code>// 题目：从键盘输入一个正整数 n，输出 1 到 n 的平方数列
-// 模板中给出：
-n = eval(input("请输入正整数："))
-for i in range(1, ______):     // ① 填空
-    print(______, end=" ")     // ② 填空
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例（二级 Python）</summary>
+          <div class="kb-body">
+            <h4>选择题精选</h4>
+            <pre><code>1. 表达式 "5" * 3 的结果是？
+   A. 15    B. "555"    C. "15"    D. 报错
+   答案：B    解析：字符串 * 整数表示重复
 
-// 答案：① n + 1   ② i ** 2（或 i * i）
-// 解析：range 需包含 n，故 n+1；输出平方用幂运算。</code></pre>
+2. 以下哪个不是 Python 保留字？
+   A. True    B. False    C. null    D. None
+   答案：C    解析：Python 用 None 不用 null
 
-          <h4>题型 2：简单应用题（PY201，turtle 绘图，10 分）</h4>
-          <pre><code>// 题目：使用 turtle 绘制一个边长为 100 的等边三角形
-import turtle as t
+3. 创建空集合的正确写法是？
+   A. {}    B. set()    C. []    D. ()
+   答案：B    解析：{} 是空字典，空集合用 set()</code></pre>
+            <h4>操作题示例：turtle 绘制等边三角形</h4>
+            <pre><code>import turtle as t
 for i in range(3):
     t.fd(100)
-    t.left(____)    // 填空：每次旋转多少度
-
-// 答案：120
-// 解析：等边三角形内角 60°，外角 120°，每次左转 120° 可画出闭合三角形。</code></pre>
-
-          <h4>题型 3：综合应用题（PY301，20 分，分 3 小问）</h4>
-          <p>典型综合题：读取文件 → jieba 分词统计 → 输出结果到新文件</p>
-          <pre><code>// 第 1 问：读取文件内容
-fi = open("input.txt", "r")     // 打开输入文件
-txt = fi.read()                 // 一次性读取全部内容
-fi.close()                      // 必须关闭
-
-// 第 2 问：jieba 分词并统计词频
-import jieba
+    t.left(120)      # 等边三角形外角 120°
+t.done()</code></pre>
+            <h4>操作题示例：jieba 词频统计</h4>
+            <pre><code>import jieba
+fi = open("input.txt", "r")
+txt = fi.read()
+fi.close()
 words = jieba.lcut(txt)
 d = {}
 for w in words:
-    if len(w) < 2:              // 过滤单字词
-        continue
-    d[w] = d.get(w, 0) + 1
-
-// 第 3 问：按词频降序输出 Top 5
+    if len(w) >= 2:
+        d[w] = d.get(w, 0) + 1
 items = list(d.items())
 items.sort(key=lambda x: x[1], reverse=True)
 fo = open("output.txt", "w")
 for i in range(min(5, len(items))):
     fo.write("{}:{}\n".format(items[i][0], items[i][1]))
-fo.close()
-print("处理完成")</code></pre>
-          <div class="tip-box">
-            <strong>操作题答题要点：</strong>① 严格按题目要求文件名命名（PY101.py、PY301.py 等）；② 修改完成后必须 Ctrl+S 保存再运行；③ 不要修改模板中已给定的代码，只填空；④ 综合题先保第一问，再冲第二问。
+fo.close()</code></pre>
           </div>
-        </div>
-      </details>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details>
+          <summary>&#128204; 四、考场注意（二级 Python）</summary>
+          <div class="kb-body">
+            <ul>
+              <li>提前 30 分钟到达，开考前 15 分钟进场</li>
+              <li>携带准考证 + 身份证，禁止手机/U盘/书本</li>
+              <li>选择题做完进入操作题后<strong>不可返回</strong>修改选择题</li>
+              <li>操作题每次修改务必 Ctrl+S 保存</li>
+              <li>文件命名严格按要求：PY101.py / PY301.py 等</li>
+              <li>建议答题顺序：选择题→基础→turtle→简单应用→综合→检查</li>
+            </ul>
+          </div>
+        </details>
+      </div>
     </div>
 
-    <div class="kb-section">
-      <details>
-        <summary>&#128204; 五、考场注意事项</summary>
-        <div class="kb-body">
-          <h4>考前 1 天</h4>
-          <ul>
-            <li>检查准考证、身份证是否齐全（缺一不可）</li>
-            <li>提前规划路线，了解考点机房位置</li>
-            <li>复习 30 个必考点和 10 个高频代码模板，不再做新题</li>
-            <li>早睡，保证充足睡眠，第二天精神饱满</li>
-          </ul>
-          <h4>考试当天</h4>
-          <ul>
-            <li>提前 30 分钟到达考点，开考前 15 分钟进场</li>
-            <li>携带准考证、身份证，不可携带手机/U盘/书本进入机房</li>
-            <li>对号入座，登录考试系统，核对个人信息无误后开始</li>
-            <li>注意：选择题做完进入操作题后，<strong>不可返回</strong>修改选择题</li>
-            <li>操作题在 IDLE 中完成，每次修改务必 Ctrl+S 保存</li>
-            <li>遇到死机或卡顿立即举手示意监考老师，不要自行重启</li>
-            <li>提交答卷前再次确认所有 .py 文件已保存</li>
-          </ul>
-          <h4>答题顺序建议</h4>
-          <table>
-            <tr><th>顺序</th><th>题号</th><th>用时建议</th><th>策略</th></tr>
-            <tr><td>1</td><td>选择题 1-40</td><td>40 分钟</td><td>按顺序作答，难题标记跳过</td></tr>
-            <tr><td>2</td><td>PY101-103 基础</td><td>15 分钟</td><td>先易后难，确保拿满基础分</td></tr>
-            <tr><td>3</td><td>PY201 turtle</td><td>5 分钟</td><td>用 seth + circle 速画</td></tr>
-            <tr><td>4</td><td>PY202 简单应用</td><td>10 分钟</td><td>字典统计 + 文件输出</td></tr>
-            <tr><td>5</td><td>PY301 综合应用</td><td>30 分钟</td><td>先做前 2 小问，最后冲第 3 问</td></tr>
-            <tr><td>6</td><td>检查</td><td>20 分钟</td><td>核对文件命名、关闭文件、运行验证</td></tr>
-          </table>
+    <!-- ============ Panel 3-1: 三级 数据库技术 ============ -->
+    <div class="ncre-level-panel" data-level-panel="3-1">
+      <div class="section-card">
+        <h3>&#128229; 三级 数据库技术（科目 36）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>36</td><td>120 分钟</td><td>336</td><td>上机考试</td><td>科目 36 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>掌握数据库基本原理、关系数据库标准语言 SQL、数据库设计与规范化、数据库管理系统、事务与并发控制、数据库安全与恢复<br>
+          <strong>Python 相关：</strong>本平台 Python 教学可作为<strong>数据查询与分析的辅助工具</strong>，使用 sqlite3 / pymysql / SQLAlchemy 连接数据库做实验<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9734;&#9734;（中级，要求扎实的数据库理论基础）
         </div>
-      </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考流程（三级 数据库）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>登录 NCRE 报名系统 <code>https://ncre-bm.neea.edu.cn/</code></li>
+              <li>选择考点，选择报考科目：<strong>三级 - 数据库技术（科目代码 36）</strong></li>
+              <li>在线缴费（约 137 元，以各省公告为准）</li>
+              <li>打印准考证：考前 1~2 周下载</li>
+            </ol>
+            <div class="tip-box">
+              <strong>建议：</strong>三级数据库是四级数据库工程师的前置证书，建议同步规划四级数据库方向（同时报名或先取三级再报四级）。
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 10 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-2 周</td><td>数据库基础</td><td>数据模型、三级模式、E-R 图、关系代数</td><td>1.5h</td></tr>
+              <tr><td>第 3-5 周</td><td>SQL 语句</td><td>SELECT/INSERT/UPDATE/DELETE、连接查询、子查询、视图、索引</td><td>2h</td></tr>
+              <tr><td>第 6-7 周</td><td>数据库设计</td><td>需求分析、概念设计、逻辑设计、规范化（1NF~BCNF）</td><td>1.5h</td></tr>
+              <tr><td>第 8 周</td><td>事务与安全</td><td>ACID、并发控制（锁）、恢复技术、数据库安全</td><td>1.5h</td></tr>
+              <tr><td>第 9 周</td><td>真题演练</td><td>做 5 套真题，错题分类总结</td><td>2h</td></tr>
+              <tr><td>第 10 周</td><td>冲刺模考</td><td>120 分钟全真模拟 + Python 实操 sqlite3 查询</td><td>2~3h</td></tr>
+            </table>
+            <div class="key-point">
+              <strong>Python 加分项：</strong>使用 Python <code>sqlite3</code> 模块实操数据库，能直观理解 SQL 执行流程。
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 实操</summary>
+          <div class="kb-body">
+            <h4>选择题：关系代数</h4>
+            <pre><code>1. 设关系 R(A,B,C) 和 S(B,C,D)，自然连接 R ⋈ S 的属性个数是？
+   A. 3    B. 4    C. 5    D. 6
+   答案：B    解析：自然连接去掉重复属性，R 有 A,B,C；S 有 B,C,D；公共属性 B,C 去重，结果为 A,B,C,D 共 4 个
+
+2. SQL 语句：查询年龄大于 20 的学生姓名，正确的是？
+   A. SELECT Sname FROM Student WHERE Sage > 20
+   B. SELECT Sname FROM Student WITH Sage > 20
+   C. SELECT Sname WHERE Student.Sage > 20
+   D. FROM Student SELECT Sname WHERE Sage > 20
+   答案：A    解析：标准 SQL 顺序 SELECT...FROM...WHERE</code></pre>
+            <h4>Python + sqlite3 实操</h4>
+            <pre><code>import sqlite3
+conn = sqlite3.connect("school.db")
+cur = conn.cursor()
+cur.execute("SELECT Sname, Sage FROM Student WHERE Sage > ?", (20,))
+for row in cur.fetchall():
+    print(row)
+conn.close()</code></pre>
+          </div>
+        </details>
+      </div>
     </div>
 
-    <div class="kb-section">
+    <!-- ============ Panel 3-2: 三级 Linux 应用与开发技术 ============ -->
+    <div class="ncre-level-panel" data-level-panel="3-2">
+      <div class="section-card">
+        <h3>&#128029; 三级 Linux 应用与开发技术（科目 71）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>71</td><td>120 分钟</td><td>371</td><td>上机考试</td><td>科目 71 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>Linux 系统安装与使用、命令行操作、Shell 脚本、文件系统管理、用户与权限、网络配置、服务部署<br>
+          <strong>Python 相关：</strong>Python 是 Linux 系统脚本/自动化运维的核心语言，掌握 Python 可大幅提升 Shell 脚本之外的自动化能力<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9734;&#9734;（要求熟悉 Linux 命令行与系统原理）
+        </div>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考流程（三级 Linux）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>登录 NCRE 报名系统</li>
+              <li>选择考点，选择报考科目：<strong>三级 - Linux 应用与开发技术（科目代码 71）</strong></li>
+              <li>在线缴费，打印准考证</li>
+            </ol>
+            <div class="tip-box">
+              <strong>建议：</strong>三级 Linux 是四级 Linux 应用与开发工程师（科目 46）的前置证书。
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 8 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-2 周</td><td>Linux 基础</td><td>安装虚拟机、文件系统、基本命令 ls/cd/cp/mv/rm/cat/grep</td><td>1.5h</td></tr>
+              <tr><td>第 3-4 周</td><td>用户与权限</td><td>用户/组管理、chmod/chown、sudo、文件权限 rwx</td><td>1.5h</td></tr>
+              <tr><td>第 5 周</td><td>Shell 脚本</td><td>变量、条件、循环、管道、重定向、awk/sed</td><td>1.5h</td></tr>
+              <tr><td>第 6 周</td><td>系统管理</td><td>进程管理 ps/top/kill、磁盘 df/du、网络 ifconfig/netstat</td><td>1.5h</td></tr>
+              <tr><td>第 7 周</td><td>服务部署</td><td>SSH、HTTP/Nginx、systemd 服务管理</td><td>2h</td></tr>
+              <tr><td>第 8 周</td><td>Python 运维 + 模考</td><td>Python 调用 os/subprocess 模块；全真模考</td><td>2~3h</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 运维脚本</summary>
+          <div class="kb-body">
+            <h4>选择题：Linux 命令</h4>
+            <pre><code>1. 修改文件 test.txt 权限为所有者可读写执行，组和其他用户只读，正确命令是？
+   A. chmod 744 test.txt    B. chmod 644 test.txt
+   C. chmod 755 test.txt    D. chmod 700 test.txt
+   答案：A    解析：7=rwx(所有者)，4=r--(组)，4=r--(其他)
+
+2. 下列关于 Shell 脚本变量，错误的是？
+   A. 变量名区分大小写
+   B. 使用变量前必须先定义
+   C. 引用变量用 $ 符号
+   D. 变量赋值等号两边不能有空格
+   答案：B    解析：未定义的变量引用返回空字符串，不报错</code></pre>
+            <h4>Python 系统运维脚本</h4>
+            <pre><code>import subprocess
+# 查看磁盘使用情况
+result = subprocess.run(['df', '-h'], capture_output=True, text=True)
+print(result.stdout)
+
+# 批量统计 /var/log 下日志文件大小
+import os
+for root, dirs, files in os.walk('/var/log'):
+    for f in files:
+        path = os.path.join(root, f)
+        size = os.path.getsize(path)
+        if size > 1024 * 1024:  # 大于 1MB
+            print(f"{path}: {size/1024/1024:.2f} MB")</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============ Panel 3-3: 三级 信息安全技术 ============ -->
+    <div class="ncre-level-panel" data-level-panel="3-3">
+      <div class="section-card">
+        <h3>&#128274; 三级 信息安全技术（科目 38）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>38</td><td>120 分钟</td><td>338</td><td>上机考试</td><td>科目 38 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>信息安全基础、密码学基础（对称/非对称/哈希）、网络安全（防火墙/入侵检测）、系统安全、应用安全、安全管理<br>
+          <strong>Python 相关：</strong>Python 广泛用于<strong>安全工具开发、漏洞扫描、密码学实验、CTF 比赛</strong>，本平台 Python 教学可作为安全编程基础<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9734;&#9734;（要求密码学与网络协议基础）
+        </div>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考流程（三级 信息安全）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>登录 NCRE 报名系统</li>
+              <li>选择考点，选择报考科目：<strong>三级 - 信息安全技术（科目代码 38）</strong></li>
+              <li>在线缴费，打印准考证</li>
+            </ol>
+            <div class="tip-box">
+              <strong>建议：</strong>三级信息安全是四级信息安全工程师（科目 44）的前置证书，建议同步备考。
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 8 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1 周</td><td>安全概述</td><td>CIA 三要素、安全服务、安全机制、OSI 安全体系</td><td>1.5h</td></tr>
+              <tr><td>第 2-3 周</td><td>密码学</td><td>对称加密 DES/AES、非对称 RSA/ECC、哈希 MD5/SHA、数字签名</td><td>2h</td></tr>
+              <tr><td>第 4-5 周</td><td>网络安全</td><td>PKI/CA、SSL/TLS、IPSec、防火墙、IDS/IPS</td><td>2h</td></tr>
+              <tr><td>第 6 周</td><td>系统/应用安全</td><td>操作系统安全、Web 安全（SQL注入/XSS/CSRF）、恶意代码</td><td>1.5h</td></tr>
+              <tr><td>第 7 周</td><td>安全管理</td><td>风险评估、安全策略、应急响应、等级保护</td><td>1.5h</td></tr>
+              <tr><td>第 8 周</td><td>Python 安全工具 + 模考</td><td>用 hashlib、socket 编写扫描脚本；全真模考</td><td>2~3h</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 安全脚本</summary>
+          <div class="kb-body">
+            <h4>选择题：密码学</h4>
+            <pre><code>1. 下列属于非对称加密算法的是？
+   A. DES    B. AES    C. RSA    D. 3DES
+   答案：C    解析：DES/AES/3DES 是对称加密；RSA 是非对称
+
+2. SHA-256 算法生成的摘要长度是？
+   A. 128 位    B. 160 位    C. 256 位    D. 512 位
+   答案：C    解析：SHA-256 输出 256 位定长摘要</code></pre>
+            <h4>Python 密码学与端口扫描</h4>
+            <pre><code>import hashlib
+# 计算字符串的 SHA-256 哈希
+msg = "Hello NCRE"
+print(hashlib.sha256(msg.encode()).hexdigest())
+
+import socket
+# 简单端口扫描器
+def scan_port(host, port):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(1)
+    try:
+        s.connect((host, port))
+        print(f"端口 {port} 开放")
+    except:
+        pass
+    finally:
+        s.close()
+
+for p in [21, 22, 80, 443, 8080]:
+    scan_port("127.0.0.1", p)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============ Panel 4-1: 四级 数据库工程师 ============ -->
+    <div class="ncre-level-panel" data-level-panel="4-1">
+      <div class="section-card">
+        <h3>&#128190; 四级 数据库工程师（科目 42）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>42</td><td>90 分钟</td><td>401（操作系统原理）+ 404（数据库原理）</td><td>上机考试</td><td>已获科目 36 证书 + 科目 42 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>操作系统原理（进程/线程、内存管理、文件系统、设备管理、死锁）+ 数据库原理（关系模型、SQL、查询优化、事务、并发控制、分布式数据库）<br>
+          <strong>Python 相关：</strong>用 Python 实现简单的关系代数运算、模拟事务隔离级别、理解 SQL 优化器<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9733;&#9734;（高级，工程师级，要求扎实理论与工程实践）
+        </div>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考条件（四级 数据库）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>已通过<strong>三级 数据库技术（科目 36）</strong>或同时报考</li>
+              <li>登录 NCRE 报名系统选择：<strong>四级 - 数据库工程师（科目代码 42）</strong></li>
+              <li>如未取得三级证书，需三级和四级同时合格才可获四级证书</li>
+            </ol>
+            <div class="tip-box">
+              <strong>建议：</strong>四级考试仅 90 分钟，节奏紧凑，必须熟练掌握操作系统与数据库核心概念。
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 10 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-3 周</td><td>操作系统</td><td>进程/线程、调度算法、死锁、内存分页/分段/虚拟内存、文件系统</td><td>2h</td></tr>
+              <tr><td>第 4-7 周</td><td>数据库原理</td><td>关系代数、SQL 优化、查询处理、事务 ACID、并发控制（锁/ MVCC）、恢复</td><td>2h</td></tr>
+              <tr><td>第 8 周</td><td>分布式数据库</td><td>分布式存储、CAP/BASE、NoSQL、数据分片</td><td>1.5h</td></tr>
+              <tr><td>第 9 周</td><td>真题模考</td><td>做 5 套真题，重点突破选择+填空</td><td>2h</td></tr>
+              <tr><td>第 10 周</td><td>Python 实操 + 冲刺</td><td>用 Python 模拟锁机制；最后模考</td><td>2~3h</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 模拟</summary>
+          <div class="kb-body">
+            <h4>选择题：操作系统</h4>
+            <pre><code>1. 下列调度算法中，可能产生"饥饿"现象的是？
+   A. 时间片轮转    B. 优先级调度    C. 先来先服务    D. 短作业优先
+   答案：D    解析：短作业优先可能让长作业长期得不到服务（饥饿）
+
+2. 死锁的四个必要条件中，不包括？
+   A. 互斥    B. 请求与保持    C. 抢占式调度    D. 循环等待
+   答案：C    解析：死锁四条件：互斥、请求与保持、不剥夺、循环等待</code></pre>
+            <h4>Python 模拟事务与锁</h4>
+            <pre><code>import threading
+lock = threading.Lock()
+balance = 0
+
+def deposit(amount):
+    global balance
+    for _ in range(100):
+        lock.acquire()              # 加锁（避免并发问题）
+        balance += amount
+        lock.release()              # 释放锁
+
+t1 = threading.Thread(target=deposit, args=(1,))
+t2 = threading.Thread(target=deposit, args=(1,))
+t1.start(); t2.start()
+t1.join();  t2.join()
+print("Final balance:", balance)   # 稳定输出 200</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============ Panel 4-2: 四级 网络工程师 ============ -->
+    <div class="ncre-level-panel" data-level-panel="4-2">
+      <div class="section-card">
+        <h3>&#127760; 四级 网络工程师（科目 41）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>41</td><td>90 分钟</td><td>401（操作系统原理）+ 403（计算机网络）</td><td>上机考试</td><td>已获科目 35 证书 + 科目 41 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>操作系统原理 + 计算机网络（OSI 七层、TCP/IP、IP 子网划分、路由协议、应用层协议）<br>
+          <strong>Python 相关：</strong>Python <code>socket</code> 模块可实现 TCP/UDP 通信实验，<code>scapy</code> 库可构造数据包<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9733;&#9734;（要求网络协议熟练）
+        </div>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考条件（四级 网络）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>已通过<strong>三级 网络技术（科目 35）</strong>或同时报考</li>
+              <li>登录报名系统选择：<strong>四级 - 网络工程师（科目代码 41）</strong></li>
+            </ol>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 10 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-3 周</td><td>操作系统</td><td>同四级数据库方向（共用 401 课程）</td><td>2h</td></tr>
+              <tr><td>第 4-5 周</td><td>物理层+数据链路层</td><td>编码、复用、CSMA/CD、Ethernet、MAC、VLAN</td><td>2h</td></tr>
+              <tr><td>第 6-7 周</td><td>网络层</td><td>IP 子网划分、CIDR、ARP、ICMP、路由协议（RIP/OSPF/BGP）</td><td>2h</td></tr>
+              <tr><td>第 8 周</td><td>传输+应用层</td><td>TCP/UDP、三次握手、HTTP/HTTPS/DNS/DHCP/SMTP</td><td>2h</td></tr>
+              <tr><td>第 9-10 周</td><td>真题+Python 实验</td><td>5 套真题 + socket 编程实验</td><td>2~3h</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 网络编程</summary>
+          <div class="kb-body">
+            <h4>选择题：IP 子网划分</h4>
+            <pre><code>1. IP 地址 192.168.1.100/26，该子网可容纳的主机数是？
+   A. 62    B. 64    C. 126    D. 254
+   答案：A    解析：/26 子网掩码，主机位 6 位，2^6-2=62 个可用主机
+
+2. TCP 三次握手的第二次握手报文标志位是？
+   A. SYN=1, ACK=0    B. SYN=1, ACK=1
+   C. SYN=0, ACK=1    D. FIN=1, ACK=1
+   答案：B    解析：第二次 SYN=1, ACK=1 表示同意建立连接</code></pre>
+            <h4>Python TCP 服务器实验</h4>
+            <pre><code>import socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('0.0.0.0', 8080))
+server.listen(5)
+print("服务器监听 8080 端口...")
+conn, addr = server.accept()
+data = conn.recv(1024)
+print(f"收到 {addr} 的消息: {data.decode()}")
+conn.sendall(b"Hello from server")
+conn.close()
+server.close()</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============ Panel 4-3: 四级 信息安全工程师 ============ -->
+    <div class="ncre-level-panel" data-level-panel="4-3">
+      <div class="section-card">
+        <h3>&#128737; 四级 信息安全工程师（科目 44）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>44</td><td>90 分钟</td><td>401（操作系统原理）+ 403（计算机网络）</td><td>上机考试</td><td>已获科目 38 证书 + 科目 44 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>操作系统原理 + 计算机网络 + 信息安全工程实践（同四级网络课程组合，但前置证书为三级信息安全）<br>
+          <strong>Python 相关：</strong>Python 用于<strong>渗透测试、漏洞分析、密码破解工具、Web 安全扫描</strong>等，是信息安全工程师核心工具语言<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9733;&#9733;（要求操作系统、网络、安全三者融会贯通）
+        </div>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考条件（四级 信息安全）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>已通过<strong>三级 信息安全技术（科目 38）</strong>或同时报考</li>
+              <li>登录报名系统选择：<strong>四级 - 信息安全工程师（科目代码 44）</strong></li>
+            </ol>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 10 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-3 周</td><td>操作系统</td><td>共用 401 课程（进程、内存、文件、安全机制）</td><td>2h</td></tr>
+              <tr><td>第 4-6 周</td><td>计算机网络</td><td>共用 403 课程，重点关注 SSL/TLS、VPN、防火墙</td><td>2h</td></tr>
+              <tr><td>第 7 周</td><td>安全工程</td><td>渗透测试流程、漏洞类型（OWASP Top 10）、应急响应</td><td>1.5h</td></tr>
+              <tr><td>第 8-9 周</td><td>真题演练</td><td>5 套真题 + 错题总结</td><td>2h</td></tr>
+              <tr><td>第 10 周</td><td>Python 安全工具 + 冲刺</td><td>编写扫描器/暴力破解脚本；最后模考</td><td>2~3h</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 渗透脚本</summary>
+          <div class="kb-body">
+            <h4>选择题：网络安全</h4>
+            <pre><code>1. SQL 注入攻击属于 OWASP Top 10 中的哪类漏洞？
+   A. 失效的访问控制    B. 注入
+   C. 跨站脚本 XSS     D. 安全配置错误
+   答案：B    解析：SQL 注入属于注入类漏洞
+
+2. HTTPS 默认使用的端口是？
+   A. 80    B. 443    C. 22    D. 21
+   答案：B    解析：HTTP 80，HTTPS 443</code></pre>
+            <h4>Python 简单 Web 漏洞扫描</h4>
+            <pre><code>import requests
+# 检测目标 URL 是否存在 SQL 注入点（仅作教学示例）
+def check_sqli(url, param):
+    payloads = ["'", "' OR '1'='1", "1; DROP TABLE--"]
+    for p in payloads:
+        r = requests.get(url, params={param: p}, timeout=3)
+        if "error" in r.text.lower() or "sql" in r.text.lower():
+            print(f"[!] 可能存在 SQL 注入: payload={p}")
+            return True
+    return False
+
+check_sqli("http://example.com/login", "username")</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============ Panel 4-4: 四级 Linux 应用与开发工程师 ============ -->
+    <div class="ncre-level-panel" data-level-panel="4-4">
+      <div class="section-card">
+        <h3>&#128029; 四级 Linux 应用与开发工程师（科目 46）</h3>
+        <table class="data-table">
+          <tr><th>科目代码</th><th>考试时间</th><th>考核课程</th><th>考试形式</th><th>获证条件</th></tr>
+          <tr><td>46</td><td>90 分钟</td><td>401（操作系统原理）+ 402（计算机组成与接口）</td><td>上机考试</td><td>已获科目 71 证书 + 科目 46 合格</td></tr>
+        </table>
+        <div class="learn-box">
+          <strong>能力要求：</strong>操作系统原理 + 计算机组成与接口（CPU/存储/总线/I/O/中断）+ Linux 系统编程<br>
+          <strong>Python 相关：</strong>Python 在 Linux 上是<strong>系统自动化、容器编排、运维开发</strong>的核心语言（与 Shell 互补）<br>
+          <strong>难易度：</strong>&#9733;&#9733;&#9733;&#9733;&#9734;（工程师级，要求底层硬件与系统原理扎实）
+        </div>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128221; 一、报考条件（四级 Linux）</summary>
+          <div class="kb-body">
+            <ol>
+              <li>已通过<strong>三级 Linux 应用与开发技术（科目 71）</strong>或同时报考</li>
+              <li>登录报名系统选择：<strong>四级 - Linux 应用与开发工程师（科目代码 46）</strong></li>
+            </ol>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128197; 二、备考 10 周规划</summary>
+          <div class="kb-body">
+            <table>
+              <tr><th>阶段</th><th>周期</th><th>重点任务</th><th>每日时长</th></tr>
+              <tr><td>第 1-3 周</td><td>操作系统原理</td><td>进程/线程、调度、内存、文件、设备</td><td>2h</td></tr>
+              <tr><td>第 4-6 周</td><td>计算机组成与接口</td><td>CPU 结构、指令系统、存储层次、总线、I/O 接口、中断</td><td>2h</td></tr>
+              <tr><td>第 7 周</td><td>Linux 系统编程</td><td>进程间通信、文件 I/O、信号、多线程</td><td>1.5h</td></tr>
+              <tr><td>第 8-9 周</td><td>真题演练</td><td>5 套真题 + 知识图谱梳理</td><td>2h</td></tr>
+              <tr><td>第 10 周</td><td>Python 运维 + 冲刺</td><td>用 Python 编写自动化运维脚本；最后模考</td><td>2~3h</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="kb-section">
+        <details open>
+          <summary>&#128206; 三、真题示例 + Python 运维</summary>
+          <div class="kb-body">
+            <h4>选择题：计算机组成</h4>
+            <pre><code>1. CPU 响应中断时，必须保存的关键信息是？
+   A. 通用寄存器内容    B. 程序计数器 PC
+   C. 累加器            D. 状态寄存器
+   答案：B    解析：保存 PC 才能正确返回被中断的程序
+
+2. 下列关于虚拟存储器的说法，正确的是？
+   A. 虚拟存储器提高了主存访问速度
+   B. 虚拟存储器扩大了逻辑地址空间
+   C. 虚拟存储器由硬件单独实现
+   D. 虚拟存储器无需操作系统支持
+   答案：B    解析：虚拟内存通过请求调页/段扩展逻辑地址空间</code></pre>
+            <h4>Python 自动化运维脚本</h4>
+            <pre><code>import subprocess, os, time
+# 监控 CPU 占用最高的进程
+result = subprocess.run(['ps', '-eo', 'pid,%cpu,cmd', '--sort=-%cpu'],
+                       capture_output=True, text=True)
+print("Top 5 CPU 进程:")
+print('\n'.join(result.stdout.split('\n')[:6]))
+
+# 系统负载告警
+load1, load5, load15 = os.getloadavg()
+print(f"\n1min/5min/15min 平均负载: {load1:.2f}/{load5:.2f}/{load15:.2f}")
+if load1 > 4:
+    print("[!] 系统负载过高，建议排查！")</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- 通用：成绩查询与证书 -->
+    <div class="kb-section" style="margin-top:20px">
       <details>
-        <summary>&#127942; 六、成绩查询与证书</summary>
+        <summary>&#127942; 成绩查询与证书获取（所有等级通用）</summary>
         <div class="kb-body">
           <h4>1. 成绩查询</h4>
           <ul>
             <li>查询网站：<code>https://cjcx.neea.edu.cn/</code>（中国教育考试网）</li>
             <li>查询时间：考试结束约 45 天后</li>
             <li>所需信息：准考证号 + 姓名 + 身份证号</li>
-            <li>成绩等第：<strong>100-90 优秀 / 89-80 良好 / 79-60 合格 / 60 以下不合格</strong></li>
+            <li>成绩等第：<strong>100-90 优秀 / 89-80 良好 / 79-60 合格 / 60 以下 不及格</strong></li>
+            <li>特别提示：二级语言类/数据库类科目，选择题得分须达选择题总分 50%（即 20 分）及以上</li>
           </ul>
           <h4>2. 证书获取</h4>
           <ul>
             <li>电子证书：成绩发布后约 1 个月可在 <code>https://zscx.neea.edu.cn/</code> 下载 PDF 电子证书</li>
-            <li>纸质证书：部分省份不再发放，以电子证书为准；如需纸质可申请邮寄（邮费到付）</li>
+            <li>四级获证条件：成绩合格且<strong>已取得对应的四级相关三级证书</strong>，否则仅保留成绩，不能取证</li>
             <li>证书编号唯一，可通过中国教育考试网验证真伪</li>
           </ul>
           <div class="key-point">
-            <strong>证书效力：</strong>全国通用，终身有效，无需年审或续期。可作为高校选修学分认定、求职技能证明、部分城市落户加分等参考依据。
+            <strong>证书效力：</strong>全国通用，终身有效，无需年审或续期。可作为高校学分认定、求职技能证明、落户加分等参考依据。
           </div>
         </div>
       </details>
     </div>
 
+    <!-- 通用：进阶备考资源 -->
     <div class="kb-section">
       <details>
-        <summary>&#128640; 七、进阶备考资源</summary>
+        <summary>&#128640; 进阶备考资源（所有等级通用）</summary>
         <div class="kb-body">
           <h4>官方资源</h4>
           <ul>
             <li>教育部教育考试院官网：<code>https://www.neea.edu.cn/</code>（大纲、样题、报名通知）</li>
-            <li>中国教育考试网：<code>https://www.neea.edu.cn/</code>（成绩查询、证书下载）</li>
+            <li>NCRE 报名入口：<code>https://ncre-bm.neea.edu.cn/</code>（报名期间开放）</li>
+            <li>中国教育考试网：<code>https://cjcx.neea.edu.cn/</code>（成绩、证书下载）</li>
           </ul>
           <h4>推荐教材</h4>
           <ul>
-            <li>《全国计算机等级考试二级教程 - Python 语言程序设计》（高等教育出版社，教育部考试中心组编）—— 官方指定教材</li>
-            <li>《Python 语言程序设计基础》（嵩天主编，高等教育出版社）—— MOOC 配套教材</li>
+            <li>《全国计算机等级考试二级教程 - Python 语言程序设计》（高等教育出版社）—— 二级官方教材</li>
+            <li>《全国计算机等级考试三级教程 - 数据库技术》（高等教育出版社）—— 三级数据库方向</li>
+            <li>《全国计算机等级考试三级教程 - 信息安全技术》（高等教育出版社）—— 三级安全方向</li>
+            <li>《全国计算机等级考试四级教程 - 操作系统原理》（高等教育出版社）—— 四级通用课程 401</li>
+            <li>《全国计算机等级考试四级教程 - 计算机网络》（高等教育出版社）—— 四级课程 403</li>
+            <li>《全国计算机等级考试四级教程 - 数据库原理》（高等教育出版社）—— 四级课程 404</li>
           </ul>
-          <h4>在线练习</h4>
+          <h4>本平台联动入口</h4>
           <ul>
-            <li>本平台"<strong>模拟测验中心</strong>"：综合 90 题，含详细解析</li>
-            <li>本平台"<strong>操作题特训</strong>"：覆盖 turtle、格式化、文件、jieba 等高频题型</li>
-            <li>本平台"<strong>官方考试大纲</strong>"：完整考点对照表</li>
+            <li>"<strong>模拟测验中心</strong>"：二级 Python 综合 90 题，含详细解析</li>
+            <li>"<strong>操作题特训</strong>"：覆盖 turtle、格式化、文件、jieba 等高频题型</li>
+            <li>"<strong>官方考试大纲</strong>"：二级 Python 完整考点对照表</li>
+            <li>"<strong>知识百科 - 公共基础知识速查</strong>"：数据结构、算法、软件工程、数据库理论速查</li>
+            <li>"<strong>知识百科 - 文件与正则表达式</strong>"：Python 文件操作与正则速查</li>
           </ul>
           <div class="tip-box">
-            <strong>备考建议：</strong>不要盲目刷题，先吃透大纲考点 → 模块化练习 → 综合模考 → 错题回顾。建议每周做一次全真模拟（限时 120 分钟），保持手感。
+            <strong>备考建议：</strong>不要盲目刷题。建议：① 吃透大纲考点 → ② 模块化练习 → ③ 综合模考 → ④ 错题回顾。每周一次全真模拟（120 或 90 分钟），保持手感。
           </div>
         </div>
       </details>
@@ -8585,6 +9090,101 @@ function saveState() {
     lastStudied: state.lastStudied
   }));
 }
+
+// ===================== NCRE 等级选择（菜单 + 顶栏徽章 + 多等级 Tab 联动）=====================
+const NCRE_LEVELS = {
+  '2':   { label: '二级 Python',     cssLevel: '2',   panel: '2'   },
+  '3-1': { label: '三级 数据库',      cssLevel: '3',   panel: '3-1' },
+  '3-2': { label: '三级 Linux',       cssLevel: '3',   panel: '3-2' },
+  '3-3': { label: '三级 信息安全',    cssLevel: '3',   panel: '3-3' },
+  '4-1': { label: '四级 数据库',      cssLevel: '4',   panel: '4-1' },
+  '4-2': { label: '四级 网络',        cssLevel: '4',   panel: '4-2' },
+  '4-3': { label: '四级 信息安全',    cssLevel: '4',   panel: '4-3' },
+  '4-4': { label: '四级 Linux',       cssLevel: '4',   panel: '4-4' }
+};
+
+function selectNcreLevel(level) {
+  if (!NCRE_LEVELS[level]) return;
+  state.ncreLevel = level;
+  try { localStorage.setItem('ncreLevel', level); } catch(e){}
+  applyNcreLevelUI(level);
+  // 切换主页面到 ncre，并联动该等级 panel
+  showPage('ncre');
+  setTimeout(function(){ switchNcreTab(level, true); }, 30);
+}
+
+function applyNcreLevelUI(level) {
+  var info = NCRE_LEVELS[level];
+  if (!info) return;
+  // 1. 同步菜单栏按钮选中态
+  document.querySelectorAll('.level-btn').forEach(function(btn){
+    var lv = btn.getAttribute('data-level');
+    btn.classList.remove('active','level-2','level-3','level-4');
+    var css = NCRE_LEVELS[lv] ? NCRE_LEVELS[lv].cssLevel : '2';
+    btn.classList.add('level-' + css);
+    if (lv === level) btn.classList.add('active');
+  });
+  // 2. 顶栏徽章
+  var badge = document.getElementById('ncreCurrentBadge');
+  var txt = document.getElementById('ncreCurrentText');
+  if (badge && txt) {
+    txt.textContent = info.label;
+    badge.classList.remove('level-2','level-3','level-4');
+    badge.classList.add('level-' + info.cssLevel);
+    badge.style.display = 'inline-flex';
+  }
+}
+
+function switchNcreTab(level, fromMenu) {
+  if (!NCRE_LEVELS[level]) return;
+  state.ncreLevel = level;
+  try { localStorage.setItem('ncreLevel', level); } catch(e){}
+  // 1. Tab 高亮
+  document.querySelectorAll('.ncre-tab').forEach(function(tab){
+    var lv = tab.getAttribute('data-level');
+    tab.classList.toggle('active', lv === level);
+  });
+  // 2. 显示对应 panel
+  document.querySelectorAll('.ncre-level-panel').forEach(function(p){
+    var lv = p.getAttribute('data-level-panel');
+    p.classList.toggle('active', lv === level);
+  });
+  // 3. 同步菜单栏按钮
+  if (fromMenu !== true) {
+    document.querySelectorAll('.level-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-level') === level);
+    });
+  }
+  // 4. 顶栏徽章
+  var info = NCRE_LEVELS[level];
+  var badge = document.getElementById('ncreCurrentBadge');
+  var txt = document.getElementById('ncreCurrentText');
+  if (badge && txt && info) {
+    txt.textContent = info.label;
+    badge.classList.remove('level-2','level-3','level-4');
+    badge.classList.add('level-' + info.cssLevel);
+    badge.style.display = 'inline-flex';
+  }
+  // 滚动到 Tab 区
+  var tabsEl = document.getElementById('ncreTabs');
+  if (tabsEl && fromMenu === true) {
+    try { tabsEl.scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){}
+  }
+}
+
+// 初始化时恢复上次等级选择
+(function initNcreLevel(){
+  var saved = '2';
+  try { saved = localStorage.getItem('ncreLevel') || '2'; } catch(e){}
+  if (!NCRE_LEVELS[saved]) saved = '2';
+  state.ncreLevel = saved;
+  applyNcreLevelUI(saved);
+  // 等待 DOM 渲染后同步 tab（如已在 ncre 页面）
+  setTimeout(function(){
+    var tabsEl = document.getElementById('ncreTabs');
+    if (tabsEl) switchNcreTab(saved, true);
+  }, 100);
+})();
 
 // ===================== NAVIGATION =====================
 function showPage(page) {
